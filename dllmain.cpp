@@ -20,11 +20,11 @@ VOID InitOriginalDinput8()
 	}
 }
 
-HRESULT WINAPI DirectInput8Create(HINSTANCE inst_handle, DWORD version, const IID &r_iid, LPVOID *out_wrapper, LPUNKNOWN p_unk)
+HRESULT WINAPI DirectInput8Create(HINSTANCE exe_handle, DWORD version, const IID &r_iid, LPVOID *ppvOut, LPUNKNOWN punkOuter)
 {
 	if (curDirectInput8Create)
 	{
-		return curDirectInput8Create(inst_handle, version, r_iid, out_wrapper, p_unk);
+		return curDirectInput8Create(exe_handle, version, r_iid, ppvOut, punkOuter);
 	}
 
 	return S_OK;

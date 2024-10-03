@@ -17,13 +17,13 @@ CustomDirectInput8Create curDirectInput8Create = NULL;
 /// the injected program will call method of the same name in dinput8.dll.
 /// so we need to override it.
 /// </summary>
-/// <param name="inst_handle"></param>
-/// <param name="version"></param>
-/// <param name="r_iid"></param>
-/// <param name="out_wrapper"></param>
-/// <param name="p_unk"></param>
+/// <param name="exe_handle">: Instance handle to the EXE/DLL is creating the DirectInput object.</param>
+/// <param name="version">: Number of DirectInput for which the application is designed.</param>
+/// <param name="r_iid">: Unique identifier of the desired interface.</param>
+/// <param name="ppvOut">: Address of a pointer to a variable to receive the interface pointer if the call succeeds.</param>
+/// <param name="punkOuter">: Pointer to the address of the controlling object's IUnknown interface for COM aggregation.</param>
 /// <returns></returns>
-EXTERN_C DINPUT8_EXPORT HRESULT WINAPI DirectInput8Create(HINSTANCE inst_handle, DWORD version, const IID &r_iid, LPVOID *out_wrapper, LPUNKNOWN p_unk);
+EXTERN_C DINPUT8_EXPORT HRESULT WINAPI DirectInput8Create(HINSTANCE exe_handle, DWORD version, const IID &r_iid, LPVOID *ppvOut, LPUNKNOWN punkOuter);
 
 /// <summary> Initialize original dinput8 to ensure normal operation</summary>/// <returns></returns>
 VOID InitOriginalDinput8();
