@@ -4,3 +4,5 @@
 // Windows 头文件
 #include <windows.h>
 #include <strsafe.h>
+#include <tlhelp32.h>
+#include "psapi.h"

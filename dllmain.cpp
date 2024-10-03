@@ -1,6 +1,9 @@
 ﻿// dllmain.cpp : Defines the entry point for the DLL application.
 
 #include "dinput8.h"
+#include "trainer.h"
+
+extern HANDLE m_exeProc;
 
 VOID InitOriginalDinput8()
 {
@@ -29,6 +32,8 @@ HRESULT WINAPI DirectInput8Create(HINSTANCE exe_handle, DWORD version, const IID
 
 	return S_OK;
 }
+
+
 BOOL APIENTRY DllMain( HMODULE hModule,
                        DWORD  ul_reason_for_call,
                        LPVOID lpReserved
@@ -39,6 +44,8 @@ BOOL APIENTRY DllMain( HMODULE hModule,
     case DLL_PROCESS_ATTACH:
         InitOriginalDinput8();
 		MessageBoxA(NULL, "Successfully run my dinput8.dll.", NULL, 0);
+		Translate();
+		break;
     case DLL_THREAD_ATTACH:
     case DLL_THREAD_DETACH:
     case DLL_PROCESS_DETACH:

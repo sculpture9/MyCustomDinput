@@ -7,6 +7,9 @@
     <ClInclude Include="framework.h">
       <Filter>Head Files</Filter>
     </ClInclude>
+    <ClInclude Include="trainer.h">
+      <Filter>Head Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Head Files">
@@ -22,6 +25,12 @@
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="trainer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="define_text.h">
+      <Filter>Head Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -150,9 +150,12 @@
   <ItemGroup>
     <ClInclude Include="dinput8.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="trainer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="define_text.h" />
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="trainer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="dinput8.def" />
