@@ -150,11 +150,16 @@
   <ItemGroup>
     <ClInclude Include="dinput8.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="tool_gamedata.h" />
     <ClInclude Include="trainer.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="csv_reader.cpp" />
+    <ClCompile Include="csv_reader.h" />
     <ClCompile Include="define_text.h" />
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="test.cpp" />
+    <ClCompile Include="tool_gamedata.cpp" />
     <ClCompile Include="trainer.cpp" />
   </ItemGroup>
   <ItemGroup>

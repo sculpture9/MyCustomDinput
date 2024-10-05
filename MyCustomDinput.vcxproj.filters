@@ -10,6 +10,9 @@
     <ClInclude Include="trainer.h">
       <Filter>Head Files</Filter>
     </ClInclude>
+    <ClInclude Include="tool_gamedata.h">
+      <Filter>Head Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Head Files">
@@ -31,6 +34,18 @@
     </ClCompile>
     <ClCompile Include="define_text.h">
       <Filter>Head Files</Filter>
+    </ClCompile>
+    <ClCompile Include="test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tool_gamedata.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="csv_reader.h">
+      <Filter>Head Files</Filter>
+    </ClCompile>
+    <ClCompile Include="csv_reader.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -1,16 +1,7 @@
 #include "trainer.h"
-#include <string>
 
 HANDLE m_exeProc;
-
-BOOL Translate()
-{
-    InitTrainer();
-    //PVOID address = GetBaseAddressByPID(GetCurrentProcessId());
-    PVOID address = GetBaseAddressByHandle(m_exeProc);
-    TranslateText("text", address);
-    return TRUE;
-}
+PVOID m_baseAddress;
 
 void InitTrainer()
 {
@@ -22,6 +13,7 @@ void InitTrainer()
     if (openProc != NULL)
     {
         m_exeProc = openProc;
+        m_baseAddress = GetBaseAddressByHandle(openProc);
     }
 }
 
@@ -69,16 +61,50 @@ PVOID GetBaseAddressByPID(DWORD pid)
     return baseAddress;
 }
 
-BOOL TranslateText(LPCSTR text, PVOID baseAddress)
+BOOL Translate()
 {
-    DWORD a = (DWORD)0x004DBBE4 - (DWORD)baseAddress;
-    DWORD b = (DWORD)0x000DBBE4;
-    DWORD address = (DWORD)(0x004DBBE4);
-    //char* tgtAddress = *(char**)(0x004DBBE4);
-    //char temp[] = "布鲁多医生";
-    //*(char **)tgtAddress = temp;
-    char buf[100] = {};
-    BOOL bRet = ReadProcessMemory(m_exeProc, (LPVOID)address, &buf, 100, NULL);
-    std::string str = buf;
-    return TRUE;
+    //InitTrainer();
+    //PVOID address = GetBaseAddressByHandle(m_exeProc);
+    //vector<vector<string>> csvData = ReadDataFromCSV(YS1_CSV);
+    //vector<YS1TextValueObject> ys1list = GetYS1TextVO(csvData);
+    //BOOL ret = TranslateAllText(ys1list);
+
+    wchar_t sss = L'我';
+    wstring s = { sss };
+    wchar_t c = s[0];
+    int i = c;
+    vector<BYTE> ttt = Int2Bytes(i, 2);
+    return true;
+    //return ret;
+}
+
+BOOL TranslateAllText(vector<YS1TextValueObject> list)
+{
+    BOOL result = TRUE;
+    //int c = sizeof(list);
+    //int a = sizeof(list[0]);
+    //int count = sizeof(list) / sizeof(list[0]);
+    YS1TextValueObject temp;
+    for (int i = 0; i < 3; i++)
+    {
+        temp = list[i];
+        vector<BYTE> tByteVs = NewBytesFromText(temp.TranslatedTxt, temp.TSize);
+        BYTE *bytes(tByteVs.data());
+        result = WriteBytes2Address(bytes, temp.TSize, (LPVOID)temp.AddressInYS1);
+        if (!result) return FALSE;
+    }
+    return result;
+}
+
+BOOL WriteBytes2Address(BYTE *textBytes, DWORD tSize, LPVOID tgtAddress)
+{
+    DWORD oop, nop, hasWrite;
+    BOOL isSucceed = VirtualProtect(tgtAddress, tSize, PAGE_EXECUTE_READWRITE, &oop);
+    if (!isSucceed) return FALSE;
+    
+    isSucceed = WriteProcessMemory(m_exeProc, tgtAddress, textBytes, tSize, &hasWrite);
+    if (!isSucceed) return FALSE;
+
+    isSucceed = VirtualProtect(tgtAddress, tSize, oop, &nop);
+    return isSucceed;
 }

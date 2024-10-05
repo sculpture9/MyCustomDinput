@@ -1,7 +1,6 @@
 ﻿// dllmain.cpp : Defines the entry point for the DLL application.
 
 #include "dinput8.h"
-#include "trainer.h"
 
 extern HANDLE m_exeProc;
 

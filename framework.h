@@ -6,3 +6,4 @@
 #include <strsafe.h>
 #include <tlhelp32.h>
 #include "psapi.h"
+#include "define_text.h"

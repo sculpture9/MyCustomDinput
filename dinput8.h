@@ -2,6 +2,7 @@
 
 #include "framework.h"
 #include "Unknwn.h"
+#include "trainer.h"
 
 #ifdef  DINPUT8_EXPORTS
 #define DINPUT8_EXPORT __declspec(dllexport)
