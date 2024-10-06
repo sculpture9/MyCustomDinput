@@ -1,8 +1,9 @@
 #pragma once
 #include "framework.h"
-#include "csv_reader.h"
 #include "tool_gamedata.h"
+#include <vector>
 #include <string>
+#include <vector>
 
 void InitTrainer();
 
@@ -12,6 +13,6 @@ PVOID GetBaseAddressByPID(DWORD pid);
 
 PVOID GetBaseAddressByHandle(HANDLE hprocess);
 
-DWORD TranslateAllText(vector<YS1TextValueObject> list);
+DWORD TranslateAllText(const std::vector<YS1TextValueObject> &list);
 
 BOOL WriteBytes2Address(BYTE *textBytes, DWORD tSize, LPVOID tgtAddress);

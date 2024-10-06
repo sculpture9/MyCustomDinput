@@ -1,6 +1,7 @@
 ﻿// dllmain.cpp : Defines the entry point for the DLL application.
 
 #include "dinput8.h"
+#include "tool_gamedata.h"
 
 extern HANDLE m_exeProc;
 
@@ -43,6 +44,7 @@ BOOL APIENTRY DllMain( HMODULE hModule,
     case DLL_PROCESS_ATTACH:
         InitOriginalDinput8();
 		MessageBoxA(NULL, "Successfully run my dinput8.dll.", "Mission Complete !", 0);
+		InitINIFileData();
 		Translate();
 		break;
     case DLL_THREAD_ATTACH:

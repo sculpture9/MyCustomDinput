@@ -158,7 +158,6 @@
     <ClCompile Include="csv_reader.h" />
     <ClCompile Include="define_text.h" />
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="test.cpp" />
     <ClCompile Include="tool_gamedata.cpp" />
     <ClCompile Include="trainer.cpp" />
   </ItemGroup>

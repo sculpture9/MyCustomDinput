@@ -1,13 +1,11 @@
 #include "tool_gamedata.h"
+#include <algorithm>
+using namespace std;
 
-std::map<DWORD, DWORD> m_iniMap;
-void Init()
+map<DWORD, DWORD> m_iniMap;
+void InitINIFileData()
 {
-    BOOL isInit = NewMapFromINI(YS1_TEXT_INI);
-    if (!isInit)
-    {
-        //TODO
-    }
+    NewMapFromINI(YS1_TEXT_INI);
 }
 
 BOOL NewMapFromINI(const LPCSTR &iniPath)
@@ -68,82 +66,78 @@ BOOL StringSplit(const string &str, const string &splitStr, vector<string> &resu
     string temp = str + splitStr;
     size_t sspos = temp.find(splitStr);
     size_t ssl = splitStr.size();
-    while (sspos != temp.npos)
+    while (sspos != string::npos)
     {
         string res = temp.substr(0, sspos);
         result.push_back(res);
-        temp.substr(sspos + ssl, temp.size());
+        temp = temp.substr(sspos + ssl, temp.size());
         sspos = temp.find(splitStr);
     }
 }
 
-vector<YS1TextValueObject> GetYS1TextVO(const vector<vector<string>> &csvData)
+BOOL GetYS1TextVO(const vector<vector<string>> &csvData, vector<YS1TextValueObject> &result)
 {
-    vector<YS1TextValueObject> result;
-    if (csvData.size() == 0) return result;
+    if (csvData.size() == 0) return FALSE;
 
+    YS1TextValueObject ysTVO;
     for (int i = 0; i < csvData.size(); i++)
     {
-        YS1TextValueObject ysTVO;
         vector<string> tempLine = csvData[i];
         //We stipulate that CSV has 6 columns
         //id, origintxt, translatedTxt, tsize, charsize, address
         //id belong to type: int
         ysTVO.ID = atoi(tempLine[0].c_str());
         //origintext belong to type: string
-        //wstr2str(tempLine[1], oriText);
-        ysTVO.OriginTxt = tempLine[1].c_str();
+        ysTVO.OriginTxt = tempLine[1];
         //translatedtext belong to type: wstring
-        ysTVO.TranslatedTxt = tempLine[2].c_str();
+        ysTVO.TranslatedTxt = tempLine[2];
         //tsize belong to int
         ysTVO.TSize = atoi(tempLine[3].c_str());
         //charsize belong to int
         ysTVO.CharSize = atoi(tempLine[4].c_str());
+        //we have already converted the address to decimal
+        ysTVO.AddressInYS1 = atoi(tempLine[5].c_str());
         //address belong to hex
-        ysTVO.AddressInYS1 = strtol(tempLine[5].c_str(), NULL, 16);
-
-        result.push_back(ysTVO);
+        //ysTVO.AddressInYS1 = strtol(tempLine[5].c_str(), NULL, 16);
+        result[i] = ysTVO;
     }
-    return result;
+    return FALSE;
 }
 
-bool Utf82Unicode(const LPCSTR &ori, LPCWSTR &wstr)
+bool Utf82Unicode(const string &ori, wstring &wstr)
 {
-    int strLength = strlen(ori);
-    int wstrLength = MultiByteToWideChar(YS_UTF8, 0, ori, strLength, nullptr, 0);
-    wchar_t *temp = new wchar_t[wstrLength];
-    MultiByteToWideChar(YS_UTF8, 0, ori, strLength, temp, wstrLength);
-    LPCWSTR result(temp);
-    wstr = result;
-    delete[](temp);
+    int strLength = ori.length();
+    int wstrLength = MultiByteToWideChar(YS_UTF8, 0, ori.data(), strLength, nullptr, 0);
+    wstring temp;
+    temp.resize(wstrLength);
+    MultiByteToWideChar(YS_UTF8, 0, ori.data(), strLength, &temp[0], wstrLength);
+    wstr = temp;
     return true;
 }
 
-bool Unicode2Custom(const LPCWSTR &strUnicode, LPCSTR &strTgt, unsigned int codePage)
+bool Unicode2Custom(const wstring &strUnicode, string &strTgt, unsigned int codePage)
 {
-    int wstrLength = wcslen(strUnicode);
-    int strLength = WideCharToMultiByte(codePage, 0, strUnicode, wstrLength, nullptr, 0, nullptr, nullptr);
+    int wstrLength = strUnicode.length();
+    int strLength = WideCharToMultiByte(codePage, 0, strUnicode.data(), wstrLength, nullptr, 0, nullptr, nullptr);
     char *temp = new char[strLength];
-    WideCharToMultiByte(codePage, 0, strUnicode, wstrLength, temp, strLength, nullptr, nullptr);
-    //temp[strLength] = '\0';
-    LPCSTR result(temp);
-    strTgt = result;
+    WideCharToMultiByte(codePage, 0, strUnicode.data(), wstrLength, temp, strLength, nullptr, nullptr);
+    strTgt.append(temp);
     delete[] temp;
     return true;
 }
 
 vector<BYTE> GetCustomBytesFromText(const LPCSTR &test, DWORD charCount)
 {
-    LPCWSTR strUni;
+    wstring strUni;
     vector<BYTE> result;
     Utf82Unicode(test, strUni);
-    int uniSize = wcslen(strUni);  //in unicode, the number of chinese word equal size
+    int uniSize = wcslen(strUni.c_str());  //in unicode, the number of chinese word equal size
     int offset = charCount - (uniSize * 2);  //one unicode char have two bytes
     //if the translated text size out of original game text size
-    if (offset < 0)  
-    {
-        return result;
-    }
+    //if (offset < 0)  
+    //{
+    //    return result;
+    //}
 
     //add text bytes to vector
     for (int i = 0; i < uniSize; i++)
@@ -166,42 +160,40 @@ vector<BYTE> GetCustomBytesFromText(const LPCSTR &test, DWORD charCount)
 BOOL PushWCharToByteVector(wchar_t wchar, vector<BYTE> &store)
 {
     const wstring wcstr = {wchar};
-    LPCSTR charStr;
+    string charStr;
     int charStrSize;
-    int charCode;
-    //first judge utf32, then utf8
-    Unicode2Custom(wcstr.c_str(), charStr, YS_UTF32);
-    charStrSize = strlen(charStr);
-    charCode = Char2Code(charStr, charStrSize);
+    int charCode = (int)wchar;
+    //unicode == utf32
     //if utf32 code is the key of INI file
     if (m_iniMap.find(charCode) != m_iniMap.end())
     {
         charCode = m_iniMap[charCode];
-        vector<BYTE> c32Bytes = Int2Bytes(charCode, charStrSize);
+        vector<BYTE> c32Bytes = Int2Bytes(charCode, 2);  //one unicode use two bytes
         for (auto b : c32Bytes)
         {
             store.push_back(b);
         }
         return true;
     }
+    //no utf32, abandoning translation
     //use utf8 code
-    charStr = "";
-    Unicode2Custom(wcstr.c_str(), charStr, YS_UTF8);
-    charStrSize = strlen(charStr);
-    charCode = Char2Code(charStr, charStrSize);
-    vector<BYTE> c8Bytes = Int2Bytes(charCode, charStrSize);
-    for (auto b : c8Bytes)
-    {
-        store.push_back(b);
-    }
-    return true;
+    //charStr = "";
+    //Unicode2Custom(wcstr, charStr, YS_UTF8);
+    //charStrSize = charStr.length();
+    //charCode = Char2Code(charStr, charStrSize);
+    //vector<BYTE> c8Bytes = Int2Bytes(charCode, charStrSize);
+    //for (auto b : c8Bytes)
+    //{
+    //    store.push_back(b);
+    //}
+    return false;
 }
 
-long Char2Code(const LPCSTR &charStr, int charSize)
+long Char2Code(const string &charStr, int charSize)
 {
     string hexStr;
-    const unsigned char *pstr32 = (unsigned char *)charStr;  //utf8/utf32 code is unsigned type
-    int char32Size = strlen(charStr);
+    const unsigned char *pstr32 = (unsigned char *)charStr.c_str();  //utf8/utf32 code is unsigned type
+    int char32Size = charStr.length();
     for (int i = 0; i < char32Size; i++)
     {
         int b = *(pstr32 + i);
@@ -215,7 +207,7 @@ long Char2Code(const LPCSTR &charStr, int charSize)
 }
 
 /// <summary>
-/// use Little Endian
+/// YS1 use Big Endian
 /// </summary>
 /// <param name="code"></param>
 /// <param name="byteSize"></param>
@@ -228,19 +220,7 @@ vector<BYTE> Int2Bytes(int code, int byteSize)
         BYTE b = (BYTE)((code >> (i * 8)) & 0xFF);
         result.push_back(b);
     }
+    reverse(result.begin(), result.end());
     return result;
-}
-
-//test
-vector<YS1TextValueObject>GetData()
-{
-    YS1TextValueObject ys = { 1, NULL, "布鲁多医师", 13, 1, 0x004DBBE4};
-    YS1TextValueObject ys2 = { 1, NULL, "护士艾拉", 11, 1, 0x004DBBF4};
-    YS1TextValueObject ys3 = { 1, NULL, "斯拉夫", 11, 1, 0x004DBC00};
-    vector<YS1TextValueObject> yslist;
-    yslist.push_back(ys);
-    yslist.push_back(ys2);
-    yslist.push_back(ys3);
-    return yslist;
 }
 

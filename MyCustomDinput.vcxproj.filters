@@ -35,9 +35,6 @@
     <ClCompile Include="define_text.h">
       <Filter>Head Files</Filter>
     </ClCompile>
-    <ClCompile Include="test.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="tool_gamedata.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

@@ -1,4 +1,7 @@
 #include "trainer.h"
+#include "csv_reader.h"
+
+using namespace std;
 
 HANDLE m_exeProc;
 PVOID m_baseAddress;
@@ -65,14 +68,16 @@ BOOL Translate()
 {
     InitTrainer();
     PVOID address = GetBaseAddressByHandle(m_exeProc);
-    vector<vector<string>> csvData = ReadDataFromCSV(YS1_CSV);
-    vector<YS1TextValueObject> ys1list = GetYS1TextVO(csvData);
+    vector<vector<string>> csvData;
+    ReadDataFromCSV(YS1_EXE_CSV_PATH, csvData);
+    vector<YS1TextValueObject> ys1list(csvData.size());
+    GetYS1TextVO(csvData, ys1list);
     BOOL ret = TranslateAllText(ys1list);
     if (!ret)
     {
         MessageBoxA(NULL, "Translate Failed", "Mission Failed!", 0);
     }
-    return ret;
+    return true;
 
     //test
     //wchar_t sss = L'Œ“';
@@ -80,22 +85,23 @@ BOOL Translate()
     //wchar_t c = s[0];
     //int i = c;
     //vector<BYTE> ttt = Int2Bytes(Char2Code("\0", 1), 1);
-    return true;
+    //return true;
 }
 
-DWORD TranslateAllText(vector<YS1TextValueObject> list)
+DWORD TranslateAllText(const vector<YS1TextValueObject> &list)
 {
     int ys1tSize = list.size();
     if (ys1tSize == 0) return FALSE;
     DWORD flag = 0;
     BOOL result = TRUE;
     YS1TextValueObject temp;
+    ys1tSize = 3;
     for (int i = 0; i < ys1tSize; i++)
     {
         temp = list[i];
-        if (temp.TranslatedTxt != "")
+        if (temp.TranslatedTxt.size() != 0 &&temp.TranslatedTxt != " ")
         {
-            vector<BYTE> tByte = GetCustomBytesFromText(temp.TranslatedTxt, temp.TSize);
+            vector<BYTE> tByte = GetCustomBytesFromText(temp.TranslatedTxt.c_str(), temp.TSize);
             BYTE *bytes(tByte.data());
             result = WriteBytes2Address(bytes, temp.TSize, (LPVOID)temp.AddressInYS1);
             if (!result) return -1;

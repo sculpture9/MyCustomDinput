@@ -1,17 +1,14 @@
 #include "csv_reader.h"
-#include <string>
-#include <iostream>
-#include <fstream>
-#include <vector>
-vector<vector<string>> ReadDataFromCSV(const LPCSTR &csvPath)
+using namespace std;
+
+BOOL ReadDataFromCSV(const LPCSTR &csvPath, vector<vector<string>> &result)
 {
-    vector<vector<string>> result;
     ifstream reader;
     reader.open(csvPath);
     if (!reader.is_open())
     {
         reader.close();
-        return result;
+        return FALSE;
     }
     string line, temp;
     while (std::getline(reader, line))
@@ -20,7 +17,8 @@ vector<vector<string>> ReadDataFromCSV(const LPCSTR &csvPath)
         char c;
         bool isColTrans = false, inSentence = false, isEscape = false;
         vector<char> wret;
-        for (size_t i = 0; i < line.length(); i++)
+        long lineSize = line.length();
+        for (size_t i = 0; i < lineSize; i++)
         {
             c = line[i];
             //just started translate
@@ -41,7 +39,7 @@ vector<vector<string>> ReadDataFromCSV(const LPCSTR &csvPath)
                 else
                 {
                     //invalid
-                    return result;
+                    return FALSE;
                 }
                 continue;
             }
@@ -58,14 +56,14 @@ vector<vector<string>> ReadDataFromCSV(const LPCSTR &csvPath)
                     inSentence = false;
                     isColTrans = false;
                 }
-                if (iswdigit(c))
+                else if (iswdigit(c))
                 {
                     wret.push_back(c);
                 }
                 else
                 {
                     //invalid
-                    return result;
+                    return FALSE;
                 }
                 continue;
             }
@@ -101,7 +99,7 @@ vector<vector<string>> ReadDataFromCSV(const LPCSTR &csvPath)
         result.push_back(columns);
     }
     reader.close();
-    return result;
+    return TRUE;
 }
 
 bool CharVector2String(const vector<char> &chars, string &str)

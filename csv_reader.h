@@ -1,13 +1,10 @@
 #pragma once
 #include "framework.h"
-#include "sstream"
-#include "iostream"
 #include <string>
 #include <iostream>
 #include <fstream>
 #include <vector>
-using namespace std;
 
-vector<vector<string>> ReadDataFromCSV(const LPCSTR &csvPath);
+BOOL ReadDataFromCSV(const LPCSTR &csvPath, std::vector<std::vector<std::string>> &result);
 
-bool CharVector2String(const vector<char> &chars, string &str);
+bool CharVector2String(const std::vector<char> &chars, std::string &str);

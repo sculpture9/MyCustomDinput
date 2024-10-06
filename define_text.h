@@ -36,7 +36,7 @@ constexpr auto DC_M_DIC_ADDRESS = 0x004D7270;
 /// <summary>Address of the dictionary of monster's describtion address, per address use double words </summary>
 constexpr auto DC_M_DES_DIC_ADDRESS = 0x004D7520;
 
-constexpr auto YS1_CSV = "YS1_Translation.csv";
+constexpr auto YS1_EXE_CSV_PATH = "ys1_exe_text.csv";
 
 constexpr auto YS1_TEXT_INI = "text.ini";  //ah, twnkey you are my god!
 

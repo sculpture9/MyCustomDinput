@@ -7,44 +7,41 @@
 #include <fstream>
 #include <vector>
 #include <map>
-
-using namespace std;
+#include <cwchar>
 
 typedef struct YS1TextValueObject
 {
-    DWORD ID;
-    LPCSTR OriginTxt;
-    LPCSTR TranslatedTxt;
-    DWORD TSize;
-    DWORD CharSize;
-    DWORD AddressInYS1;
+    long ID;
+    std::string OriginTxt;
+    std::string TranslatedTxt;
+    long TSize;
+    long CharSize;
+    long AddressInYS1;
 };
 
-void Init();
+void InitINIFileData();
 
 BOOL NewMapFromINI(const LPCSTR &iniPath);
 
-vector<YS1TextValueObject> GetYS1TextVO(const vector<vector<string>> &csvData);
+BOOL GetYS1TextVO(const std::vector<std::vector<std::string>> &csvData, std::vector<YS1TextValueObject> &result);
 
-vector<BYTE> GetCustomBytesFromText(const LPCSTR &test, DWORD charCount);
+std::vector<BYTE> GetCustomBytesFromText(const LPCSTR &test, DWORD charCount);
 
-BOOL MapInsert(map<DWORD, DWORD> &m_map, DWORD key, DWORD kvalue);
+BOOL MapInsert(std::map<DWORD, DWORD> &m_map, DWORD key, DWORD kvalue);
 
-vector<YS1TextValueObject> GetData();
-
-BOOL StringSplit(const string &str, const string &splitStr, vector<string> &result);
+BOOL StringSplit(const std::string &str, const std::string &splitStr, std::vector<std::string> &result);
 
 /// <summary>
 /// string convert to wstring
 /// </summary>
 /// <param name="ori"></param>
 /// <returns></returns>
-bool Utf82Unicode(const LPCSTR &str8, LPCWSTR &strUnicode);
+bool Utf82Unicode(const std::string &str8, std::wstring &strUnicode);
 
-bool Unicode2Custom(const LPCWSTR &strUnicode, LPCSTR &strTgt, unsigned int codePage);
+bool Unicode2Custom(const std::wstring &strUnicode, std::string &strTgt, unsigned int codePage);
 
-vector<BYTE> Int2Bytes(int code, int byteSize);
+std::vector<BYTE> Int2Bytes(int code, int byteSize);
 
-long Char2Code(const LPCSTR &charStr, int charSize);
+long Char2Code(const std::string &charStr, int charSize);
 
-BOOL PushWCharToByteVector(wchar_t wchar, vector<BYTE> &store);
+BOOL PushWCharToByteVector(wchar_t wchar, std::vector<BYTE> &store);
