@@ -69,7 +69,7 @@ BOOL Translate()
     InitTrainer();
     PVOID address = GetBaseAddressByHandle(m_exeProc);
     vector<vector<string>> csvData;
-    ReadDataFromCSV(YS1_EXE_CSV_PATH, csvData);
+    ReadDataFromCSV(YS_EXE_CSV_PATH, csvData);
     vector<YS1TextValueObject> ys1list(csvData.size());
     GetYS1TextVO(csvData, ys1list);
     BOOL ret = TranslateAllText(ys1list);
@@ -100,7 +100,7 @@ DWORD TranslateAllText(const vector<YS1TextValueObject> &list)
         temp = list[i];
         if (temp.TranslatedTxt.size() != 0 &&temp.TranslatedTxt != " ")
         {
-            vector<BYTE> tByte = GetCustomBytesFromText(temp.TranslatedTxt.c_str(), temp.TSize);
+            vector<BYTE> tByte = GetCustomBytesFromText(temp.TranslatedTxt.c_str(), temp.FontStyle, temp.TSize);
             BYTE *bytes(tByte.data());
             result = WriteBytes2Address(bytes, temp.TSize, (LPVOID)temp.AddressInYS1);
             if (!result) return -1;

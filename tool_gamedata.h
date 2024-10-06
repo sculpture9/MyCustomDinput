@@ -14,18 +14,25 @@ typedef struct YS1TextValueObject
     long ID;
     std::string OriginTxt;
     std::string TranslatedTxt;
+    std::string FontStyle;
     long TSize;
     long CharSize;
     long AddressInYS1;
 };
 
+enum EFontStyle
+{
+    ETEXT1 = 1,
+    ETEXT2 = 2
+};
+
 void InitINIFileData();
 
-BOOL NewMapFromINI(const LPCSTR &iniPath);
+BOOL NewMapFromINI(std::map<DWORD, DWORD> &fs_map, const LPCSTR &iniPath);
 
 BOOL GetYS1TextVO(const std::vector<std::vector<std::string>> &csvData, std::vector<YS1TextValueObject> &result);
 
-std::vector<BYTE> GetCustomBytesFromText(const LPCSTR &test, DWORD charCount);
+std::vector<BYTE> GetCustomBytesFromText(const LPCSTR &test, std::string fontStyle, DWORD charCount);
 
 BOOL MapInsert(std::map<DWORD, DWORD> &m_map, DWORD key, DWORD kvalue);
 
@@ -44,4 +51,6 @@ std::vector<BYTE> Int2Bytes(int code, int byteSize);
 
 long Char2Code(const std::string &charStr, int charSize);
 
-int PushWCharToByteVector(wchar_t wchar, std::vector<BYTE> &store);
+int PushWCharToByteVector(wchar_t wchar, int fontStyle, std::vector<BYTE> &store);
+
+int FindChar32WithStyle(int charCode, int fontStyle);

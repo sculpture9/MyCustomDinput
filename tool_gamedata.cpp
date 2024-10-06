@@ -2,15 +2,17 @@
 #include <algorithm>
 using namespace std;
 
-map<DWORD, DWORD> m_iniMap;
+map<DWORD, DWORD> font_style1_map;
+map<DWORD, DWORD> font_style2_map;
 void InitINIFileData()
 {
-    NewMapFromINI(YS1_FONT_DIA_INI);
+    NewMapFromINI(font_style1_map, YS1_FONT_INI);
+    NewMapFromINI(font_style2_map, YS1_FONT_DIA_INI);
 }
 
-BOOL NewMapFromINI(const LPCSTR &iniPath)
+BOOL NewMapFromINI(map<DWORD, DWORD> &fs_map, const LPCSTR &iniPath)
 {
-    if (m_iniMap.size() != 0)
+    if (fs_map.size() != 0)
     {
         MessageBoxA(NULL, "Map Already Init", NULL, 0);
         return FALSE;
@@ -20,7 +22,7 @@ BOOL NewMapFromINI(const LPCSTR &iniPath)
     readFile.open(iniPath);
     if (!readFile.is_open())
     {
-        MessageBoxA(NULL, "Can't Open .INI File", NULL, 0);
+        MessageBoxA(NULL, "Can't Open font.ini", NULL, 0);
         readFile.close();
         return FALSE;
     }
@@ -37,7 +39,7 @@ BOOL NewMapFromINI(const LPCSTR &iniPath)
         {
             DWORD key = atoi(result[0].c_str());
             DWORD kvalue = atoi(result[1].c_str());
-            BOOL bret = MapInsert(m_iniMap, key, kvalue);
+            BOOL bret = MapInsert(fs_map, key, kvalue);
             if (!bret)
             {
                 readFile.close();
@@ -77,28 +79,28 @@ BOOL StringSplit(const string &str, const string &splitStr, vector<string> &resu
 
 BOOL GetYS1TextVO(const vector<vector<string>> &csvData, vector<YS1TextValueObject> &result)
 {
-    if (csvData.size() == 0) return FALSE;
+    if (csvData.size() == 0 || csvData.size() != YS_CSV_COL_NUM) return FALSE;
 
     YS1TextValueObject ysTVO;
     for (int i = 0; i < csvData.size(); i++)
     {
         vector<string> tempLine = csvData[i];
-        //We stipulate that CSV has 6 columns
+        //We stipulate that CSV has 7 columns
         //id, origintxt, translatedTxt, tsize, charsize, address
         //id belong to type: int
         ysTVO.ID = atoi(tempLine[0].c_str());
         //origintext belong to type: string
         ysTVO.OriginTxt = tempLine[1];
-        //translatedtext belong to type: wstring
+        //translatedtext belong to type: string
         ysTVO.TranslatedTxt = tempLine[2];
+        //font style belong to type: string
+        ysTVO.FontStyle = tempLine[3];
         //tsize belong to int
-        ysTVO.TSize = atoi(tempLine[3].c_str());
+        ysTVO.TSize = atoi(tempLine[4].c_str());
         //charsize belong to int
-        ysTVO.CharSize = atoi(tempLine[4].c_str());
+        ysTVO.CharSize = atoi(tempLine[5].c_str());
         //we have already converted the address to decimal
-        ysTVO.AddressInYS1 = atoi(tempLine[5].c_str());
-        //address belong to hex
-        //ysTVO.AddressInYS1 = strtol(tempLine[5].c_str(), NULL, 16);
+        ysTVO.AddressInYS1 = atoi(tempLine[6].c_str());
         result[i] = ysTVO;
     }
     return FALSE;
@@ -127,7 +129,7 @@ bool Unicode2Custom(const wstring &strUnicode, string &strTgt, unsigned int code
     return true;
 }
 
-vector<BYTE> GetCustomBytesFromText(const LPCSTR &test, DWORD charCount)
+vector<BYTE> GetCustomBytesFromText(const LPCSTR &test, string fontStyle, DWORD charCount)
 {
     wstring strUni;
     vector<BYTE> result;
@@ -139,12 +141,15 @@ vector<BYTE> GetCustomBytesFromText(const LPCSTR &test, DWORD charCount)
     //{
     //    return result;
     //}
-
+    EFontStyle fstyle;
+    if (fontStyle == YS_FONT_SYTLE_DEFAULT) { fstyle = ETEXT1; }
+    else if (fontStyle == YS_FONT_SYTLE_2) { fstyle = ETEXT2; }
+    else { fstyle = ETEXT1; }
     //add text bytes to vector
     for (int i = 0; i < uniSize; i++)
     {
         wchar_t wChar = strUni[i];
-        usedBytes += PushWCharToByteVector(wChar, result);
+        usedBytes += PushWCharToByteVector(wChar, fstyle, result);
     }
     int offset = charCount - usedBytes;  //one unicode char have two bytes
     //fill in zeros to ensure that the bytes is the same as the original game text
@@ -159,7 +164,7 @@ vector<BYTE> GetCustomBytesFromText(const LPCSTR &test, DWORD charCount)
     return result;
 }
 
-int PushWCharToByteVector(wchar_t wchar, vector<BYTE> &store)
+int PushWCharToByteVector(wchar_t wchar, int fontStyle, vector<BYTE> &store)
 {
     const wstring wcstr = {wchar};
     string charStr;
@@ -168,12 +173,8 @@ int PushWCharToByteVector(wchar_t wchar, vector<BYTE> &store)
     long pushByteCounter;
     //unicode == utf32
     //if utf32 code is the key of INI file
-    if (m_iniMap.find(charCode) != m_iniMap.end())
-    {
-        charCode = m_iniMap[charCode];
-        charStrSize = 2;  //one unicode use two bytes
-    }
-    else
+    charStrSize = FindChar32WithStyle(charCode, fontStyle);
+    if (charStrSize == -1)
     {
         //use utf8 code
         charStr = "";
@@ -187,6 +188,30 @@ int PushWCharToByteVector(wchar_t wchar, vector<BYTE> &store)
         store.push_back(b);
     }
     return charStrSize;
+}
+
+int FindChar32WithStyle(int charCode, int fontStyle)
+{
+    switch (fontStyle)
+    {
+    case 1:
+        if (font_style1_map.find(charCode) != font_style1_map.end())
+        {
+            charCode = font_style1_map[charCode];
+            return 2;  //one unicode use two bytes
+        }
+        break;
+    case 2:
+        if (font_style2_map.find(charCode) != font_style2_map.end())
+        {
+            charCode = font_style2_map[charCode];
+            return 2;  //one unicode use two bytes
+        }
+        break;
+    default:
+        break;
+    }
+    return -1;
 }
 
 long Char2Code(const string &charStr, int charSize)
