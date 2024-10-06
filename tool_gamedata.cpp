@@ -86,26 +86,21 @@ vector<YS1TextValueObject> GetYS1TextVO(const vector<vector<string>> &csvData)
     {
         YS1TextValueObject ysTVO;
         vector<string> tempLine = csvData[i];
-        string idStr, address, tsize, charSize, oriText;
         //We stipulate that CSV has 6 columns
         //id, origintxt, translatedTxt, tsize, charsize, address
         //id belong to type: int
-        //wstr2str(tempLine[0], idStr);
-        ysTVO.ID = atoi(idStr.c_str());
+        ysTVO.ID = atoi(tempLine[0].c_str());
         //origintext belong to type: string
         //wstr2str(tempLine[1], oriText);
-        ysTVO.OriginTxt = oriText.c_str();
+        ysTVO.OriginTxt = tempLine[1].c_str();
         //translatedtext belong to type: wstring
         ysTVO.TranslatedTxt = tempLine[2].c_str();
         //tsize belong to int
-        //wstr2str(tempLine[3], tsize);
-        ysTVO.TSize = atoi(tsize.c_str());
+        ysTVO.TSize = atoi(tempLine[3].c_str());
         //charsize belong to int
-        //wstr2str(tempLine[4], charSize);
-        ysTVO.CharSize = atoi(charSize.c_str());
-        //address belong to int
-        //wstr2str(tempLine[5], address);
-        ysTVO.AddressInYS1 = atoi(address.c_str());
+        ysTVO.CharSize = atoi(tempLine[4].c_str());
+        //address belong to hex
+        ysTVO.AddressInYS1 = strtol(tempLine[5].c_str(), NULL, 16);
 
         result.push_back(ysTVO);
     }
