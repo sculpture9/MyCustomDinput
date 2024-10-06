@@ -26,7 +26,7 @@ BOOL NewMapFromINI(const LPCSTR &iniPath);
 
 vector<YS1TextValueObject> GetYS1TextVO(const vector<vector<string>> &csvData);
 
-vector<BYTE> NewBytesFromText(const LPCSTR &test, DWORD charCount);
+vector<BYTE> GetCustomBytesFromText(const LPCSTR &test, DWORD charCount);
 
 BOOL MapInsert(map<DWORD, DWORD> &m_map, DWORD key, DWORD kvalue);
 
@@ -46,3 +46,5 @@ bool Unicode2Custom(const LPCWSTR &strUnicode, LPCSTR &strTgt, unsigned int code
 vector<BYTE> Int2Bytes(int code, int byteSize);
 
 long Char2Code(const LPCSTR &charStr, int charSize);
+
+BOOL PushWCharToByteVector(wchar_t wchar, vector<BYTE> &store);

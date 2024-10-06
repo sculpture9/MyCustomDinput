@@ -42,7 +42,7 @@ BOOL APIENTRY DllMain( HMODULE hModule,
     {
     case DLL_PROCESS_ATTACH:
         InitOriginalDinput8();
-		MessageBoxA(NULL, "Successfully run my dinput8.dll.", NULL, 0);
+		MessageBoxA(NULL, "Successfully run my dinput8.dll.", "Mission Complete !", 0);
 		Translate();
 		break;
     case DLL_THREAD_ATTACH:

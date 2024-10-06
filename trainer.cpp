@@ -63,37 +63,46 @@ PVOID GetBaseAddressByPID(DWORD pid)
 
 BOOL Translate()
 {
-    //InitTrainer();
-    //PVOID address = GetBaseAddressByHandle(m_exeProc);
-    //vector<vector<string>> csvData = ReadDataFromCSV(YS1_CSV);
-    //vector<YS1TextValueObject> ys1list = GetYS1TextVO(csvData);
-    //BOOL ret = TranslateAllText(ys1list);
+    InitTrainer();
+    PVOID address = GetBaseAddressByHandle(m_exeProc);
+    vector<vector<string>> csvData = ReadDataFromCSV(YS1_CSV);
+    vector<YS1TextValueObject> ys1list = GetYS1TextVO(csvData);
+    BOOL ret = TranslateAllText(ys1list);
+    if (!ret)
+    {
+        MessageBoxA(NULL, "Translate Failed", "Mission Failed!", 0);
+    }
+    return ret;
 
-    wchar_t sss = L'Œ“';
-    wstring s = { sss };
-    wchar_t c = s[0];
-    int i = c;
-    vector<BYTE> ttt = Int2Bytes(i, 2);
+    //test
+    //wchar_t sss = L'Œ“';
+    //wstring s = { sss };
+    //wchar_t c = s[0];
+    //int i = c;
+    //vector<BYTE> ttt = Int2Bytes(Char2Code("\0", 1), 1);
     return true;
-    //return ret;
 }
 
-BOOL TranslateAllText(vector<YS1TextValueObject> list)
+DWORD TranslateAllText(vector<YS1TextValueObject> list)
 {
+    int ys1tSize = list.size();
+    if (ys1tSize == 0) return FALSE;
+    DWORD flag = 0;
     BOOL result = TRUE;
-    //int c = sizeof(list);
-    //int a = sizeof(list[0]);
-    //int count = sizeof(list) / sizeof(list[0]);
     YS1TextValueObject temp;
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < ys1tSize; i++)
     {
         temp = list[i];
-        vector<BYTE> tByteVs = NewBytesFromText(temp.TranslatedTxt, temp.TSize);
-        BYTE *bytes(tByteVs.data());
-        result = WriteBytes2Address(bytes, temp.TSize, (LPVOID)temp.AddressInYS1);
-        if (!result) return FALSE;
+        if (temp.TranslatedTxt != "")
+        {
+            vector<BYTE> tByte = GetCustomBytesFromText(temp.TranslatedTxt, temp.TSize);
+            BYTE *bytes(tByte.data());
+            result = WriteBytes2Address(bytes, temp.TSize, (LPVOID)temp.AddressInYS1);
+            if (!result) return -1;
+        }
+        else { flag++; }
     }
-    return result;
+    return (ys1tSize - flag);
 }
 
 BOOL WriteBytes2Address(BYTE *textBytes, DWORD tSize, LPVOID tgtAddress)

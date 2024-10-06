@@ -80,6 +80,8 @@ BOOL StringSplit(const string &str, const string &splitStr, vector<string> &resu
 vector<YS1TextValueObject> GetYS1TextVO(const vector<vector<string>> &csvData)
 {
     vector<YS1TextValueObject> result;
+    if (csvData.size() == 0) return result;
+
     for (int i = 0; i < csvData.size(); i++)
     {
         YS1TextValueObject ysTVO;
@@ -135,46 +137,67 @@ bool Unicode2Custom(const LPCWSTR &strUnicode, LPCSTR &strTgt, unsigned int code
     return true;
 }
 
-vector<BYTE> NewBytesFromText(const LPCSTR &test, DWORD charCount)
+vector<BYTE> GetCustomBytesFromText(const LPCSTR &test, DWORD charCount)
 {
-    LPCSTR str32;
     LPCWSTR strUni;
     vector<BYTE> result;
     Utf82Unicode(test, strUni);
     int uniSize = wcslen(strUni);  //in unicode, the number of chinese word equal size
+    int offset = charCount - (uniSize * 2);  //one unicode char have two bytes
+    //if the translated text size out of original game text size
+    if (offset < 0)  
+    {
+        return result;
+    }
+
+    //add text bytes to vector
     for (int i = 0; i < uniSize; i++)
     {
-        wchar_t s = strUni[i];
+        wchar_t wChar = strUni[i];
+        PushWCharToByteVector(wChar, result);
     }
-
-    const unsigned char *pstr32 = (unsigned char *)strUni;  //utf8 code is unsigned type
-    int testSize = strlen(test);
-    for (int i = 0; i < testSize; i++)
+    //fill in zeros to ensure that the bytes is the same as the original game text
+    if (offset > 0)
     {
-
+        BYTE zero = Int2Bytes(Char2Code("\0", 1), 1)[0];
+        for (int i = 0; i < offset; i++)
+        {
+            result.push_back(zero);
+        }
     }
-
-    BYTE *b = new BYTE[15]{ 0xe5, 0x8c, 0xbb, 0xe7,0x94,0x9f, 0xe5,0xb8, 0x83, 0xe9 ,0xb2, 0x81, 0xe5, 0xa4,0x9a };
     return result;
 }
 
-BOOL PushBytesWithCustom(wchar_t wchar, vector<BYTE> &store)
+BOOL PushWCharToByteVector(wchar_t wchar, vector<BYTE> &store)
 {
     const wstring wcstr = {wchar};
-    LPCSTR char32;
-    string strHex;
-    Unicode2Custom(wcstr.c_str(), char32, YS_UTF32);
-    int char32Size = strlen(char32);
-    int c32Code = Char2Code(char32, char32Size);
-    //if c32Code is the key of INI file
-    if (m_iniMap.find(c32Code) != m_iniMap.end())
+    LPCSTR charStr;
+    int charStrSize;
+    int charCode;
+    //first judge utf32, then utf8
+    Unicode2Custom(wcstr.c_str(), charStr, YS_UTF32);
+    charStrSize = strlen(charStr);
+    charCode = Char2Code(charStr, charStrSize);
+    //if utf32 code is the key of INI file
+    if (m_iniMap.find(charCode) != m_iniMap.end())
     {
-        c32Code = m_iniMap[c32Code];
-        vector<BYTE> c32Bytes = Int2Bytes(c32Code, char32Size);
+        charCode = m_iniMap[charCode];
+        vector<BYTE> c32Bytes = Int2Bytes(charCode, charStrSize);
         for (auto b : c32Bytes)
         {
             store.push_back(b);
         }
+        return true;
+    }
+    //use utf8 code
+    charStr = "";
+    Unicode2Custom(wcstr.c_str(), charStr, YS_UTF8);
+    charStrSize = strlen(charStr);
+    charCode = Char2Code(charStr, charStrSize);
+    vector<BYTE> c8Bytes = Int2Bytes(charCode, charStrSize);
+    for (auto b : c8Bytes)
+    {
+        store.push_back(b);
     }
     return true;
 }
@@ -182,7 +205,7 @@ BOOL PushBytesWithCustom(wchar_t wchar, vector<BYTE> &store)
 long Char2Code(const LPCSTR &charStr, int charSize)
 {
     string hexStr;
-    const unsigned char *pstr32 = (unsigned char *)charStr;  //utf32 code is unsigned type
+    const unsigned char *pstr32 = (unsigned char *)charStr;  //utf8/utf32 code is unsigned type
     int char32Size = strlen(charStr);
     for (int i = 0; i < char32Size; i++)
     {

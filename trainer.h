@@ -12,6 +12,6 @@ PVOID GetBaseAddressByPID(DWORD pid);
 
 PVOID GetBaseAddressByHandle(HANDLE hprocess);
 
-BOOL TranslateAllText(vector<YS1TextValueObject> list);
+DWORD TranslateAllText(vector<YS1TextValueObject> list);
 
 BOOL WriteBytes2Address(BYTE *textBytes, DWORD tSize, LPVOID tgtAddress);
