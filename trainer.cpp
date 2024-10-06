@@ -93,9 +93,8 @@ DWORD TranslateAllText(const vector<YS1TextValueObject> &list)
     int ys1tSize = list.size();
     if (ys1tSize == 0) return FALSE;
     DWORD flag = 0;
-    BOOL result = TRUE;
+    BOOL result = TRUE; 
     YS1TextValueObject temp;
-    ys1tSize = 3;
     for (int i = 0; i < ys1tSize; i++)
     {
         temp = list[i];

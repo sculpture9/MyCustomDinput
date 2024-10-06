@@ -44,4 +44,4 @@ std::vector<BYTE> Int2Bytes(int code, int byteSize);
 
 long Char2Code(const std::string &charStr, int charSize);
 
-BOOL PushWCharToByteVector(wchar_t wchar, std::vector<BYTE> &store);
+int PushWCharToByteVector(wchar_t wchar, std::vector<BYTE> &store);

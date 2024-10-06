@@ -5,7 +5,7 @@ using namespace std;
 map<DWORD, DWORD> m_iniMap;
 void InitINIFileData()
 {
-    NewMapFromINI(YS1_TEXT_INI);
+    NewMapFromINI(YS1_FONT_DIA_INI);
 }
 
 BOOL NewMapFromINI(const LPCSTR &iniPath)
@@ -119,10 +119,11 @@ bool Unicode2Custom(const wstring &strUnicode, string &strTgt, unsigned int code
 {
     int wstrLength = strUnicode.length();
     int strLength = WideCharToMultiByte(codePage, 0, strUnicode.data(), wstrLength, nullptr, 0, nullptr, nullptr);
-    char *temp = new char[strLength];
-    WideCharToMultiByte(codePage, 0, strUnicode.data(), wstrLength, temp, strLength, nullptr, nullptr);
-    strTgt.append(temp);
-    delete[] temp;
+    string temp;
+    temp.resize(strLength);
+    WideCharToMultiByte(codePage, 0, strUnicode.data(), wstrLength, &temp[0], strLength, nullptr, nullptr);
+    strTgt = temp;
+    int fff = strTgt.length();
     return true;
 }
 
@@ -130,9 +131,9 @@ vector<BYTE> GetCustomBytesFromText(const LPCSTR &test, DWORD charCount)
 {
     wstring strUni;
     vector<BYTE> result;
+    int usedBytes = 0;
     Utf82Unicode(test, strUni);
     int uniSize = wcslen(strUni.c_str());  //in unicode, the number of chinese word equal size
-    int offset = charCount - (uniSize * 2);  //one unicode char have two bytes
     //if the translated text size out of original game text size
     //if (offset < 0)  
     //{
@@ -143,8 +144,9 @@ vector<BYTE> GetCustomBytesFromText(const LPCSTR &test, DWORD charCount)
     for (int i = 0; i < uniSize; i++)
     {
         wchar_t wChar = strUni[i];
-        PushWCharToByteVector(wChar, result);
+        usedBytes += PushWCharToByteVector(wChar, result);
     }
+    int offset = charCount - usedBytes;  //one unicode char have two bytes
     //fill in zeros to ensure that the bytes is the same as the original game text
     if (offset > 0)
     {
@@ -157,36 +159,34 @@ vector<BYTE> GetCustomBytesFromText(const LPCSTR &test, DWORD charCount)
     return result;
 }
 
-BOOL PushWCharToByteVector(wchar_t wchar, vector<BYTE> &store)
+int PushWCharToByteVector(wchar_t wchar, vector<BYTE> &store)
 {
     const wstring wcstr = {wchar};
     string charStr;
     int charStrSize;
     int charCode = (int)wchar;
+    long pushByteCounter;
     //unicode == utf32
     //if utf32 code is the key of INI file
     if (m_iniMap.find(charCode) != m_iniMap.end())
     {
         charCode = m_iniMap[charCode];
-        vector<BYTE> c32Bytes = Int2Bytes(charCode, 2);  //one unicode use two bytes
-        for (auto b : c32Bytes)
-        {
-            store.push_back(b);
-        }
-        return true;
+        charStrSize = 2;  //one unicode use two bytes
     }
-    //no utf32, abandoning translation
-    //use utf8 code
-    //charStr = "";
-    //Unicode2Custom(wcstr, charStr, YS_UTF8);
-    //charStrSize = charStr.length();
-    //charCode = Char2Code(charStr, charStrSize);
-    //vector<BYTE> c8Bytes = Int2Bytes(charCode, charStrSize);
-    //for (auto b : c8Bytes)
-    //{
-    //    store.push_back(b);
-    //}
-    return false;
+    else
+    {
+        //use utf8 code
+        charStr = "";
+        Unicode2Custom(wcstr, charStr, YS_UTF8);
+        charStrSize = charStr.length();
+        charCode = Char2Code(charStr, charStrSize);
+    }
+    vector<BYTE> c32Bytes = Int2Bytes(charCode, charStrSize);
+    for (auto b : c32Bytes)
+    {
+        store.push_back(b);
+    }
+    return charStrSize;
 }
 
 long Char2Code(const string &charStr, int charSize)
