@@ -69,7 +69,11 @@ BOOL Translate()
     InitTrainer();
     PVOID address = GetBaseAddressByHandle(m_exeProc);
     vector<vector<string>> csvData;
-    ReadDataFromCSV(YS_EXE_CSV_PATH, csvData);
+    ReadDataFromCSV(YS1_EXE_CSV_PATH, csvData);
+    if (csvData.size() == 0)
+    {
+        ReadDataFromCSV(YS2_EXE_CSV_PATH, csvData);
+    }
     vector<YS1TextValueObject> ys1list(csvData.size());
     GetYS1TextVO(csvData, ys1list);
     BOOL ret = TranslateAllText(ys1list);

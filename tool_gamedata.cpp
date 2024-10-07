@@ -2,19 +2,21 @@
 #include <algorithm>
 using namespace std;
 
-map<DWORD, DWORD> font_style1_map;
-map<DWORD, DWORD> font_style2_map;
+map<DWORD, DWORD> font_psp_map;
+map<DWORD, DWORD> font_dia_map;
 void InitINIFileData()
 {
-    NewMapFromINI(font_style1_map, YS1_FONT_INI);
-    NewMapFromINI(font_style2_map, YS1_FONT_DIA_INI);
+    NewMapFromINI(font_psp_map, YS1_FONT_INI);
+    NewMapFromINI(font_dia_map, YS1_FONT_DIA_INI, 2);
 }
 
-BOOL NewMapFromINI(map<DWORD, DWORD> &fs_map, const LPCSTR &iniPath)
+BOOL NewMapFromINI(map<DWORD, DWORD> &fs_map, const LPCSTR &iniPath, int mapId)
 {
     if (fs_map.size() != 0)
     {
-        MessageBoxA(NULL, "Map Already Init", NULL, 0);
+        string iniF = mapId == 0 ? YS_FONT_SYTLE_PSP : YS_FONT_SYTLE_DIA;
+        iniF += " Already Init";
+        MessageBoxA(NULL, iniF.c_str(), NULL, 0);
         return FALSE;
     }
 
@@ -22,7 +24,9 @@ BOOL NewMapFromINI(map<DWORD, DWORD> &fs_map, const LPCSTR &iniPath)
     readFile.open(iniPath);
     if (!readFile.is_open())
     {
-        MessageBoxA(NULL, "Can't Open font.ini", NULL, 0);
+        string iniF = mapId == 0 ? YS_FONT_SYTLE_PSP : YS_FONT_SYTLE_DIA;
+        iniF = "Can't Open " + iniF;
+        MessageBoxA(NULL, iniF.c_str(), NULL, 0);
         readFile.close();
         return FALSE;
     }
@@ -79,13 +83,17 @@ BOOL StringSplit(const string &str, const string &splitStr, vector<string> &resu
 
 BOOL GetYS1TextVO(const vector<vector<string>> &csvData, vector<YS1TextValueObject> &result)
 {
-    if (csvData.size() == 0 || csvData.size() != YS_CSV_COL_NUM) return FALSE;
+    if (csvData.size() == 0) return FALSE;
 
     YS1TextValueObject ysTVO;
     for (int i = 0; i < csvData.size(); i++)
     {
         vector<string> tempLine = csvData[i];
         //We stipulate that CSV has 7 columns
+        if (tempLine.size() != YS_CSV_COL_NUM)
+        {
+            return FALSE;
+        }
         //id, origintxt, translatedTxt, tsize, charsize, address
         //id belong to type: int
         ysTVO.ID = atoi(tempLine[0].c_str());
@@ -142,9 +150,9 @@ vector<BYTE> GetCustomBytesFromText(const LPCSTR &test, string fontStyle, DWORD 
     //    return result;
     //}
     EFontStyle fstyle;
-    if (fontStyle == YS_FONT_SYTLE_DEFAULT) { fstyle = ETEXT1; }
-    else if (fontStyle == YS_FONT_SYTLE_2) { fstyle = ETEXT2; }
-    else { fstyle = ETEXT1; }
+    if (fontStyle == YS_FONT_SYTLE_PSP) { fstyle = EFSPSP; }
+    else if (fontStyle == YS_FONT_SYTLE_DIA) { fstyle = EFSDIA; }
+    else { fstyle = EFSDIA; }
     //add text bytes to vector
     for (int i = 0; i < uniSize; i++)
     {
@@ -194,17 +202,17 @@ int FindChar32WithStyle(int charCode, int fontStyle)
 {
     switch (fontStyle)
     {
-    case 1:
-        if (font_style1_map.find(charCode) != font_style1_map.end())
+    case EFSPSP:
+        if (font_psp_map.find(charCode) != font_psp_map.end())
         {
-            charCode = font_style1_map[charCode];
+            charCode = font_psp_map[charCode];
             return 2;  //one unicode use two bytes
         }
         break;
-    case 2:
-        if (font_style2_map.find(charCode) != font_style2_map.end())
+    case EFSDIA:
+        if (font_dia_map.find(charCode) != font_dia_map.end())
         {
-            charCode = font_style2_map[charCode];
+            charCode = font_dia_map[charCode];
             return 2;  //one unicode use two bytes
         }
         break;

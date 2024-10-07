@@ -22,13 +22,13 @@ typedef struct YS1TextValueObject
 
 enum EFontStyle
 {
-    ETEXT1 = 1,
-    ETEXT2 = 2
+    EFSPSP = 1,
+    EFSDIA = 2
 };
 
 void InitINIFileData();
 
-BOOL NewMapFromINI(std::map<DWORD, DWORD> &fs_map, const LPCSTR &iniPath);
+BOOL NewMapFromINI(std::map<DWORD, DWORD> &fs_map, const LPCSTR &iniPath, int mapId = 0);
 
 BOOL GetYS1TextVO(const std::vector<std::vector<std::string>> &csvData, std::vector<YS1TextValueObject> &result);
 
