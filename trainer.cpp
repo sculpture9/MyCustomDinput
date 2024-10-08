@@ -69,10 +69,16 @@ BOOL Translate()
     InitTrainer();
     PVOID address = GetBaseAddressByHandle(m_exeProc);
     vector<vector<string>> csvData;
-    ReadDataFromCSV(YS1_EXE_CSV_PATH, csvData);
+    bool readCsv;
+    readCsv = ReadDataFromCSV(YS1_EXE_CSV_PATH, csvData);
     if (csvData.size() == 0)
     {
-        ReadDataFromCSV(YS2_EXE_CSV_PATH, csvData);
+        readCsv = ReadDataFromCSV(YS2_EXE_CSV_PATH, csvData);
+    }
+    if (!readCsv)
+    {
+        MessageBoxA(NULL, "Need .CSV file!!!", "Mission Failed!", 0);
+        return FALSE;
     }
     vector<YS1TextValueObject> ys1list(csvData.size());
     GetYS1TextVO(csvData, ys1list);
@@ -80,16 +86,9 @@ BOOL Translate()
     if (!ret)
     {
         MessageBoxA(NULL, "Translate Failed", "Mission Failed!", 0);
+        return FALSE;
     }
-    return true;
-
-    //test
-    //wchar_t sss = L'Œ“';
-    //wstring s = { sss };
-    //wchar_t c = s[0];
-    //int i = c;
-    //vector<BYTE> ttt = Int2Bytes(Char2Code("\0", 1), 1);
-    //return true;
+    return TRUE;
 }
 
 DWORD TranslateAllText(const vector<YS1TextValueObject> &list)

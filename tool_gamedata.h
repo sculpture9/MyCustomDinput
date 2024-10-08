@@ -53,4 +53,4 @@ long Char2Code(const std::string &charStr, int charSize);
 
 int PushWCharToByteVector(wchar_t wchar, int fontStyle, std::vector<BYTE> &store);
 
-int FindChar32WithStyle(int charCode, int fontStyle);
+int GetChar32WithStyle(int charCode, int fontStyle, int &changedSize);

@@ -52,7 +52,7 @@ BOOL NewMapFromINI(map<DWORD, DWORD> &fs_map, const LPCSTR &iniPath, int mapId)
         }
     }
     readFile.close();
-    return FALSE;
+    return TRUE;
 }
 
 BOOL MapInsert(map<DWORD, DWORD> &m_map, DWORD key, DWORD kvalue)
@@ -181,7 +181,7 @@ int PushWCharToByteVector(wchar_t wchar, int fontStyle, vector<BYTE> &store)
     long pushByteCounter;
     //unicode == utf32
     //if utf32 code is the key of INI file
-    charStrSize = FindChar32WithStyle(charCode, fontStyle);
+    charCode = GetChar32WithStyle(charCode, fontStyle, charStrSize);
     if (charStrSize == -1)
     {
         //use utf8 code
@@ -198,28 +198,30 @@ int PushWCharToByteVector(wchar_t wchar, int fontStyle, vector<BYTE> &store)
     return charStrSize;
 }
 
-int FindChar32WithStyle(int charCode, int fontStyle)
+int GetChar32WithStyle(int charCode, int fontStyle, int &changedSize)
 {
+    int result = charCode;
     switch (fontStyle)
     {
     case EFSPSP:
         if (font_psp_map.find(charCode) != font_psp_map.end())
         {
-            charCode = font_psp_map[charCode];
-            return 2;  //one unicode use two bytes
+            result = font_psp_map[charCode];
+            changedSize = 2; //one unicode use two bytes
         }
         break;
     case EFSDIA:
         if (font_dia_map.find(charCode) != font_dia_map.end())
         {
-            charCode = font_dia_map[charCode];
-            return 2;  //one unicode use two bytes
+            result = font_dia_map[charCode];
+            changedSize = 2; //one unicode use two bytes
         }
         break;
     default:
+        changedSize = -1;
         break;
     }
-    return -1;
+    return result;
 }
 
 long Char2Code(const string &charStr, int charSize)
