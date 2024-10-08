@@ -28,11 +28,11 @@ enum EFontStyle
 
 void InitINIFileData();
 
-BOOL NewMapFromINI(std::map<DWORD, DWORD> &fs_map, const LPCSTR &iniPath, int mapId = 0);
+BOOL NewMapFromINI(std::map<DWORD, DWORD> &fs_map, const LPCSTR &iniPath, long &duplicateKeys, int mapId = 0);
 
 BOOL GetYS1TextVO(const std::vector<std::vector<std::string>> &csvData, std::vector<YS1TextValueObject> &result);
 
-std::vector<BYTE> GetCustomBytesFromText(const LPCSTR &test, std::string fontStyle, DWORD charCount);
+std::vector<BYTE> GetCustomBytesFromText(const LPCSTR &test, std::string fontStyle, DWORD charCount, long &noConvertedChar);
 
 BOOL MapInsert(std::map<DWORD, DWORD> &m_map, DWORD key, DWORD kvalue);
 
@@ -51,6 +51,6 @@ std::vector<BYTE> Int2Bytes(int code, int byteSize);
 
 long Char2Code(const std::string &charStr, int charSize);
 
-int PushWCharToByteVector(wchar_t wchar, int fontStyle, std::vector<BYTE> &store);
+int PushWCharToByteVector(wchar_t wchar, int fontStyle, std::vector<BYTE> &store, long &noConvertedChar);
 
 int GetChar32WithStyle(int charCode, int fontStyle, int &changedSize);

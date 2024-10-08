@@ -42,10 +42,14 @@ BOOL APIENTRY DllMain( HMODULE hModule,
     switch (ul_reason_for_call)
     {
     case DLL_PROCESS_ATTACH:
+		AllocCustomConsole();
         InitOriginalDinput8();
-		MessageBoxA(NULL, "Successfully run my dinput8.dll.", "Mission Complete !", 0);
+		std::cout << "Successfully Run Translation dinput8.dll. " << std::endl;
 		InitINIFileData();
 		Translate();
+		std::cout << "\nInput any key to start game." << std::endl;
+		getchar();
+		FreeCustomConsole();
 		break;
     case DLL_THREAD_ATTACH:
     case DLL_THREAD_DETACH:

@@ -6,17 +6,24 @@ map<DWORD, DWORD> font_psp_map;
 map<DWORD, DWORD> font_dia_map;
 void InitINIFileData()
 {
-    NewMapFromINI(font_psp_map, YS1_FONT_INI);
-    NewMapFromINI(font_dia_map, YS1_FONT_DIA_INI, 2);
+    long duplicateKeys1 = 0;
+    long duplicateKeys2 = 0;
+    NewMapFromINI(font_psp_map, YS1_FONT_INI, duplicateKeys1);
+    NewMapFromINI(font_dia_map, YS1_FONT_DIA_INI, duplicateKeys2, 2);
+    if (duplicateKeys1 != 0 || duplicateKeys2 != 0)
+    {
+        cout << "\ntext.ini have duplicate keys: " << to_string(duplicateKeys1) << " pieces !!!" << endl;
+        cout << "text2.ini have duplicate keys: " << to_string(duplicateKeys2) << " pieces !!!" << endl;
+    }
+    std::cout << "\nSuccessfully Initialize Data of text.ini and text2.ini." << std::endl;
 }
 
-BOOL NewMapFromINI(map<DWORD, DWORD> &fs_map, const LPCSTR &iniPath, int mapId)
+BOOL NewMapFromINI(map<DWORD, DWORD> &fs_map, const LPCSTR &iniPath, long &duplicateKeys, int mapId)
 {
     if (fs_map.size() != 0)
     {
         string iniF = mapId == 0 ? YS_FONT_SYTLE_PSP : YS_FONT_SYTLE_DIA;
-        iniF += " Already Init";
-        MessageBoxA(NULL, iniF.c_str(), NULL, 0);
+        cout << iniF << " Data Have Been Already Init !" << endl;
         return FALSE;
     }
 
@@ -34,10 +41,11 @@ BOOL NewMapFromINI(map<DWORD, DWORD> &fs_map, const LPCSTR &iniPath, int mapId)
     //Read data from ini
     std::string line;
     vector<string> result;
+    long dk = 0;
     while (std::getline(readFile, line))
     {
         result.clear();
-        std::cout << line << std::endl;
+        //std::cout << line << std::endl;
         //there only two string in one line.
         if (StringSplit(line, YS1_INI_SPLIT, result))
         {
@@ -46,11 +54,11 @@ BOOL NewMapFromINI(map<DWORD, DWORD> &fs_map, const LPCSTR &iniPath, int mapId)
             BOOL bret = MapInsert(fs_map, key, kvalue);
             if (!bret)
             {
-                readFile.close();
-                return FALSE;
+                dk++;
             }
         }
     }
+    duplicateKeys = dk;
     readFile.close();
     return TRUE;
 }
@@ -137,18 +145,14 @@ bool Unicode2Custom(const wstring &strUnicode, string &strTgt, unsigned int code
     return true;
 }
 
-vector<BYTE> GetCustomBytesFromText(const LPCSTR &test, string fontStyle, DWORD charCount)
+vector<BYTE> GetCustomBytesFromText(const LPCSTR &test, string fontStyle, DWORD charCount, long &noConvertedChar)
 {
     wstring strUni;
     vector<BYTE> result;
     int usedBytes = 0;
     Utf82Unicode(test, strUni);
     int uniSize = wcslen(strUni.c_str());  //in unicode, the number of chinese word equal size
-    //if the translated text size out of original game text size
-    //if (offset < 0)  
-    //{
-    //    return result;
-    //}
+    long ncc = 0;
     EFontStyle fstyle;
     if (fontStyle == YS_FONT_SYTLE_PSP) { fstyle = EFSPSP; }
     else if (fontStyle == YS_FONT_SYTLE_DIA) { fstyle = EFSDIA; }
@@ -157,9 +161,18 @@ vector<BYTE> GetCustomBytesFromText(const LPCSTR &test, string fontStyle, DWORD 
     for (int i = 0; i < uniSize; i++)
     {
         wchar_t wChar = strUni[i];
-        usedBytes += PushWCharToByteVector(wChar, fstyle, result);
+        long nccFlag = 0;
+        usedBytes += PushWCharToByteVector(wChar, fstyle, result, nccFlag);
+        ncc += nccFlag;
     }
-    int offset = charCount - usedBytes;  //one unicode char have two bytes
+    noConvertedChar = ncc;
+    int offset = charCount - usedBytes;
+    //if the translated text size out of original game text size
+    if (offset < 0)  
+    {
+        result.clear();
+        return result;
+    }
     //fill in zeros to ensure that the bytes is the same as the original game text
     if (offset > 0)
     {
@@ -172,29 +185,39 @@ vector<BYTE> GetCustomBytesFromText(const LPCSTR &test, string fontStyle, DWORD 
     return result;
 }
 
-int PushWCharToByteVector(wchar_t wchar, int fontStyle, vector<BYTE> &store)
+int PushWCharToByteVector(wchar_t wchar, int fontStyle, vector<BYTE> &store, long &noConvertedChar)
 {
     const wstring wcstr = {wchar};
     string charStr;
     int charStrSize;
     int charCode = (int)wchar;
     long pushByteCounter;
+    long ncc = 0;
     //unicode == utf32
     //if utf32 code is the key of INI file
     charCode = GetChar32WithStyle(charCode, fontStyle, charStrSize);
+    //if not utf32
     if (charStrSize == -1)
     {
+        //Show error log
+        string fontStyleTxt = (EFontStyle)fontStyle == EFSPSP ? YS_FONT_SYTLE_PSP : YS_FONT_SYTLE_DIA;
+        string errorChar;
+        Unicode2Custom(wcstr, errorChar, CP_ACP);
+        cout << "\nThe char: \"" << errorChar <<"\", Unicode: \"" << charCode << "\" is not in " << fontStyleTxt;
+        cout << ".program will use utf-8 code.!!!" << endl;
         //use utf8 code
         charStr = "";
         Unicode2Custom(wcstr, charStr, YS_UTF8);
         charStrSize = charStr.length();
         charCode = Char2Code(charStr, charStrSize);
+        ncc++;
     }
     vector<BYTE> c32Bytes = Int2Bytes(charCode, charStrSize);
     for (auto b : c32Bytes)
     {
         store.push_back(b);
     }
+    noConvertedChar = ncc;
     return charStrSize;
 }
 
@@ -209,12 +232,20 @@ int GetChar32WithStyle(int charCode, int fontStyle, int &changedSize)
             result = font_psp_map[charCode];
             changedSize = 2; //one unicode use two bytes
         }
+        else
+        {
+            changedSize = -1;
+        }
         break;
     case EFSDIA:
         if (font_dia_map.find(charCode) != font_dia_map.end())
         {
             result = font_dia_map[charCode];
             changedSize = 2; //one unicode use two bytes
+        }
+        else
+        {
+            changedSize = -1;
         }
         break;
     default:

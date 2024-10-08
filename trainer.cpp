@@ -77,40 +77,53 @@ BOOL Translate()
     }
     if (!readCsv)
     {
-        MessageBoxA(NULL, "Need .CSV file!!!", "Mission Failed!", 0);
+        cout << "\n!!! Need .CSV file!!!" << endl;
         return FALSE;
     }
     vector<YS1TextValueObject> ys1list(csvData.size());
     GetYS1TextVO(csvData, ys1list);
-    BOOL ret = TranslateAllText(ys1list);
-    if (!ret)
+    long failedChar;
+    DWORD failedLine = TranslateAllText(ys1list, failedChar);
+
+    if (failedChar > 0)
     {
-        MessageBoxA(NULL, "Translate Failed", "Mission Failed!", 0);
+        cout << "\nTranslated Failed Line Number : " << failedLine << " pieces !" << endl;
+        cout << "Translated Failed Char Number : " << failedChar << " pieces !!!" << endl;
         return FALSE;
     }
     return TRUE;
 }
 
-DWORD TranslateAllText(const vector<YS1TextValueObject> &list)
+DWORD TranslateAllText(const vector<YS1TextValueObject> &list, long &noConvertedChar)
 {
     int ys1tSize = list.size();
     if (ys1tSize == 0) return FALSE;
-    DWORD flag = 0;
-    BOOL result = TRUE; 
+    DWORD noConvertdLine = 0;
+    BOOL result = FALSE; 
+    long ncc = 0;
     YS1TextValueObject temp;
     for (int i = 0; i < ys1tSize; i++)
     {
         temp = list[i];
         if (temp.TranslatedTxt.size() != 0 &&temp.TranslatedTxt != " ")
         {
-            vector<BYTE> tByte = GetCustomBytesFromText(temp.TranslatedTxt.c_str(), temp.FontStyle, temp.TSize);
-            BYTE *bytes(tByte.data());
-            result = WriteBytes2Address(bytes, temp.TSize, (LPVOID)temp.AddressInYS1);
-            if (!result) return -1;
+            long nccFlag = 0;
+            vector<BYTE> tByte = GetCustomBytesFromText(temp.TranslatedTxt.c_str(), temp.FontStyle, temp.TSize, nccFlag);
+            ncc += nccFlag;
+            if (tByte.size() != 0)
+            {
+                BYTE *bytes(tByte.data());
+                result = WriteBytes2Address(bytes, temp.TSize, (LPVOID)temp.AddressInYS1);
+            }
+            if (!result)
+            {
+                noConvertdLine++;
+            }
         }
-        else { flag++; }
+        else { noConvertdLine++; }
     }
-    return (ys1tSize - flag);
+    noConvertedChar = ncc;
+    return noConvertdLine;
 }
 
 BOOL WriteBytes2Address(BYTE *textBytes, DWORD tSize, LPVOID tgtAddress)
@@ -124,4 +137,19 @@ BOOL WriteBytes2Address(BYTE *textBytes, DWORD tSize, LPVOID tgtAddress)
 
     isSucceed = VirtualProtect(tgtAddress, tSize, oop, &nop);
     return isSucceed;
+}
+
+BOOL AllocCustomConsole()
+{
+    BOOL bRet = AllocConsole();
+    FILE *fDummy;
+    freopen_s(&fDummy, "CONIN$", "r", stdin);    //Console Input
+    freopen_s(&fDummy, "CONOUT$", "w", stderr);  //Console Error
+    freopen_s(&fDummy, "CONOUT$", "w", stdout);  //Console Output
+    return bRet;
+}
+
+BOOL FreeCustomConsole()
+{
+    return FreeConsole();
 }
