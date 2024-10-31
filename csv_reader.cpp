@@ -15,7 +15,7 @@ BOOL ReadDataFromCSV(const LPCSTR &csvPath, vector<vector<string>> &result)
     {
         vector<string> columns;
         char c;
-        bool isColTrans = false, inSentence = false, isEscape = false;
+        bool isColTrans = false, inSentenceWithComma = false, isEscape = false;
         vector<char> wret;
         long lineSize = line.length();
         for (size_t i = 0; i < lineSize; i++)
@@ -27,7 +27,7 @@ BOOL ReadDataFromCSV(const LPCSTR &csvPath, vector<vector<string>> &result)
                 //will input string, here we don't push '"' to result;
                 if (c == '"')
                 {
-                    inSentence = true;
+                    inSentenceWithComma = true;
                     isColTrans = true;
                 }
                 //input number
@@ -36,38 +36,52 @@ BOOL ReadDataFromCSV(const LPCSTR &csvPath, vector<vector<string>> &result)
                     wret.push_back(c);
                     isColTrans = true;
                 }
+                //input sentence without comma
                 else
                 {
-                    //invalid
-                    return FALSE;
+                    //maybe no problems
+                    wret.push_back(c);
+                    isColTrans = true;
                 }
                 continue;
             }
-            //now translating
-            if (!inSentence)
+            //judge the last char
+            if (i == lineSize - 1)
             {
-                //',' meaning maybe one column done
-                if (c == ',')
+                if (inSentenceWithComma)
                 {
+                    return FALSE;
+                }
+            }
+            //now translating
+            //not in sentence with comma
+            if (!inSentenceWithComma)
+            {
+                //','and '' meaning maybe one column done
+                if (c == ',' || (i == lineSize - 1))
+                {
+                    if (c != ',') { wret.push_back(c); }
                     string column;
                     CharVector2String(wret, column);
                     columns.push_back(column);
                     wret.clear();
-                    inSentence = false;
+                    inSentenceWithComma = false;
                     isColTrans = false;
                 }
                 else if (iswdigit(c))
                 {
                     wret.push_back(c);
                 }
+                //input sentence without comma
                 else
                 {
-                    //invalid
-                    return FALSE;
+                    //maybe no problems
+                    wret.push_back(c);
                 }
                 continue;
             }
             //now in sentence
+            if (i == lineSize - 1) { return FALSE; }
             if (isEscape)
             {
                 if (c == '"')
@@ -85,7 +99,7 @@ BOOL ReadDataFromCSV(const LPCSTR &csvPath, vector<vector<string>> &result)
             //meaning one sentence is over
             if (c == '"')
             {
-                inSentence = false;
+                inSentenceWithComma = false;
                 continue;
             }
             if (c == '\\')
