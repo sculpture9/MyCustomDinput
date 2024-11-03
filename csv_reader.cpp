@@ -1,7 +1,7 @@
 #include "csv_reader.h"
 using namespace std;
 
-BOOL ReadDataFromCSV(const LPCSTR &csvPath, vector<vector<string>> &result)
+bool ReadDataFromCSV(const LPCSTR &csvPath, vector<vector<string>> &result, long &lineFlag)
 {
     ifstream reader;
     reader.open(csvPath);
@@ -11,37 +11,39 @@ BOOL ReadDataFromCSV(const LPCSTR &csvPath, vector<vector<string>> &result)
         return FALSE;
     }
     string line, temp;
+    lineFlag = -1;
     while (std::getline(reader, line))
     {
         vector<string> columns;
         char c;
-        bool isColTrans = false, inSentenceWithComma = false, isEscape = false;
+        bool colTransFlag = false, inSentenceWithComma = false, escapeFlag = false;
         vector<char> wret;
         long lineSize = line.length();
+        lineFlag++;
         for (size_t i = 0; i < lineSize; i++)
         {
             c = line[i];
             //just started translate
-            if (!isColTrans)
+            if (!colTransFlag)
             {
                 //will input string, here we don't push '"' to result;
                 if (c == '"')
                 {
                     inSentenceWithComma = true;
-                    isColTrans = true;
+                    colTransFlag = true;
                 }
                 //input number
                 else if (iswdigit(c))
                 {
                     wret.push_back(c);
-                    isColTrans = true;
+                    colTransFlag = true;
                 }
                 //input sentence without comma
                 else
                 {
                     //maybe no problems
                     wret.push_back(c);
-                    isColTrans = true;
+                    colTransFlag = true;
                 }
                 continue;
             }
@@ -66,7 +68,7 @@ BOOL ReadDataFromCSV(const LPCSTR &csvPath, vector<vector<string>> &result)
                     columns.push_back(column);
                     wret.clear();
                     inSentenceWithComma = false;
-                    isColTrans = false;
+                    colTransFlag = false;
                 }
                 else if (iswdigit(c))
                 {
@@ -82,18 +84,23 @@ BOOL ReadDataFromCSV(const LPCSTR &csvPath, vector<vector<string>> &result)
             }
             //now in sentence
             if (i == lineSize - 1) { return FALSE; }
-            if (isEscape)
+            if (escapeFlag)
             {
-                if (c == '"')
+                switch (c)
                 {
-                    wret.push_back(c);
+                    case '"':
+                        wret.push_back(c);
+                        break;
+                    case 'n':
+                        wret.push_back('\n');
+                        break;
+                    case '0':
+                        wret.push_back('\0');
+                        break;
+                    default:
+                        break;
                 }
-                else
-                {
-                    wret.push_back('\\');
-                    wret.push_back(c);
-                    isEscape = false;
-                }
+                escapeFlag = false;
                 continue;
             }
             //meaning one sentence is over
@@ -104,7 +111,7 @@ BOOL ReadDataFromCSV(const LPCSTR &csvPath, vector<vector<string>> &result)
             }
             if (c == '\\')
             {
-                isEscape = true;
+                escapeFlag = true;
                 continue;
             }
             wret.push_back(c);  //now c is a normal wchar
@@ -113,6 +120,7 @@ BOOL ReadDataFromCSV(const LPCSTR &csvPath, vector<vector<string>> &result)
         result.push_back(columns);
     }
     reader.close();
+    lineFlag++;  //lineFlag = max line + 1, mean all line is correct.
     return TRUE;
 }
 

@@ -51,6 +51,11 @@ BOOL NewMapFromINI(map<DWORD, DWORD> &fs_map, const LPCSTR &iniPath, long &dupli
         {
             DWORD key = atoi(result[0].c_str());
             DWORD kvalue = atoi(result[1].c_str());
+            //Do not add ascii key
+            if (key >= ASCIIKeyBegin && key <= ASCIIKeyEnd)
+            {
+                continue;
+            }
             BOOL bret = MapInsert(fs_map, key, kvalue);
             if (!bret)
             {
@@ -166,18 +171,19 @@ vector<BYTE> GetCustomBytesFromText(const LPCSTR &test, string fontStyle, DWORD 
         ncc += nccFlag;
     }
     noConvertedChar = ncc;
-    int offset = charCount - usedBytes;
+    int overSizeOffset = charCount - usedBytes;
     //if the translated text size out of original game text size
-    if (offset < 0)  
+    if (overSizeOffset < 0)
     {
+        cout << "Oversize " << -overSizeOffset << " char.";
         result.clear();
         return result;
     }
     //fill in zeros to ensure that the bytes is the same as the original game text
-    if (offset > 0)
+    if (overSizeOffset > 0)
     {
         BYTE zero = Int2Bytes(Char2Code("\0", 1), 1)[0];
-        for (int i = 0; i < offset; i++)
+        for (int i = 0; i < overSizeOffset; i++)
         {
             result.push_back(zero);
         }
@@ -193,25 +199,31 @@ int PushWCharToByteVector(wchar_t wchar, int fontStyle, vector<BYTE> &store, lon
     int charCode = (int)wchar;
     long pushByteCounter;
     long ncc = 0;
-    //unicode == utf32
-    //if utf32 code is the key of INI file
-    charCode = GetChar32WithStyle(charCode, fontStyle, charStrSize);
-    //if not utf32
-    if (charStrSize == -1)
+    bool asciiKeyFlag = charCode >= ASCIIKeyBegin && charCode <= ASCIIKeyEnd;
+    if (!asciiKeyFlag)
     {
-        //Show error log
-        string fontStyleTxt = (EFontStyle)fontStyle == EFSPSP ? YS_FONT_SYTLE_PSP : YS_FONT_SYTLE_DIA;
-        string errorChar;
-        Unicode2Custom(wcstr, errorChar, CP_ACP);
-        cout << "\nThe char: \"" << errorChar <<"\", Unicode: \"" << charCode << "\" is not in " << fontStyleTxt;
-        cout << ".program will use utf-8 code.!!!" << endl;
-        //use utf8 code
-        charStr = "";
-        Unicode2Custom(wcstr, charStr, YS_UTF8);
-        charStrSize = charStr.length();
-        charCode = Char2Code(charStr, charStrSize);
-        ncc++;
+        //unicode == utf32
+        //if utf32 code is the key of INI file
+        charCode = GetChar32WithStyle(charCode, fontStyle, charStrSize);
+        //or not
+        if (charStrSize == -1)
+        {
+            //Show error log
+            string fontStyleTxt = (EFontStyle)fontStyle == EFSPSP ? YS_FONT_SYTLE_PSP : YS_FONT_SYTLE_DIA;
+            string errorChar;
+            Unicode2Custom(wcstr, errorChar, CP_ACP);
+            cout << "\nThe char: \"" << errorChar << "\", Unicode: \"" << charCode << "\" is not in " << fontStyleTxt;
+            cout << ". Program will use utf-8 code!!!" << endl;
+            //use utf8 code
+            charStr = "";
+            Unicode2Custom(wcstr, charStr, YS_UTF8);
+            charStrSize = charStr.length();
+            charCode = Char2Code(charStr, charStrSize);
+            ncc++;
+        }
     }
+    else { charStrSize = 1; }
+
     vector<BYTE> c32Bytes = Int2Bytes(charCode, charStrSize);
     for (auto b : c32Bytes)
     {

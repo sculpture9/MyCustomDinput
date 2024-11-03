@@ -2,6 +2,7 @@
 
 #include "dinput8.h"
 #include "tool_gamedata.h"
+#include "conio.h"
 
 extern HANDLE m_exeProc;
 
@@ -48,7 +49,7 @@ BOOL APIENTRY DllMain( HMODULE hModule,
 		InitINIFileData();
 		Translate();
 		std::cout << "\nInput any key to start game." << std::endl;
-		getchar();
+		_getch();
 		FreeCustomConsole();
 		break;
     case DLL_THREAD_ATTACH:

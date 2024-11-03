@@ -69,15 +69,23 @@ BOOL Translate()
     InitTrainer();
     PVOID address = GetBaseAddressByHandle(m_exeProc);
     vector<vector<string>> csvData;
-    bool readCsv;
-    readCsv = ReadDataFromCSV(YS1_EXE_CSV_PATH, csvData);
+    bool csvResult;
+    long lineFlag;
+    csvResult = ReadDataFromCSV(YS1_EXE_CSV_PATH, csvData, lineFlag);
     if (csvData.size() == 0)
     {
-        readCsv = ReadDataFromCSV(YS2_EXE_CSV_PATH, csvData);
+        csvResult = ReadDataFromCSV(YS2_EXE_CSV_PATH, csvData, lineFlag);
     }
-    if (!readCsv)
+    if (!csvResult)
     {
-        cout << "\n!!! Need .CSV file!!!" << endl;
+        if (lineFlag == -1)
+        {
+            cout << "\n!!! Need .CSV file!!!" << endl;
+        }
+        else
+        {
+            cout << "line: " << lineFlag << ", in .CSV file who has wrong format !!!" << endl;
+        }
         return FALSE;
     }
     vector<YS1TextValueObject> ys1list(csvData.size());
@@ -114,11 +122,18 @@ DWORD TranslateAllText(const vector<YS1TextValueObject> &list, long &noConverted
             {
                 BYTE *bytes(tByte.data());
                 result = WriteBytes2Address(bytes, temp.TSize, (LPVOID)temp.AddressInYS1);
+                if (!result)
+                {
+                    cout << "line: " << i << ", in .CSV file who write to exe failed!!!" << endl;
+                    noConvertdLine++;
+                }
             }
-            if (!result)
+            else
             {
+                cout << "In line: " << i << ", in .CSV file who oversize  !!!" << endl;
                 noConvertdLine++;
             }
+            
         }
         else { noConvertdLine++; }
     }

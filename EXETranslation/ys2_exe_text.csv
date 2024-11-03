@@ -1,975 +1,232 @@
-0,"Pass","通过","text.ini",5,12,5301264
-1,"Wing","翼","text.ini",5,12,5301500
-2,"Herb","药草","text.ini",5,12,5301524
-3,"Gene","基因","text.ini",5,12,5301916
-4,"Zava","扎瓦","text.ini",5,12,5302144
-5,"Darm","Darm","text.ini",5,12,5302204
-6,"Reah","Reah","text.ini",5,12,5305732
-7,"Dogi","Dogi","text.ini",5,12,5305764
-8,"Sara","Sara","text.ini",5,12,5305772
-9,"Jade","玉","text.ini",5,12,5305956
-10,"Gila","吉拉","text.ini",5,12,5305980
-11,"Tess","苔丝","text.ini",5,12,5305988
-12,"Tran","Tran","text.ini",5,12,5306012
-13,"Kris","Kris","text.ini",5,12,5306044
-14,"Beth","贝丝","text.ini",5,12,5306080
-15,"Andy","安迪","text.ini",5,12,5306096
-16,"Kate","凯特","text.ini",5,12,5306112
-17,"Colt","柯尔特","text.ini",5,12,5306120
-18,"Esca","Esca","text.ini",5,12,5306140
-19,"Tita","迪达","text.ini",5,12,5306148
-20,"Theo","西奥","text.ini",5,12,5306156
-21,"Lucy","露西","text.ini",5,12,5306164
-22,"Polo","Polo","text.ini",5,12,5306180
-23,"Ruba","Ruba","text.ini",5,12,5306196
-24,"Fred","弗雷德","text.ini",5,12,5306212
-25,"Rafa","拉法","text.ini",5,12,5306220
-26,"Noit","Noit","text.ini",5,12,5306228
-27,"Elle","Elle","text.ini",5,12,5306248
-28,"Nash","纳什","text.ini",5,12,5306320
-29,"Sada","Sada","text.ini",5,12,5306416
-30,"Regg","雷格","text.ini",5,12,5306456
-31,"Frau","Frau","text.ini",5,12,5306472
-32,"Neal","尼尔","text.ini",5,12,5306496
-33,"Muto","武藤","text.ini",5,12,5306512
-34,"Faye","菲","text.ini",5,12,5306520
-35,"Jill","吉尔","text.ini",5,12,5306536
-36,"Kyle","凯尔","text.ini",5,12,5306544
-37,"DEF:","默认值：","text.ini",5,12,5308860
-38,"STR:","STR：","text.ini",5,12,5308868
-39,"EXP:","有效期：","text.ini",5,12,5308884
-40,"EASY","容易","text.ini",5,12,5311708
-41,"HARD","硬","text.ini",5,12,5311716
-42,"Ploo","普洛","text.ini",5,12,5313512
-43,"Rurr","呜呜","text.ini",5,12,5313536
-44,"Yupe","尤佩","text.ini",5,12,5313592
-45,"Elbo","Elbo","text.ini",5,12,5313720
-46,"Troo","特罗","text.ini",5,12,5314064
-47,"Wart","疣","text.ini",5,12,5314152
-48,"Vivi","Vivi","text.ini",5,12,5314188
-49,"Vivi","Vivi","text.ini",5,12,5314188
-50,"Jilk","伊尔克","text.ini",5,12,5314224
-51,"DOOM","厄运","text.ini",5,12,5314256
-52,"Lurr","卢尔","text.ini",5,12,5314404
-53,"Plix","普利克斯","text.ini",5,12,5314436
-54,"Daps","DAPs","text.ini",5,12,5314492
-55,"Blik","布利克","text.ini",5,12,5314644
-56,"Jerk","混蛋","text.ini",5,12,5314652
-57,"Wham","Wham","text.ini",5,12,5314660
-58,"Klok","Klok","text.ini",5,12,5314668
-59,"Plop","扑通","text.ini",5,12,5314676
-60,"Drat","Drat","text.ini",5,12,5314688
-61,"Glig","格利格","text.ini",5,12,5314716
-62,"Slam","满贯","text.ini",5,12,5314724
-63,"Stub","存根","text.ini",5,12,5314756
-64,"Chew","咀嚼","text.ini",5,12,5314776
-65,"Durr","杜尔","text.ini",5,12,5314788
-66,"64206","64206","text.ini",5,12,5314796
-67,"Flik","Flik","text.ini",5,12,5314804
-68,"Iaia","IAIA","text.ini",5,12,5314864
-69,"Ndnd","Ndnd","text.ini",5,12,5314912
-70,"July","七月","text.ini",5,12,5314952
-71,"Brie","Brie","text.ini",5,12,5314980
-72,"Aqua","Aqua","text.ini",5,12,5315072
-73,"Dark","黑暗","text.ini",5,12,5316084
-74,"Clay","粘土","text.ini",5,12,5317836
-75,"Walk","走","text.ini",5,12,5329920
-76,"MIDI","MIDI","text.ini",5,12,5330368
-77,"SAVE","拯救","text.ini",5,12,5330384
-78,"LOAD","负载","text.ini",5,12,5330392
-79,"QUIT","退出","text.ini",5,12,5330428
-80,"ITEM","项目","text.ini",5,12,5332172
-81,"NOTE","注意","text.ini",5,12,5332180
-82,"March","三月","text.ini",6,12,5162416
-83,"April","四月","text.ini",6,12,5162424
-84,"Apple","苹果","text.ini",6,12,5301516
-85,"Tolpi","托尔皮","text.ini",6,12,5301804
-86,"Carly","卡莉","text.ini",6,12,5301812
-87,"Neeli","倪丽","text.ini",6,12,5301828
-88,"Swoff","斯沃福德","text.ini",6,12,5301892
-89,"Topus","托普斯","text.ini",6,12,5301936
-90,"Dirga","迪尔加","text.ini",6,12,5301944
-91,"Feena","费纳","text2.ini",6,12,5305712
-92,"Goban","戈班","text.ini",6,12,5305724
-93,"Banoa","巴诺阿","text.ini",6,12,5305868
-94,"Lilia","莉莉娅","text.ini",6,12,5305876
-95,"Astal","阿斯塔尔","text.ini",6,12,5305896
-96,"Guido","Guido","text.ini",6,12,5305964
-97,"Leggs","莱格斯","text.ini",6,12,5305972
-98,"Lazlo","拉兹罗","text.ini",6,12,5305996
-99,"Bohtz","博茨","text.ini",6,12,5306028
-100,"Ceres","Ceres","text.ini",6,12,5306036
-101,"Brody","布罗迪","text.ini",6,12,5306060
-102,"Oseam","奥谢姆","text.ini",6,12,5306088
-103,"Favre","法弗尔","text.ini",6,12,5306256
-104,"Meryl","梅丽尔","text.ini",6,12,5306272
-105,"Kasim","卡西姆","text.ini",6,12,5306280
-106,"Ischt","伊施特","text.ini",6,12,5306288
-107,"Darie","达列","text.ini",6,12,5306296
-108,"Keith","基思","text.ini",6,12,5306384
-109,"Lloyd","劳埃德","text.ini",6,12,5306400
-110,"Gorto","戈尔托","text.ini",6,12,5306408
-111,"Hadat","哈达特","text.ini",6,12,5306424
-112,"Karen","凯伦","text.ini",6,12,5306432
-113,"Maria","玛丽亚","text.ini",6,12,5306440
-114,"Zalem","撒冷","text.ini",6,12,5306448
-115,"Frith","弗里斯","text.ini",6,12,5306464
-116,"Blitz","闪电战","text.ini",6,12,5306488
-117,"Tanya","坦尼娅","text.ini",6,12,5306504
-118,"Reise","Reise","text.ini",6,12,5306528
-119,"Boris","鲍里斯","text.ini",6,12,5306564
-120,"Sound","声音","text.ini",6,12,5309300
-121,"Files","文件","text.ini",6,12,5309312
-122,"Title","标题","text.ini",6,12,5311480
-123,"Diary","日记","text.ini",6,12,5311496
-124,"Shnax","什纳克斯","text.ini",6,12,5313520
-125,"Xetso","谢措","text.ini",6,12,5313528
-126,"Ecclo","埃克洛","text.ini",6,12,5313568
-127,"Quilg","奎尔格","text.ini",6,12,5313584
-128,"Sammy","萨米","text.ini",6,12,5313676
-129,"Hosio","霍西奥","text.ini",6,12,5313772
-130,"Jaxie","贾西","text.ini",6,12,5313940
-131,"Shuya","舒雅","text.ini",6,12,5313948
-132,"Crumb","屑","text.ini",6,12,5314112
-133,"Tronn","特龙","text.ini",6,12,5314120
-134,"Robey","罗比","text.ini",6,12,5314208
-135,"Elroy","埃尔罗伊","text.ini",6,12,5314552
-136,"Gruel","粥","text.ini",6,12,5314604
-137,"Floot","飞","text.ini",6,12,5314636
-138,"Kleet","克莱","text.ini",6,12,5314700
-139,"Clomp","克龙普","text.ini",6,12,5314764
-140,"Bemmi","贝米","text.ini",6,12,5314872
-141,"Epona","艾波娜","text.ini",6,12,5314904
-142,"Shion","史昂","text.ini",6,12,5315056
-143,"Seedy","破旧","text.ini",6,12,5315284
-144,"Loner","孤独者","text.ini",6,12,5316004
-145,"Loyal","忠诚","text.ini",6,12,5316624
-146,"Sunny","阳光明媚","text.ini",6,12,5317008
-147,"Aloof","冷漠","text.ini",6,12,5317088
-148,"Mossy","苔藓","text.ini",6,12,5317844
-149,"Pious","虔诚","text.ini",6,12,5318024
-150,"Aldow","阿尔多","text.ini",6,12,5318264
-151,"Solid","固体","text.ini",6,12,5330072
-152,"Black","黑色","text.ini",6,12,5330112
-153,"Point","点","text.ini",6,12,5330188
-154,"Total","总","text.ini",6,12,5330232
-155,"Debug","调试","text.ini",6,12,5330252
-156,"Start","开始","text.ini",6,12,5330312
-157,"ERASE","擦除","text.ini",6,12,5330480
-158,"TITLE","标题","text.ini",6,12,5330488
-159,"MAGIC","魔法","text.ini",6,12,5331456
-160,"EQUIP","装备","text.ini",6,12,5331920
-161,"FILES","文件","text.ini",6,12,5332188
-162,"Sunday","周日","text.ini",7,12,5162280
-163,"Monday","周一","text.ini",7,12,5162288
-164,"Friday","周五","text.ini",7,12,5162328
-165,"August","八月","text.ini",7,12,5162448
-166,"Talwar","Talwar","text.ini",7,12,5300668
-167,"Reflex","反射","text.ini",7,12,5300884
-168,"Elixir","丹","text.ini",7,12,5301508
-169,"Cactus","仙人掌","text.ini",7,12,5301688
-170,"Pebble","卵石","text.ini",7,12,5301696
-171,"Chrace","查雷斯","text.ini",7,12,5301724
-172,"Puroid","普罗伊德","text.ini",7,12,5301796
-173,"Eggnid","埃格尼德","text.ini",7,12,5301848
-174,"Onuman","大沼","text.ini",7,12,5301908
-175,"Baocar","包卡尔","text.ini",7,12,5301976
-176,"Bearot","贝罗","text.ini",7,12,5302016
-177,"Trover","Trover","text.ini",7,12,5302024
-178,"Delpus","德尔普斯","text.ini",7,12,5302040
-179,"Godrup","戈德鲁普","text.ini",7,12,5302048
-180,"Gearot","吉罗","text.ini",7,12,5302084
-181,"Zearot","泽罗特","text.ini",7,12,5302124
-182,"Dalles","Dalles","text.ini",7,12,5302212
-183,"Larsen","拉森","text.ini",7,12,5306004
-184,"Sheila","希拉","text.ini",7,12,5306020
-185,"Marina","Marina","text.ini",7,12,5306052
-186,"Carson","卡森","text.ini",7,12,5306264
-187,"Flonne","弗洛讷","text.ini",7,12,5306304
-188,"Roodle","罗德尔","text.ini",7,12,5306312
-189,"Brooce","布鲁斯","text.ini",7,12,5306340
-190,"Prooto","普罗奥托","text.ini",7,12,5306348
-191,"Rooroo","鲁鲁","text.ini",7,12,5306368
-192,"Droozy","德鲁齐","text.ini",7,12,5306392
-193,"Paulie","保利","text.ini",7,12,5306480
-194,"Rimera","里梅拉","text.ini",7,12,5306552
-195,"Rascal","流氓","text.ini",7,12,5307048
-196,"Mascot","吉祥物","text.ini",7,12,5309348
-197,"NORMAL","正常","text.ini",7,12,5311724
-198,"Dumdum","达姆弹","text.ini",7,12,5313480
-199,"Glurax","格卢拉克斯","text.ini",7,12,5313504
-200,"Tywyro","蒂怀罗","text.ini",7,12,5313544
-201,"Orzers","奥尔采尔","text.ini",7,12,5313560
-202,"Junjun","君君","text.ini",7,12,5313576
-203,"Texmex","Texmex","text.ini",7,12,5313600
-204,"Uuuuur","乌乌尔","text.ini",7,12,5313700
-205,"Lukduk","卢克杜克","text.ini",7,12,5313708
-206,"Allair","阿莱尔","text.ini",7,12,5313764
-207,"Sogara","曾良","text.ini",7,12,5313824
-208,"Sheeho","希霍","text.ini",7,12,5313844
-209,"Pootis","普蒂斯","text.ini",7,12,5313956
-210,"Yuriel","尤列尔","text.ini",7,12,5313996
-211,"Fizban","菲兹班","text.ini",7,12,5314048
-212,"Merlan","美兰","text.ini",7,12,5314056
-213,"Zifnab","齐夫纳布","text.ini",7,12,5314072
-214,"Bagtie","巴格蒂","text.ini",7,12,5314104
-215,"Dealio","德阿利奥","text.ini",7,12,5314128
-216,"Tellah","泰拉","text.ini",7,12,5314136
-217,"Strago","斯特拉戈","text.ini",7,12,5314144
-218,"Fearme","费尔梅","text.ini",7,12,5314216
-219,"Fixins","菲桑","text.ini",7,12,5314456
-220,"Potato","马铃薯","text.ini",7,12,5314572
-221,"Eevool","Eevool","text.ini",7,12,5314812
-222,"Preeci","普雷齐","text.ini",7,12,5314820
-223,"Velara","Velara","text.ini",7,12,5314880
-224,"Neebri","内布里","text.ini",7,12,5314960
-225,"Fawani","法瓦尼","text.ini",7,12,5314988
-226,"Keleka","凯莱卡","text.ini",7,12,5315008
-227,"Etoile","Etoile","text.ini",7,12,5315016
-228,"Bonnet","阀盖","text.ini",7,12,5315024
-229,"Chiaka","基亚卡","text.ini",7,12,5315040
-230,"Chubby","胖乎乎","text.ini",7,12,5315268
-231,"Skinny","瘦","text.ini",7,12,5315276
-232,"Ornery","暴躁","text.ini",7,12,5315496
-233,"Sinewy","强壮有力","text.ini",7,12,5315540
-234,"Demure","端庄","text.ini",7,12,5315548
-235,"Wicked","恶人","text.ini",7,12,5316092
-236,"Nitwit","笨蛋","text.ini",7,12,5316236
-237,"Classy","优雅","text.ini",7,12,5316472
-238,"Daring","大胆","text.ini",7,12,5316516
-239,"Feudal","封建","text.ini",7,12,5316724
-240,"Albino","白化","text.ini",7,12,5316732
-241,"Stormy","暴风雨","text.ini",7,12,5316868
-242,"Sinner","罪人","text.ini",7,12,5317228
-243,"Drippy","Drippy","text.ini",7,12,5317704
-244,"Cancel","取消","text.ini",7,12,5330320
-245,"Custom","自定义","text.ini",7,12,5330376
-246,"OPTION","选项","text.ini",7,12,5332208
-247,"Tuesday","周二","text.ini",8,12,5162296
-248,"January","一月","text.ini",8,12,5162396
-249,"October","十月","text.ini",8,12,5162468
-250,"Mattock","马托克","text.ini",8,12,5301416
-251,"Chicken","鸡","text.ini",8,12,5301732
-252,"Godaago","戈达戈","text.ini",8,12,5301740
-253,"Gnometh","侏儒","text.ini",8,12,5301760
-254,"Ripplet","小涟漪","text.ini",8,12,5301780
-255,"Zolgell","佐尔格尔","text.ini",8,12,5301788
-256,"K'nocks","克诺克斯","text.ini",8,12,5301820
-257,"Gercard","热尔卡尔","text.ini",8,12,5301856
-258,"Gworter","格沃特","text.ini",8,12,5301864
-259,"Galgata","加尔加塔","text.ini",8,12,5301872
-260,"Scollun","斯科伦","text.ini",8,12,5301900
-261,"Ashveil","阿什维尔","text.ini",8,12,5301952
-262,"Magnute","马努特","text.ini",8,12,5301960
-263,"Nashzar","纳什扎尔","text.ini",8,12,5301968
-264,"Nustarl","努斯塔尔","text.ini",8,12,5301984
-265,"Allomod","阿洛莫德","text.ini",8,12,5302032
-266,"Ceabith","塞比","text.ini",8,12,5302116
-267,"Druegar","德吕加尔","text.ini",8,12,5302188
-268,"Gelaldy","盖拉尔迪","text.ini",8,12,5302196
-269,"Natasha","娜塔莎","text.ini",8,12,5305932
-270,"Lucille","露西尔","text.ini",8,12,5306104
-271,"Saffron","藏红花","text.ini",8,12,5306172
-272,"Natalie","娜塔莉","text.ini",8,12,5306204
-273,"Chelnie","切尔尼","text.ini",8,12,5306236
-274,"Roo-kie","鲁姬","text.ini",8,12,5306376
-275,"Display","显示","text.ini",8,12,5309292
-276,"Esteria","埃斯特里亚","text.ini",8,12,5311488
-277,"Opening","开口","text.ini",8,12,5311504
-278,"Bloober","Bloober","text.ini",8,12,5313488
-279,"Vazumba","瓦宗巴","text.ini",8,12,5313496
-280,"Kloklok","克洛克洛克","text.ini",8,12,5313552
-281,"Alfadaz","阿尔法达兹","text.ini",8,12,5313608
-282,"Kibbles","粗粒","text.ini",8,12,5313668
-283,"Pickles","泡菜","text.ini",8,12,5313684
-284,"Poytomo","波伊托莫","text.ini",8,12,5313692
-285,"Jaytaro","杰塔罗","text.ini",8,12,5313740
-286,"Nakasma","纳卡斯马","text.ini",8,12,5313816
-287,"Fortuna","Fortuna","text.ini",8,12,5313864
-288,"Juniper","Juniper","text.ini",8,12,5313884
-289,"Goondox","贡多克斯","text.ini",8,12,5313904
-290,"Oedipus","恋母","text.ini",8,12,5313924
-291,"Douglas","道格拉斯","text.ini",8,12,5313932
-292,"Meltain","梅尔坦","text.ini",8,12,5313976
-293,"Peltoot","佩尔图特","text.ini",8,12,5314016
-294,"Amazemo","阿马泽莫","text.ini",8,12,5314264
-295,"Maltarr","马尔塔尔","text.ini",8,12,5314272
-296,"Johnnie","Johnnie","text.ini",8,12,5314368
-297,"Cryhard","克里哈德","text.ini",8,12,5314464
-298,"Poolboy","泳池男孩","text.ini",8,12,5314484
-299,"Oldsnot","奥尔德斯诺","text.ini",8,12,5314612
-300,"Sherbet","果子露","text.ini",8,12,5314620
-301,"Creepia","Creepia","text.ini",8,12,5314944
-302,"Adolina","阿多利纳","text.ini",8,12,5315032
-303,"Meridia","Meridia","text.ini",8,12,5315048
-304,"Bassoon","巴松","text.ini",8,12,5315064
-305,"Bloated","臃肿","text.ini",8,12,5315260
-306,"Scrawny","骨瘦如柴","text.ini",8,12,5315304
-307,"Miserly","吝啬","text.ini",8,12,5315748
-308,"Languid","慵懒","text.ini",8,12,5315756
-309,"Squeaky","吱吱","text.ini",8,12,5315808
-310,"Wailing","哀号","text.ini",8,12,5315840
-311,"Drunken","醉酒","text.ini",8,12,5315900
-312,"Hellish","地狱般","text.ini",8,12,5316064
-313,"Shadowy","阴暗","text.ini",8,12,5316100
-314,"Chaotic","混沌","text.ini",8,12,5316108
-315,"Brutish","野蛮","text.ini",8,12,5316196
-316,"Inhuman","不人道","text.ini",8,12,5316204
-317,"Ghastly","可怕","text.ini",8,12,5316256
-318,"Undying","不死","text.ini",8,12,5316276
-319,"Blazing","炽热","text.ini",8,12,5316396
-320,"Ruinous","毁灭性","text.ini",8,12,5316548
-321,"Naughty","淘气","text.ini",8,12,5316580
-322,"Devoted","致力","text.ini",8,12,5316588
-323,"Unshorn","未修剪的","text.ini",8,12,5316876
-324,"Lunatic","疯子","text.ini",8,12,5317028
-325,"Eeeevil","恶","text.ini",8,12,5317308
-326,"Unlucky","倒霉","text.ini",8,12,5317528
-327,"Deathly","死亡","text.ini",8,12,5317684
-328,"Crumbly","易碎","text.ini",8,12,5317876
-329,"Artwork","艺术品","text.ini",8,12,5329964
-330,"Classic","经典","text.ini",8,12,5330132
-331,"Compact","紧凑","text.ini",8,12,5330208
-332,"Thursday","周四","text.ini",9,12,5162316
-333,"Saturday","周六","text.ini",9,12,5162336
-334,"February","二月","text.ini",9,12,5162404
-335,"November","十一月","text.ini",9,12,5162476
-336,"December","十二月","text.ini",9,12,5162488
-337,"Darm It!","该死！","text.ini",9,12,5196860
-338,"Iron Ore","铁矿石","text.ini",9,12,5301172
-339,"Cruberry","克鲁贝里","text.ini",9,12,5301560
-340,"Raw Meat","生肉","text.ini",9,12,5301588
-341,"Meat Pie","肉饼","text.ini",9,12,5301628
-342,"Cauction","考蒂翁","text.ini",9,12,5301748
-343,"Warrizor","阿利佐尔","text.ini",9,12,5301768
-344,"El Endes","埃尔恩德斯","text.ini",9,12,5301992
-345,"Forkless","无叉的","text.ini",9,12,5302056
-346,"Charront","沙龙","text.ini",9,12,5302104
-347,"Valkyria","Valkyria","text.ini",9,12,5302132
-348,"Zavanite","硫锑铅矿","text.ini",9,12,5302152
-349,"Tyalmath","蒂亚尔马特","text.ini",9,12,5302164
-350,"Caesaria","凯撒里亚","text.ini",9,12,5306068
-351,"Tallyroo","塔利鲁","text.ini",9,12,5306328
-352,"Touroose","图鲁斯","text.ini",9,12,5306356
-353,"Settings","设置","text.ini",9,12,5309256
-354,"Movement","运动","text.ini",9,12,5309320
-355,"Rootmoog","鲁特穆格","text.ini",9,12,5313728
-356,"Chavesse","沙韦斯","text.ini",9,12,5313780
-357,"Nomigura","野村","text.ini",9,12,5313792
-358,"Kayberry","凯伯里","text.ini",9,12,5313804
-359,"Maryland","马里兰","text.ini",9,12,5313852
-360,"Chaarles","沙尔勒","text.ini",9,12,5313872
-361,"Ophelius","奥菲柳斯","text.ini",9,12,5313892
-362,"Francois","弗朗索瓦","text.ini",9,12,5313964
-363,"Alakazed","阿拉卡泽德","text.ini",9,12,5314024
-364,"Skeletro","斯凯莱特罗","text.ini",9,12,5314092
-365,"Melchior","梅尔基奥尔","text.ini",9,12,5314164
-366,"Fantasmo","幻想曲","text.ini",9,12,5314176
-367,"Khlatoon","克拉通","text.ini",9,12,5314292
-368,"Gibblets","吉布莱茨","text.ini",9,12,5314316
-369,"Gollygee","戈利吉","text.ini",9,12,5314424
-370,"Ipswitch","Ipswitch","text.ini",9,12,5314516
-371,"Clambake","烧烤晚宴","text.ini",9,12,5314540
-372,"Vartwind","瓦特温德","text.ini",9,12,5314592
-373,"Creatora","克里托拉","text.ini",9,12,5314828
-374,"Svetlana","Svetlana","text.ini",9,12,5314840
-375,"Poiltana","普瓦塔纳","text.ini",9,12,5314852
-376,"Drilliad","德里利亚德","text.ini",9,12,5314892
-377,"Valorous","勇敢","text.ini",9,12,5315484
-378,"Fugitive","逃犯","text.ini",9,12,5315648
-379,"Homebody","宅女","text.ini",9,12,5315764
-380,"Cowardly","懦弱","text.ini",9,12,5315816
-381,"Reckless","鲁莽","text.ini",9,12,5315924
-382,"Glorious","光荣","text.ini",9,12,5316072
-383,"Batterer","打人者","text.ini",9,12,5316224
-384,"Accursed","诅咒","text.ini",9,12,5316284
-385,"Evildoer","妖孽","text.ini",9,12,5316404
-386,"Resolute","坚决","text.ini",9,12,5316480
-387,"Militant","激进","text.ini",9,12,5316492
-388,"Pursuant","根据","text.ini",9,12,5316536
-389,"Prodigal","浪子","text.ini",9,12,5316556
-390,"Exultant","兴高采烈","text.ini",9,12,5316632
-391,"Knightly","骑士","text.ini",9,12,5316644
-392,"Lukewarm","不热","text.ini",9,12,5316780
-393,"Kamikaze","神风","text.ini",9,12,5316964
-394,"Feverish","发烧","text.ini",9,12,5317016
-395,"Unstable","不稳定","text.ini",9,12,5317076
-396,"Hooligan","流氓","text.ini",9,12,5317588
-397,"Departed","离开","text.ini",9,12,5317692
-398,"Gourmand","Gourmand","text.ini",9,12,5317744
-399,"Sleep-in","留宿","text.ini",9,12,5317756
-400,"Roadside","路边","text.ini",9,12,5317808
-401,"Scraggly","蓬乱的","text.ini",9,12,5317928
-402,"Hardened","硬化","text.ini",9,12,5317940
-403,"Diligent","勤奋","text.ini",9,12,5318060
-404,"Pleasant","愉快","text.ini",9,12,5318072
-405,"Bad News","坏消息","text.ini",9,12,5318200
-406,"Complete","完成","text.ini",9,12,5330120
-407,"Standard","标准","text.ini",9,12,5330140
-408,"Bilinear","双线性","text.ini",9,12,5330152
-409,"BGM Type","BGM类型","text.ini",9,12,5330240
-410,"NEW GAME","新游戏","text.ini",9,12,5332216
-411,"Wednesday","周三","text.ini",10,12,5162304
-412,"September","九月","text.ini",10,12,5162456
-413,"Hawk Idol","鹰偶像","text.ini",10,12,5301012
-414,"Evil Bell","邪恶的钟","text.ini",10,12,5301316
-415,"Roda Leaf","罗达·利夫","text.ini",10,12,5301476
-416,"Orihalcus","奥里哈克斯","text.ini",10,12,5301836
-417,"Xelbenoth","克塞尔贝诺特","text.ini",10,12,5301924
-418,"Malochius","马洛基乌斯","text.ini",10,12,5302004
-419,"Rewillvan","雷维尔万","text.ini",10,12,5302092
-420,"Level up!","升级！","text.ini",10,12,5307132
-421,"NIGHTMARE","噩梦","text.ini",10,12,5311732
-422,"Blomkvist","布隆维斯特","text.ini",10,12,5313632
-423,"Oogamaloo","奥加马卢","text.ini",10,12,5313644
-424,"Challiers","沙利耶","text.ini",10,12,5313748
-425,"Ellipscus","椭圆虫属","text.ini",10,12,5313832
-426,"Pironesia","皮罗尼西亚","text.ini",10,12,5314004
-427,"Salacious","淫秽","text.ini",10,12,5314080
-428,"Rincewind","Rincewind","text.ini",10,12,5314196
-429,"Mussoltus","穆索尔图斯","text.ini",10,12,5314244
-430,"September","九月","text.ini",10,12,5314280
-431,"Jellytoes","果冻脚趾","text.ini",10,12,5314304
-432,"Meatables","肉类","text.ini",10,12,5314340
-433,"Jigglywoo","吉格利乌","text.ini",10,12,5314412
-434,"Lintbelly","林特贝利","text.ini",10,12,5314444
-435,"Dichotoma","叉叶菊属","text.ini",10,12,5314920
-436,"Snowflake","雪花","text.ini",10,12,5314996
-437,"Injurious","伤害力","text.ini",10,12,5315328
-438,"Dimwitted","无脑儿","text.ini",10,12,5315404
-439,"Odiferous","有气味","text.ini",10,12,5315416
-440,"Truculent","好斗","text.ini",10,12,5315516
-441,"Go-getter","拼命三","text.ini",10,12,5315672
-442,"Night-owl","夜猫子","text.ini",10,12,5315684
-443,"Sweetypie","斯威特皮","text.ini",10,12,5315724
-444,"Wheedling","哄骗","text.ini",10,12,5315848
-445,"Wholesome","有益健康","text.ini",10,12,5315888
-446,"Tottering","摇摇欲坠","text.ini",10,12,5315936
-447,"Dishonest","不诚实","text.ini",10,12,5315980
-448,"Nefarious","邪恶","text.ini",10,12,5315992
-449,"Malicious","恶意","text.ini",10,12,5316128
-450,"Resentful","怨恨","text.ini",10,12,5316344
-451,"Heartless","无情","text.ini",10,12,5316416
-452,"Libertine","Libertine","text.ini",10,12,5316524
-453,"Fraternal","兄弟","text.ini",10,12,5316612
-454,"Good-luck","好运","text.ini",10,12,5316840
-455,"Doomsayer","乌鸦嘴","text.ini",10,12,5317336
-456,"Dastardly","卑鄙","text.ini",10,12,5317408
-457,"Soon-dead","快死了","text.ini",10,12,5317504
-458,"Tomb King","墓王","text.ini",10,12,5317576
-459,"Sun-dried","晒干的","text.ini",10,12,5317656
-460,"Flowerpot","花盆","text.ini",10,12,5317852
-461,"Murderous","凶残","text.ini",10,12,5318084
-462,"Clockwork","发条","text.ini",10,12,5318188
-463,"Filtering","过滤","text.ini",10,12,5329972
-464,"Quit Game","退出游戏","text.ini",10,12,5329984
-465,"Trilinear","三线性","text.ini",10,12,5330164
-466,"Mascot: Ed","吉祥物：Ed","text.ini",11,12,5298492
-467,"Long Sword","长剑","text.ini",11,12,5300676
-468,"Chain Mail","锁子甲","text.ini",11,12,5300812
-469,"Plate Mail","板甲","text.ini",11,12,5300840
-470,"Fire Magic","火系魔法","text.ini",11,12,5300892
-471,"Time Magic","时间魔法","text.ini",11,12,5300960
-472,"Shrine Key","神殿钥匙","text.ini",11,12,5301200
-473,"Lila Shell","莱拉·谢尔","text.ini",11,12,5301272
-474,"Sacred Cup","圣杯","text.ini",11,12,5301392
-475,"Roda Fruit","罗达水果","text.ini",11,12,5301548
-476,"Red Pepper","红辣椒","text.ini",11,12,5301640
-477,"Preliguard","护舷","text.ini",11,12,5301880
-478,"Velagunder","韦拉贡德","text.ini",11,12,5302176
-479,"Jeba Tovah","杰巴·托瓦","text.ini",11,12,5305740
-480,"Luta Gemma","卢塔·杰玛","text.ini",11,12,5305752
-481,"Flair Rall","Flair Rall","text.ini",11,12,5305920
-482,"Masontorch","梅森火炬","text.ini",11,12,5306128
-483,"Roos' Nest","Roos' Nest","text.ini",11,12,5310616
-484,"Guardhouse","警卫室","text.ini",11,12,5311332
-485,"Ribnibbler","里布尼布勒","text.ini",11,12,5313656
-486,"Rootbarrel","根桶","text.ini",11,12,5313912
-487,"Jackadaisy","雅卡代西","text.ini",11,12,5313984
-488,"Abracadave","阿布拉卡达夫","text.ini",11,12,5314036
-489,"Plocksweat","汗","text.ini",11,12,5314328
-490,"Firekicker","火踢","text.ini",11,12,5314528
-491,"Swimmyface","Swimmyface","text.ini",11,12,5314560
-492,"Clipstache","小胡子","text.ini",11,12,5314580
-493,"Meliodrami","梅利奥德拉米","text.ini",11,12,5314932
-494,"Gaytkeepah","盖特基帕","text.ini",11,12,5315096
-495,"Crocodiley","鳄鱼","text.ini",11,12,5315292
-496,"Despicable","卑鄙","text.ini",11,12,5315456
-497,"Stupendous","惊人","text.ini",11,12,5315504
-498,"Sleepyhead","瞌睡虫","text.ini",11,12,5315660
-499,"Swaggering","大摇大摆","text.ini",11,12,5315712
-500,"Terrifying","恐怖","text.ini",11,12,5316140
-501,"Buffoonish","滑稽的","text.ini",11,12,5316152
-502,"Undefeated","不败","text.ini",11,12,5316264
-503,"Bewitching","蛊惑","text.ini",11,12,5316356
-504,"Avaricious","贪婪","text.ini",11,12,5316384
-505,"Gelatinous","凝胶状","text.ini",11,12,5316884
-506,"Stargazing","观星","text.ini",11,12,5317036
-507,"Blasphemer","亵渎者","text.ini",11,12,5317176
-508,"Unkillable","不死","text.ini",11,12,5317516
-509,"Dead Dandy","死花花公子","text.ini",11,12,5317600
-510,"Vegetarian","素食","text.ini",11,12,5317732
-511,"Chattering","抖振","text.ini",11,12,5317916
-512,"Traitorous","卖国","text.ini",11,12,5318048
-513,"Orangework","橙色工作","text.ini",11,12,5318232
-514,"Frame Type","帧类型","text.ini",11,12,5330044
-515,"Chronicles","编年史","text.ini",11,12,5330176
-516,"No Display","无显示","text.ini",11,12,5330196
-517,"360 Degree","360度","text.ini",11,12,5330416
-518,"Reposition","重新定位","text.ini",11,12,5330656
-519,"Mascot: Roo","吉祥物：小袋鼠","text.ini",12,12,5298448
-520,"Mascot: Rex","吉祥物：雷克斯","text.ini",12,12,5298748
-521,"Short Sword","短剑","text.ini",12,12,5300656
-522,"Iron Shield","铁盾","text.ini",12,12,5300800
-523,"Light Magic","光明魔法","text.ini",12,12,5300936
-524,"Alter Magic","改变魔法","text.ini",12,12,5300948
-525,"Spirit Cape","幽灵角","text.ini",12,12,5300972
-526,"Falcon Idol","猎鹰偶像","text.ini",12,12,5301000
-527,"Cleria Ring","Cleria戒指","text.ini",12,12,5301040
-528,"Volume Mesa","体积台面","text.ini",12,12,5301132
-529,"Volume Fact","体积事实","text.ini",12,12,5301160
-530,"Black Pearl","黑珍珠","text.ini",12,12,5301404
-531,"Stone Shoes","石鞋","text.ini",12,12,5301488
-532,"Smoked Meat","烟熏肉","text.ini",12,12,5301600
-533,"Priest Mesa","普里斯特梅萨","text.ini",12,12,5305812
-534,"Priest Fact","牧师事实","text.ini",12,12,5305840
-535,"Leonor Rall","莱奥诺尔·拉尔","text.ini",12,12,5305884
-536,"Where am I?","我在哪儿？","text.ini",12,12,5310852
-537,"Now loading","现在正在加载","text.ini",12,12,5310900
-538,"Rex's House","Rex的房子","text.ini",12,12,5311256
-539,"Cloaksworth","克洛克斯沃思","text.ini",12,12,5314232
-540,"Globberfoot","格罗伯富特","text.ini",12,12,5314376
-541,"Healthshake","健康奶昔","text.ini",12,12,5314472
-542,"Wilwilliana","威威利亚纳","text.ini",12,12,5314968
-543,"Eightkeepah","八记","text.ini",12,12,5315196
-544,"Inquisitive","好奇","text.ini",12,12,5315444
-545,"Hot-blooded","热血","text.ini",12,12,5315528
-546,"Short-fused","短熔的","text.ini",12,12,5315572
-547,"Egomaniacal","利己","text.ini",12,12,5315636
-548,"Super-sulky","超级生气","text.ini",12,12,5315736
-549,"Far-sighted","有远见","text.ini",12,12,5315796
-550,"Deep-voiced","声音低沉","text.ini",12,12,5315828
-551,"Germophobic","洁癖","text.ini",12,12,5315876
-552,"Skull Power","骷髅力量","text.ini",12,12,5316116
-553,"Belligerent","好战","text.ini",12,12,5316212
-554,"Open-minded","豁达","text.ini",12,12,5316244
-555,"Unpromising","没出息","text.ini",12,12,5316460
-556,"Annihilator","零化子","text.ini",12,12,5316504
-557,"Slaughterer","杀戮者","text.ini",12,12,5316568
-558,"Big-hearted","洒脱","text.ini",12,12,5316656
-559,"Rule-dodger","违规者","text.ini",12,12,5316668
-560,"Experienced","经历","text.ini",12,12,5316680
-561,"Abscondable","可潜逃的","text.ini",12,12,5317048
-562,"Nightmarish","噩梦般","text.ini",12,12,5317236
-563,"Bloodpriest","血祭","text.ini",12,12,5317296
-564,"Confounding","混杂","text.ini",12,12,5317348
-565,"Foul-minded","思想肮脏","text.ini",12,12,5317436
-566,"Silhouetted","剪影","text.ini",12,12,5317448
-567,"Silly-willy","胆小鬼","text.ini",12,12,5317460
-568,"Once-lovely","曾经可爱的","text.ini",12,12,5317628
-569,"Half-busted","半破产","text.ini",12,12,5317864
-570,"Hunka Hunka","Hunka Hunka","text.ini",12,12,5317952
-571,"Grim Reaper","死神","text.ini",12,12,5317996
-572,"Love Jester","爱情小丑","text.ini",12,12,5318096
-573,"Love Hunter","婚恋猎头","text.ini",12,12,5318144
-574,"EXP Display","EXP显示","text.ini",12,12,5330032
-575,"TIME ATTACK","时间攻击","text.ini",12,12,5332196
-576,"Mascot: Nash","吉祥物：纳什","text.ini",13,12,5295496
-577,"Mascot: Muto","吉祥物：武藤","text.ini",13,12,5295512
-578,"Mascot: Faye","吉祥物：Faye","text.ini",13,12,5295528
-579,"Mascot: Gene","吉祥物：基因","text.ini",13,12,5295932
-580,"Mascot: Dogi","吉祥物：Dogi","text.ini",13,12,5296624
-581,"In Situ Tarf","现场塔夫","text.ini",13,12,5297380
-582,"Safety Charm","安全护身符","text.ini",13,12,5297396
-583,"Health Charm","健康魅力","text.ini",13,12,5297440
-584,"Mascot: Colt","吉祥物：柯尔特","text.ini",13,12,5297860
-585,"Mascot: Tita","吉祥物：Tita","text.ini",13,12,5297876
-586,"Mascot: Andy","吉祥物：安迪","text.ini",13,12,5297892
-587,"Mascot: Beth","吉祥物：贝丝","text.ini",13,12,5298008
-588,"Mascot: Jade","吉祥物：翡翠","text.ini",13,12,5298136
-589,"Mascot: Gila","吉祥物：Gila","text.ini",13,12,5298168
-590,"Mascot: Noit","吉祥物：Noit","text.ini",13,12,5298184
-591,"Mascot: Neal","吉祥物：尼尔","text.ini",13,12,5298200
-592,"Mascot: Kris","吉祥物：克里斯","text.ini",13,12,5298304
-593,"Mascot: Elle","吉祥物：Elle","text.ini",13,12,5298336
-594,"Mascot: Ruba","吉祥物：Ruba","text.ini",13,12,5298352
-595,"Mascot: Regg","吉祥物：Regg","text.ini",13,12,5298400
-596,"Mascot: Sada","吉祥物：佐田","text.ini",13,12,5298432
-597,"Mascot: Kyle","吉祥物：凯尔","text.ini",13,12,5298460
-598,"Mascot: Tarf","吉祥物：Tarf","text.ini",13,12,5298536
-599,"Mascot: Reah","吉祥物：Reah","text.ini",13,12,5298668
-600,"Mascot: Fred","吉祥物：Fred","text.ini",13,12,5298684
-601,"Mascot: Rafa","吉祥物：Rafa","text.ini",13,12,5298732
-602,"Mascot: Kate","吉祥物：凯特","text.ini",13,12,5298812
-603,"Mascot: Jill","吉祥物：吉尔","text.ini",13,12,5298844
-604,"Mascot: Frau","吉祥物：Frau","text.ini",13,12,5298876
-605,"Mascot: Tess","吉祥物：苔丝","text.ini",13,12,5298956
-606,"Mascot: Tran","吉祥物：Tran","text.ini",13,12,5298972
-607,"Mascot: Lucy","吉祥物：露西","text.ini",13,12,5298988
-608,"Mascot: Theo","吉祥物：Theo","text.ini",13,12,5299004
-609,"Mascot: Esca","吉祥物：Esca","text.ini",13,12,5299020
-610,"Mascot: Polo","吉祥物：Polo","text.ini",13,12,5299036
-611,"Battle Sword","仗剑","text.ini",13,12,5300688
-612,"Hyper Cutter","超级切割机","text.ini",13,12,5300704
-613,"Cleria Sword","克莱里亚之剑","text.ini",13,12,5300736
-614,"Large Shield","大盾","text.ini",13,12,5300752
-615,"Small Shield","小盾","text.ini",13,12,5300768
-616,"Breast Plate","胸板","text.ini",13,12,5300852
-617,"Battle Armor","斗铠","text.ini",13,12,5300868
-618,"Cleria Armor","克莱里亚盔甲","text.ini",13,12,5300904
-619,"Return Magic","魔法归来","text.ini",13,12,5300920
-620,"Shield Magic","盾牌魔法","text.ini",13,12,5300984
-621,"Ring of Ease","轻松之戒","text.ini",13,12,5301024
-622,"Volume Hadal","体积Hadal","text.ini",13,12,5301052
-623,"Goddess Ring","女神戒指","text.ini",13,12,5301068
-624,"Volume Tovah","卷托瓦","text.ini",13,12,5301100
-625,"Volume Gemma","体积Gemma","text.ini",13,12,5301116
-626,"Gold Pendant","金吊坠","text.ini",13,12,5301284
-627,"Marle Flower","马尔花","text.ini",13,12,5301532
-628,"Cruberry Pie","克鲁伯里派","text.ini",13,12,5301612
-629,"Dyphthelloid","类双腔菌","text.ini",13,12,5302068
-630,"Priest Tovah","托瓦神父","text.ini",13,12,5305796
-631,"Priest Hadal","哈达尔神父","text.ini",13,12,5305824
-632,"Priest Gemma","杰玛神父","text.ini",13,12,5305852
-633,"Nurse Sarina","护士Sarina","text.ini",13,12,5305904
-634,"Shield burst","护盾爆裂","text.ini",13,12,5310200
-635,"Gila's House","吉拉之家","text.ini",13,12,5310912
-636,"Pigeon House","鸽笼","text.ini",13,12,5311028
-637,"Tomb of Mesa","梅萨墓","text.ini",13,12,5311112
-638,"Tomb of Fact","事实之墓","text.ini",13,12,5311144
-639,"Tarf's House","Tarf的房子","text.ini",13,12,5311176
-640,"Noit's House","Noit's House","text.ini",13,12,5311208
-641,"Fred's House","弗雷德的家","text.ini",13,12,5311224
-642,"Ancient Well","古井","text.ini",13,12,5311268
-643,"Regg's House","Regg的房子","text.ini",13,12,5311284
-644,"Chuckachucka","查卡卡卡","text.ini",13,12,5313616
-645,"Bellablaster","贝拉拉斯特","text.ini",13,12,5314352
-646,"Maintenancio","曼特南西奥","text.ini",13,12,5314388
-647,"Ittyknuckles","小关节","text.ini",13,12,5314500
-648,"Moo-munchin'","Moo-munchin'","text.ini",13,12,5315340
-649,"Crop-ruinin'","农作物毁灭","text.ini",13,12,5315356
-650,"Cold-blooded","冷血","text.ini",13,12,5315556
-651,"Night-walker","夜行者","text.ini",13,12,5315696
-652,"Karaoke Lord","Karlovan Lord","text.ini",13,12,5315860
-653,"Convalescent","疗养","text.ini",13,12,5315908
-654,"Lion-in-wait","狮子在等待","text.ini",13,12,5316028
-655,"Ready-to-die","准备死亡","text.ini",13,12,5316296
-656,"Vainglorious","虚荣","text.ini",13,12,5316312
-657,"Reminderator","提醒器","text.ini",13,12,5316692
-658,"Bloodstained","血迹斑斑","text.ini",13,12,5316792
-659,"Unscrupulous","无良","text.ini",13,12,5316808
-660,"Underworlder","地下水","text.ini",13,12,5317264
-661,"Fallen Angel","堕落天使","text.ini",13,12,5317280
-662,"Witch Doctor","巫医","text.ini",13,12,5317360
-663,"Dang-blasted","危险的","text.ini",13,12,5317376
-664,"Blackhearted","黑心","text.ini",13,12,5317420
-665,"Thick-headed","厚头","text.ini",13,12,5317472
-666,"Soggy Sailor","湿淋淋的水手","text.ini",13,12,5317488
-667,"Cricket-nest","蟋蟀窝","text.ini",13,12,5317820
-668,"Falling-down","下落","text.ini",13,12,5317900
-669,"LavaBkServer","LavaBkServer","text.ini",13,12,5321600
-670,"Adol Visible","可见光","text.ini",13,12,5330056
-671,"Artwork Type","艺术品类型","text.ini",13,12,5330080
-672,"Bill the Duck","鸭子比尔","text.ini",14,12,5196932
-673,"Mascot: Darie","吉祥物：达丽","text.ini",14,12,5295480
-674,"Mascot: Tolpi","吉祥物：托尔皮","text.ini",14,12,5295680
-675,"Mascot: Carly","吉祥物：Carly","text.ini",14,12,5295728
-676,"Mascot: Neeli","吉祥物：Neeli","text.ini",14,12,5295764
-677,"Mascot: Swoff","吉祥物：Swoff","text.ini",14,12,5295844
-678,"Mascot: Topus","吉祥物：Topus","text.ini",14,12,5295948
-679,"Mascot: Dirga","吉祥物：迪尔加","text.ini",14,12,5295964
-680,"Success Charm","成功魅力","text.ini",14,12,5297424
-681,"I Heart Zalem","我爱塞勒姆","text.ini",14,12,5297688
-682,"Swooned Feena","Swooned Feena","text.ini",14,12,5297752
-683,"Mascot: Brody","吉祥物：布罗迪","text.ini",14,12,5297908
-684,"Mascot: Oseam","吉祥物：Oseam","text.ini",14,12,5297992
-685,"Mascot: Bohtz","吉祥物：博茨","text.ini",14,12,5298040
-686,"Mascot: Lazlo","吉祥物：Lazlo","text.ini",14,12,5298120
-687,"Mascot: Guido","吉祥物：圭多","text.ini",14,12,5298152
-688,"Mascot: Banoa","吉祥物：Banoa","text.ini",14,12,5298240
-689,"Mascot: Astal","吉祥物：Astal","text.ini",14,12,5298272
-690,"Mascot: Leggs","吉祥物：Leggs","text.ini",14,12,5298288
-691,"Mascot: Ceres","吉祥物：谷神星","text.ini",14,12,5298320
-692,"Mascot: Karen","吉祥物：凯伦","text.ini",14,12,5298368
-693,"Mascot: Hadat","吉祥物：Hadat","text.ini",14,12,5298384
-694,"Mascot: Zalem","吉祥物：Zalem","text.ini",14,12,5298416
-695,"Mascot: Boris","吉祥物：鲍里斯","text.ini",14,12,5298476
-696,"Mascot: Favre","吉祥物：法弗尔","text.ini",14,12,5298504
-697,"Mascot: Lilia","吉祥物：Lilia","text.ini",14,12,5298520
-698,"Mascot: Gorto","吉祥物：Gorto","text.ini",14,12,5298552
-699,"Mascot: Keith","吉祥物：Keith","text.ini",14,12,5298568
-700,"Mascot: Maria","吉祥物：玛丽亚","text.ini",14,12,5298584
-701,"Mascot: Goban","吉祥物：Goban","text.ini",14,12,5298620
-702,"Mascot: Meryl","吉祥物：梅丽尔","text.ini",14,12,5298636
-703,"Mascot: Feena","吉祥物：费纳","text.ini",14,12,5298652
-704,"Mascot: Frith","吉祥物：Frith","text.ini",14,12,5298828
-705,"Mascot: Reise","吉祥物：Reise","text.ini",14,12,5298860
-706,"Mascot: Lloyd","吉祥物：劳埃德","text.ini",14,12,5298892
-707,"Mascot: Blitz","吉祥物：闪电","text.ini",14,12,5298908
-708,"Mascot: Tanya","吉祥物：谭雅","text.ini",14,12,5298940
-709,"Mascot: Ischt","吉祥物：伊施特","text.ini",14,12,5299052
-710,"Mascot: Kasim","吉祥物：Kasim","text.ini",14,12,5299068
-711,"Wooden Shield","木盾","text.ini",14,12,5300720
-712,"Battle Shield","战盾","text.ini",14,12,5300784
-713,"Cleria Shield","克莱里亚盾","text.ini",14,12,5300824
-714,"Volume Dabbie","体积达比","text.ini",14,12,5301084
-715,"Blizzard Bulb","暴雪灯泡","text.ini",14,12,5301212
-716,"Floodgate Key","闸门钥匙","text.ini",14,12,5301248
-717,"Dreaming Idol","梦幻偶像","text.ini",14,12,5301424
-718,"Priest Dabbie","牧师达比","text.ini",14,12,5305780
-719,"Elder Cornell","康奈尔长老","text.ini",14,12,5305940
-720,"Lilia's House","Lilia的家","text.ini",14,12,5309332
-721,"Hadat's House","Hadat's House","text.ini",14,12,5309388
-722,"Lance Village","兰斯村","text.ini",14,12,5310884
-723,"Bohtz's House","Bohtz的房子","text.ini",14,12,5310948
-724,"Lazlo's House","Lazlo的房子","text.ini",14,12,5310964
-725,"Astal's House","Astal的房子","text.ini",14,12,5310980
-726,"Brody's House","Brody的房子","text.ini",14,12,5310996
-727,"Tomb of Tovah","托瓦墓","text.ini",14,12,5311080
-728,"Tomb of Hadal","Hadal墓","text.ini",14,12,5311096
-729,"Tomb of Gemma","杰玛墓","text.ini",14,12,5311160
-730,"Ramia Village","拉米亚村","text.ini",14,12,5311240
-731,"Maria's House","玛丽亚的家","text.ini",14,12,5311300
-732,"Blitz's House","Blitz之家","text.ini",14,12,5311344
-733,"Gorto's House","Gorto的房子","text.ini",14,12,5311376
-734,"Veggie-lovin'","素食主义者","text.ini",14,12,5315312
-735,"Puppy-scented","小狗味的","text.ini",14,12,5315372
-736,"Grave-robbin'","盗墓","text.ini",14,12,5315388
-737,"Hyper-kinetic","运动过度","text.ini",14,12,5315584
-738,"Swim Champion","游泳冠军","text.ini",14,12,5315620
-739,"Self-centered","自我中心","text.ini",14,12,5315948
-740,"Family-minded","顾家的","text.ini",14,12,5316012
-741,"Death-dealing","人死命","text.ini",14,12,5316180
-742,"Directionless","无方向","text.ini",14,12,5316368
-743,"King-crushing","弑君","text.ini",14,12,5316428
-744,"Supreme Ruler","最高统治者","text.ini",14,12,5317060
-745,"Chaos-bringer","混沌带来者","text.ini",14,12,5317212
-746,"Dark Disciple","黑暗之光","text.ini",14,12,5317248
-747,"Once-gorgeous","曾经的华丽","text.ini",14,12,5317640
-748,"Once-handsome","曾经英俊的","text.ini",14,12,5317668
-749,"Cartilaginian","软骨的","text.ini",14,12,5317768
-750,"Badoom Badoom","Badoom Badoom","text.ini",14,12,5317884
-751,"Ruinous Angel","毁灭天使","text.ini",14,12,5317980
-752,"Murderomatron","杀人魔","text.ini",14,12,5318128
-753,"Untrustworthy","失信","text.ini",14,12,5318156
-754,"Psycho-puppet","精神木偶","text.ini",14,12,5318172
-755,"Hungry Hungry","饿饿","text.ini",14,12,5318248
-756,"Diary MemSave","日志MemSave","text.ini",14,12,5318864
-757,"SkiLoadObject","SkiLoadObject","text.ini",14,12,5329616
-758,"Img:TitleWork","Img：TitleWork","text.ini",14,12,5329632
-759,"Blood Effects","血液效应","text.ini",14,12,5330016
-760,"Monster Stats","怪物统计","text.ini",14,12,5330096
-761,"To Next Level","距离下一级还","text.ini",14,12,5330216
-762,"8-Directional","8-方向性","text.ini",14,12,5330400
-763,"Select Mascot","选择吉祥物","text.ini",14,12,5330640
-764,"Mascot: Rimera","吉祥物：Rimera","text.ini",15,12,5295544
-765,"Mascot: Chrace","吉祥物：Chrace","text.ini",15,12,5295560
-766,"Mascot: Puroid","吉祥物：Puroid","text.ini",15,12,5295696
-767,"Mascot: Eggnid","吉祥物：Eggnid","text.ini",15,12,5295796
-768,"Mascot: Onuman","吉祥物：大沼人","text.ini",15,12,5295880
-769,"Mascot: Baocar","吉祥物：宝车","text.ini",15,12,5296012
-770,"Mascot: Bearot","吉祥物：熊","text.ini",15,12,5296080
-771,"Mascot: Trover","吉祥物：特罗弗","text.ini",15,12,5296132
-772,"Mascot: Godrup","吉祥物：Godrup","text.ini",15,12,5296148
-773,"Mascot: Delpus","吉祥物：Delpus","text.ini",15,12,5296164
-774,"Mascot: Gearot","吉祥物：齿轮","text.ini",15,12,5296268
-775,"Mascot: Zearot","吉祥物：Zearot","text.ini",15,12,5296340
-776,"Tasty Rodentia","美味的啮齿动物","text.ini",15,12,5297736
-777,"Priestess Reah","饰Priestess Reah","text.ini",15,12,5297784
-778,"Mascot: Larsen","吉祥物：拉森","text.ini",15,12,5297944
-779,"Mascot: Marina","吉祥物：玛丽娜","text.ini",15,12,5297960
-780,"Mascot: Carson","吉祥物：卡森","text.ini",15,12,5298700
-781,"Mascot: Sheila","吉祥物：希拉","text.ini",15,12,5298776
-782,"Mascot: Paulie","吉祥物：保利","text.ini",15,12,5298924
-783,"Mascot: Flonne","吉祥物：Flonne","text.ini",15,12,5299084
-784,"Ancient Tablet","古碑","text.ini",15,12,5301144
-785,"Silver Pendant","银坠子","text.ini",15,12,5301300
-786,"Banoa's Letter","Banoa的信","text.ini",15,12,5301460
-787,"Celceta Flower","塞尔切塔花","text.ini",15,12,5301572
-788,"Guido's Armory","Guido的军械库","text.ini",15,12,5309372
-789,"Rasteenie Mine","拉斯蒂尼矿","text.ini",15,12,5310520
-790,"Tomb of Dabbie","达比之墓","text.ini",15,12,5311128
-791,"Colony of Lava","熔岩殖民地","text.ini",15,12,5311192
-792,"Deserted House","废弃的房子","text.ini",15,12,5311316
-793,"Gaytkeepah Jr.","小盖特基帕","text.ini",15,12,5315080
-794,"Gaytkeepah 007","盖特基帕007","text.ini",15,12,5315208
-795,"Unprofessional","不专业","text.ini",15,12,5315964
-796,"Murder-machine","杀人机器","text.ini",15,12,5316164
-797,"Wild and Crazy","野生和疯狂","text.ini",15,12,5316328
-798,"Dearly Beloved","心爱的","text.ini",15,12,5316708
-799,"Foggy-bottomed","雾底的","text.ini",15,12,5316852
-800,"Free-the-beast","释放野兽","text.ini",15,12,5317160
-801,"Darned-to-heck","该死的","text.ini",15,12,5317392
-802,"Straight-laced","刻板","text.ini",15,12,5317536
-803,"Grave-traveler","坟墓旅行者","text.ini",15,12,5317612
-804,"Corroded Angel","腐蚀天使","text.ini",15,12,5318032
-805,"Mascot: Godaago","吉祥物：Godaago","text.ini",16,12,5295596
-806,"Mascot: Gnometh","吉祥物：Gnometh","text.ini",16,12,5295632
-807,"Mascot: Zolgell","吉祥物：Zolgell","text.ini",16,12,5295648
-808,"Mascot: Ripplet","吉祥物：瑞波","text.ini",16,12,5295664
-809,"Mascot: K'nocks","吉祥物：K'nocks","text.ini",16,12,5295712
-810,"Mascot: Gercard","吉祥物：Gercard","text.ini",16,12,5295780
-811,"Mascot: Galgata","吉祥物：加尔加塔","text.ini",16,12,5295812
-812,"Mascot: Gworter","吉祥物：Gworter","text.ini",16,12,5295828
-813,"Mascot: Scollun","吉祥物：Scollun","text.ini",16,12,5295896
-814,"Mascot: Magnute","吉祥物：Magnute","text.ini",16,12,5295980
-815,"Mascot: Ashveil","吉祥物：Ashveil","text.ini",16,12,5295996
-816,"Mascot: Nashzar","吉祥物：Nashzar","text.ini",16,12,5296028
-817,"Mascot: Nustarl","吉祥物：努斯塔尔","text.ini",16,12,5296064
-818,"Mascot: Allomod","吉祥物：Allomod","text.ini",16,12,5296116
-819,"Mascot: Ceabith","吉祥物：Ceabith","text.ini",16,12,5296284
-820,"Troubadour Reah","游吟诗人","text.ini",16,12,5297528
-821,"Priestess Lilia","女祭司莉莉娅","text.ini",16,12,5297648
-822,"Priestess Feena","女祭司费娜","text.ini",16,12,5297768
-823,"Mascot: Saffron","吉祥物：藏红花","text.ini",16,12,5297976
-824,"Mascot: Lucille","吉祥物：露西尔","text.ini",16,12,5298024
-825,"Mascot: Natasha","吉祥物：娜塔莎","text.ini",16,12,5298256
-826,"Mascot: Natalie","吉祥物：娜塔莉","text.ini",16,12,5298716
-827,"Mascot: Chelnie","吉祥物：Chelnie","text.ini",16,12,5298760
-828,"Rod of Divinity","神性之杖","text.ini",16,12,5301184
-829,"Bestiary Potion","动物传说药剂","text.ini",16,12,5301652
-830,"Lv.%s Swordsman","Lv.%剑侠","text.ini",16,12,5306972
-831,"Jade's Oddities","Jade的古怪","text.ini",16,12,5309356
-832,"Gila's Basement","吉拉的地下室","text.ini",16,12,5311012
-833,"Moondoria Field","Moondoria球场","text.ini",16,12,5311064
-834,"Shrine Entrance","神社入口","text.ini",16,12,5311360
-835,"Mostly Harmless","Mostly Harmless","text.ini",16,12,5315428
-836,"Sticky-fingered","手指不灵活的","text.ini",16,12,5315468
-837,"Goddess-fearing","敬神的","text.ini",16,12,5316444
-838,"Career Criminal","职业罪犯","text.ini",16,12,5316596
-839,"Vicissitudinary","主教座堂","text.ini",16,12,5316824
-840,"Hopelessly Lost","无可救药地迷失","text.ini",16,12,5316896
-841,"White Lightnin'","白色闪电","text.ini",16,12,5316976
-842,"Sturm und Drang","Sturm und Drang","text.ini",16,12,5316992
-843,"Desperate Angel","绝望天使","text.ini",16,12,5317964
-844,"Sleepless Angel","不眠天使","text.ini",16,12,5318008
-845,"Normal Movement","正常运动","text.ini",16,12,5330328
-846,"A Legend Is Born","第一千一百一十一章传奇诞生","text.ini",17,12,5196872
-847,"Personal Trainer","私人教练","text.ini",17,12,5197116
-848,"Mascot: Cauction","吉祥物：高加索","text.ini",17,12,5295576
-849,"Mascot: Warrizor","吉祥物：吉祥物","text.ini",17,12,5295612
-850,"Mascot: El Endes","吉祥物：El Endes","text.ini",17,12,5296044
-851,"Mascot: Forkless","吉祥物：无叉","text.ini",17,12,5296228
-852,"Mascot: Charront","吉祥物：Charront","text.ini",17,12,5296300
-853,"Mascot: Valkyria","吉祥物：女武神","text.ini",17,12,5296320
-854,"Mascot: Zavanite","吉祥物：Zavanite","text.ini",17,12,5296356
-855,"Mascot: Duckling","吉祥物：小鸭子","text.ini",17,12,5296852
-856,"Prosperity Charm","繁荣魅力","text.ini",17,12,5297468
-857,"Imprisoned Maria","被囚禁的玛丽亚","text.ini",17,12,5297576
-858,"Photogenic Lilia","上镜Lilia","text.ini",17,12,5297596
-859,"Gussied-Up Lilia","激动的莉莉娅","text.ini",17,12,5297616
-860,"China-Dress Reah","中国服饰","text.ini",17,12,5297820
-861,"Mascot: Caesaria","吉祥物：凯撒利亚","text.ini",17,12,5298792
-862,"PtlMagicBarrier1","PtlMagicBarrier1","text.ini",17,12,5299376
-863,"Whisper Earrings","Whisper耳环","text.ini",17,12,5301228
-864,"Silver Harmonica","银口琴","text.ini",17,12,5301328
-865,"Lilia's Medicine","Lilia的药","text.ini",17,12,5301440
-866,"Flonne's Garment","Flonne服装","text.ini",17,12,5301704
-867,"BackBufferHeight","BackBufferHeight","text.ini",17,12,5311880
-868,"Fast-as-anything","快如一切","text.ini",17,12,5315600
-869,"Familiar-looking","眼熟的","text.ini",17,12,5315776
-870,"Fast and Furious","速度与激情","text.ini",17,12,5316044
-871,"Pleasure-seeking","享乐","text.ini",17,12,5316740
-872,"Break-everything","打破一切","text.ini",17,12,5317316
-873,"Bowel Enthusiast","肠道爱好者","text.ini",17,12,5317712
-874,"Mascot: Orihalcus","吉祥物：Orihalcus","text.ini",18,12,5295744
-875,"Mascot: Xelbenoth","吉祥物：Xelbenoth","text.ini",18,12,5295912
-876,"Mascot: Malochius","吉祥物：Malochius","text.ini",18,12,5296096
-877,"Mascot: Rewillvan","吉祥物：Rewillvan","text.ini",18,12,5296248
-878,"Mascot: Dark Fact","吉祥物：黑暗的事实","text.ini",18,12,5296640
-879,"What will you do?","你会怎么做？","text.ini",18,12,5306840
-880,"Sanctuary of Toal","托尔圣所","text.ini",18,12,5310536
-881,"Shrine, Underpass","神社，地下通道","text.ini",18,12,5310628
-882,"Campanile of Lane","莱恩钟楼","text.ini",18,12,5310648
-883,"Shrine, West Wing","西翼神社","text.ini",18,12,5310808
-884,"Shrine, East Wing","东翼神社","text.ini",18,12,5310864
-885,"Elder's Residence","长老的居所","text.ini",18,12,5310928
-886,"Runaways' Hideout","逃亡者的藏身之处","text.ini",18,12,5311416
-887,"Goddesses' Palace","女神宫","text.ini",18,12,5311460
-888,"Reincarnated Pony","重生的小马","text.ini",18,12,5317140
-889,"Desecrate-o-Matic","亵渎马蒂奇","text.ini",18,12,5318108
-890,"Wall Transparency","墙透明度","text.ini",18,12,5329996
-891,"Mascot: Preliguard","吉祥物：吉祥卫士","text.ini",19,12,5295860
-892,"Mascot: Luck Charm","吉祥物：幸运符","text.ini",19,12,5296400
-893,"Mascot: Maid Lilia","吉祥物：女仆莉莉娅","text.ini",19,12,5296744
-894,"Mascot: Chun-Lilia","吉祥物：春莉","text.ini",19,12,5296788
-895,"Mascot: Masontorch","吉祥物：Masontorch","text.ini",19,12,5297924
-896,"Mascot: Flair Rall","吉祥物：Flair Rall","text.ini",19,12,5298100
-897,"Mascot: Luta Gemma","吉祥物：Luta Gemma","text.ini",19,12,5298600
-898,"Scroll of Guidance","引导卷轴","text.ini",19,12,5301372
-899,"Subterranean Canal","地下运河","text.ini",19,12,5310596
-900,"Core of Ancient Ys","古代Ys的核心","text.ini",19,12,5310692
-901,"Ruins of Moondoria","Moondoria遗址","text.ini",19,12,5311044
-902,"Lord Gaytkeepah VI","盖特基帕六世","text.ini",19,12,5315156
-903,"Gaytkeepah V, P.I.","盖特基帕五世，私家侦探","text.ini",19,12,5315176
-904,"Mascot: Study Charm","吉祥物：学习魅力","text.ini",20,12,5296468
-905,"Mascot: Tailed Tarf","吉祥物：Tailed Tarf","text.ini",20,12,5296808
-906,"Mascot: Leonor Rall","吉祥物：Leonor Rall","text.ini",20,12,5298080
-907,"Chelnie's Hair Band","Chelnie's Hair Band","text.ini",20,12,5301668
-908,"Zalem's Battle Best","Zalem的最佳战斗","text.ini",20,12,5309436
-909,"Moat of Burnedbless","烧毁的护城河","text.ini",20,12,5310556
-910,"Ice Ridge of Noltia","诺尔蒂亚冰岭","text.ini",20,12,5310576
-911,"Schadenfreude-prone","幸灾乐祸的","text.ini",20,12,5316760
-912,"Otium cum Dignitate","尊贵乳香","text.ini",20,12,5317120
-913,"Kinda Sorta Visible","Kinda Sorta Visible","text.ini",20,12,5318212
-914,"Keep the Doctor Away","让医生远离","text.ini",21,12,5196908
-915,"Mascot: Dyphthelloid","吉祥物：Dyphthelloid","text.ini",21,12,5296180
-916,"Mascot: In Situ Tarf","吉祥物：原位塔夫","text.ini",21,12,5296204
-917,"Mascot: Safety Charm","吉祥物：平安符","text.ini",21,12,5296376
-918,"Mascot: Health Charm","吉祥物：健康魅力","text.ini",21,12,5296444
-919,"Mascot: Nurse Sarina","吉祥物：护士Sarina","text.ini",21,12,5298216
-920,"Anti-Illusion Mirror","防错觉镜","text.ini",21,12,5301348
-921,"Rall Family Wellness","Rall家庭健康","text.ini",21,12,5309404
-922,"Gaytkeepah III, Esq.","盖特基帕三世先生","text.ini",21,12,5315132
-923,"Squallish Snow Cloud","第一千一百一十一章恶心的雪云","text.ini",21,12,5316940
-924,"Song's-about-me Vain","关于我的歌","text.ini",21,12,5317552
-925,"Mascot: Success Charm","吉祥物：成功魅力","text.ini",22,12,5296420
-926,"Mascot: I Heart Zalem","吉祥物：我心扎勒姆","text.ini",22,12,5296828
-927,"Mascot: Swooned Feena","吉祥物：Swooned Feena","text.ini",22,12,5296924
-928,"Mascot: Elder Cornell","吉祥物：康奈尔长老","text.ini",22,12,5298056
-929,"Shrine, Mesa's Sector","梅萨区（Mesa's Sector）","text.ini",22,12,5310784
-930,"Shrine, Fact's Sector","Shrine，Fact's Sector","text.ini",22,12,5310828
-931,"Gaytkeepah Numba Nine","Gaytkeepah Numba九","text.ini",22,12,5315236
-932,"Oh-the-pain-of-it-all","哦，这一切的痛苦","text.ini",22,12,5317096
-933,"Mt. Precious Mud-made","山珍贵的泥制","text.ini",22,12,5317784
-934,"Mascot: Tasty Rodentia","吉祥物：美味啮齿动物","text.ini",23,12,5296900
-935,"Mascot: Priestess Reah","吉祥物：祭司Reah","text.ini",23,12,5296972
-936,"Shrine, Hadal's Sector","哈达勒区神殿","text.ini",23,12,5310668
-937,"Shrine, Tovah's Sector","地点：Tovah's Sector","text.ini",23,12,5310736
-938,"Shrine, Gemma's Sector","杰玛区（Gemma's Sector）","text.ini",23,12,5310760
-939,"Shrine, Palace Grounds","神社，宫殿场地","text.ini",23,12,5311392
-940,"Dr. Gaytkeepah IV, DDS","Gaytkeepah IV博士，DDS","text.ini",23,12,5315108
-941,"Secret Goddess Admirer","神秘的女神崇拜者","text.ini",23,12,5317188
-942,"Mascot: Troubadour Reah","吉祥物：Troubadour Reah","text.ini",24,12,5296572
-943,"Mascot: Priestess Lilia","吉祥物：女祭司Lilia","text.ini",24,12,5296764
-944,"Mascot: Priestess Feena","吉祥物：女祭司Feena","text.ini",24,12,5296948
-945,"Shrine, Dabbie's Sector","地点：Dabbie's Sector","text.ini",24,12,5310712
-946,"Lair of the Black Pearl","黑珍珠号的巢穴","text.ini",24,12,5311436
-947,"The Hand That Feeds Them","喂养他们的手","text.ini",25,12,5197024
-948,"Mascot: Prosperity Charm","吉祥物：繁荣魅力","text.ini",25,12,5296488
-949,"Mascot: Imprisoned Maria","吉祥物：被囚禁的玛丽亚","text.ini",25,12,5296660
-950,"Mascot: Photogenic Lilia","吉祥物：上镜莉莉","text.ini",25,12,5296688
-951,"Mascot: Gussied-Up Lilia","吉祥物：Gussied-Up Lilia","text.ini",25,12,5296716
-952,"Mascot: China-Dress Reah","吉祥物：中国服饰","text.ini",25,12,5297024
-953,"Please choose game mode.","请选择游戏模式。","text.ini",25,12,5331348
-954,"Cancel System Data save?","是否取消系统数据保存？","text.ini",25,12,5333176
-955,"Mascot: Exploding Pumpkin","吉祥物：爆炸南瓜","text.ini",26,12,5296872
-956,"Mascot: China-Dress Feena","吉祥物：中国服饰费纳","text.ini",26,12,5296996
-957,"Mascot: Rado's Annex Reah","吉祥物：Rado's Annex Reah","text.ini",26,12,5297052
-958,"Revenge of Sworded Details","复仇的誓言细节","text.ini",27,12,5196948
-959,"Set Sail For New Adventure","启航新的冒险","text.ini",27,12,5197228
-960,"Mascot: Fortuneteller Sara","吉祥物：莎拉","text.ini",27,12,5296516
-961,"Mascot: Plainclothes Feena","吉祥物：便衣费纳","text.ini",27,12,5296596
-962,"Mascot: Hello Minea's Nurse","吉祥物：你好，Mumbai的护士","text.ini",28,12,5296544
-963,"And Your Children's Children","你孩子的孩子","text.ini",29,12,5197168
-964,"What the Legends Don't Tell You","传奇没有告诉你的事","text.ini",32,12,5196976
-965,"Please choose difficulty level.","请选择难度级别。","text.ini",32,12,5310296
-966,"#c3#Stop enemies in their tracks.","#c3#Stop enemies in their tracks.","text.ini",34,12,5331584
-967,"#c3#Teleport to any friendly location.","#c3 #传送到任何友方位置。","text.ini",39,12,5331544
-968,"#c3#Invoke the Goddesses to weaken Darm.","#c3 #c4 #c3 #","text.ini",41,12,5331876
-969,"#c3#Erect a force field for added protection.","#c3 #建立一个力场以增加保护。","text.ini",46,12,5331496
-970,"#c3#Light the darkness and reveal secret exits.","#c3#Light the darkness and reveal secret exits.照亮黑暗，揭示秘密出口。","text.ini",48,12,5331408
-971,"#c3#Recover HP in dungeons when standing still.","#c3 #在副本中站立不动时恢复生命值。","text.ini",48,12,5331720
-972,"Contains #c2#[%s]#c#, but\nAdol already has that.","包含#c2#[%s]#c#，但\n\n l已经有了。","text.ini",49,12,5293248
-973,"It's #c2#[%s]#c#, but Adol\ncan't carry any more.","它是#c2#[%s]#c#，但不能再多了。","text.ini",49,12,5299724
-974,"#c3#Add \Multi-Homing\ ability to the Fire magic.","#c3 #在火焰魔法中加入“多重归巢”能力。","text.ini",50,12,5331620
+77,SAVE,存档,text.ini,5,12,5330384
+78,LOAD,加载,text.ini,5,12,5330392
+79,QUIT,退出,text.ini,5,12,5330428
+80,ITEM,物品,text.ini,5,12,5332172
+81,NOTE,日记,text.ini,5,12,5332180
+120,Sound,声音,text.ini,6,12,5309300
+121,Files,存档,text.ini,6,12,5309312
+122,Title,标题,text.ini,6,12,5311480
+123,Diary,日记,text.ini,6,12,5311496
+155,Debug,调试,text.ini,6,12,5330252
+156,Start,开始,text.ini,6,12,5330312
+157,ERASE,删除,text.ini,6,12,5330480
+158,TITLE,标题,text.ini,6,12,5330488
+159,MAGIC,魔法,text.ini,6,12,5331456
+160,EQUIP,装备,text.ini,6,12,5331920
+161,FILES,档案,text.ini,6,12,5332188
+244,Cancel,取消,text.ini,7,12,5330320
+245,Custom,自定义,text.ini,7,12,5330376
+246,OPTION,设置,text.ini,7,12,5332208
+353,Settings,设置,text.ini,9,12,5309256
+354,Movement,移动,text.ini,9,12,5309320
+406,Complete,完成,text.ini,9,12,5330120
+407,Standard,标准,text.ini,9,12,5330140
+408,Bilinear,双线性,text.ini,9,12,5330152
+409,BGM Type,BGM类型,text.ini,9,12,5330240
+410,NEW GAME,新游戏,text.ini,9,12,5332216
+464,Quit Game,退出游戏,text.ini,10,12,5329984
+338,Iron Ore,铁 矿 石,text.ini,9,12,5301172
+715,Blizzard Bulb,冰之结晶,text.ini,14,12,5301212
+716,Floodgate Key,闸门钥匙,text.ini,14,12,5301248
+863,Whisper Earrings,细语耳饰,text.ini,17,12,5301228
+864,Silver Harmonica,银口琴,text.ini,17,12,5301328
+717,Dreaming Idol,梦见之石像,text.ini,14,12,5301424
+920,Anti-Illusion Mirror,破幻之镜,text.ini,21,12,5301348
+414,Evil Bell,恶魔之铃,text.ini,10,12,5301316
+415,Roda Leaf,萝妲之叶,text.ini,10,12,5301476
+84,Apple,苹果,text.ini,6,12,5301516
+467,Long Sword,长 剑,text.ini,11,12,5300676
+468,Chain Mail,锁 子 甲,text.ini,11,12,5300812
+469,Plate Mail,金属板甲,text.ini,11,12,5300840
+611,Battle Sword,战斗之剑,text.ini,13,12,5300688
+712,Battle Shield,战斗之盾,text.ini,14,12,5300784
+617,Battle Armor,战斗铠甲,text.ini,13,12,5300868
+413,Hawk Idol,鹰之雕塑,text.ini,10,12,5301012
+522,Iron Shield,铁盾,text.ini,12,12,5300800
+613,Cleria Sword,克莱里亚之剑,text.ini,13,12,5300736
+618,Cleria Armor,克莱里亚铠甲,text.ini,13,12,5300904
+475,Roda Fruit,萝妲之果,text.ini,11,12,5301548
+521,Short Sword,短 剑,text.ini,12,12,5300656
+122,Title,标题,text.ini,6,12,5311480
+166,Talwar,塔瓦弯刀,text.ini,7,12,5300668
+167,Reflex,反 射 甲,text.ini,7,12,5300884
+168,Elixir,生命之药,text.ini,7,12,5301508
+612,Hyper Cutter,极 刃 剑,text.ini,13,12,5300704
+614,Large Shield,大 盾,text.ini,13,12,5300752
+615,Small Shield,小 盾,text.ini,13,12,5300768
+616,Breast Plate,胸 甲,text.ini,13,12,5300852
+627,Marle Flower,玛尔之花,text.ini,13,12,5301532
+197,NORMAL,普通,text.ini,7,12,5311724
+484,Guardhouse,监视员值班室,text.ini,11,12,5311332
+635,Gila's House,吉拉  家,text.ini,13,12,5310912
+711,Wooden Shield,木 盾,text.ini,14,12,5300720
+722,Lance Village,兰斯村,text.ini,14,12,5310884
+730,Ramia Village,拉米亚村,text.ini,14,12,5311240
+791,Colony of Lava,熔岩之村,text.ini,15,12,5311192
+788,Guido's Armory,基德的武器店,text.ini,15,12,5309372
+789,Rasteenie Mine,拉斯提尼废坑,text.ini,15,12,5310520
+831,Jade's Oddities,杰多的道具店,text.ini,16,12,5309356
+908,Zalem's Battle Best,莎蕾姆的武器店,text.ini,20,12,5309436
+789,Rasteenie Mine,拉斯提尼废坑,text.ini,15,12,5310520
+792,Deserted House,废弃的房子,text.ini,15,12,5311316
+921,Rall Family Wellness,拉尔的诊所,text.ini,21,12,5309404
+720,Lilia's House,莉莉娅的家,text.ini,14,12,5309332
+721,Hadat's House,哈达特的家,text.ini,14,12,5309388
+723,Bohtz's House,柏兹的家,text.ini,14,12,5310948
+724,Lazlo's House,鲁多尔的家,text.ini,14,12,5310964
+725,Astal's House,阿斯塔尔的家,text.ini,14,12,5310980
+726,Brody's House,布罗迪的家,text.ini,14,12,5310996
+538,Rex's House,雷克斯的家,text.ini,12,12,5311256
+727,Tomb of Tovah,托瓦神殿,text.ini,14,12,5311080
+728,Tomb of Hadal,哈达尔神殿,text.ini,14,12,5311096
+729,Tomb of Gemma,杰玛神殿,text.ini,14,12,5311160
+637,Tomb of Mesa,梅萨神殿,text.ini,13,12,5311112
+790,Tomb of Dabbie,达比神殿,text.ini,15,12,5311128
+638,Tomb of Fact,法克特神殿,text.ini,13,12,5311144
+642,Ancient Well,古井,text.ini,13,12,5311268
+643,Regg's House,雷古的家,text.ini,13,12,5311284
+730,Ramia Village,拉米亚村,text.ini,14,12,5311240
+731,Maria's House,玛丽亚的家,text.ini,14,12,5311300
+732,Blitz's House,布利兹的家,text.ini,14,12,5311344
+733,Gorto's House,高特的家,text.ini,14,12,5311376
+639,Tarf's House,塔尔夫的家,text.ini,13,12,5311176
+640,Noit's House,诺伊特的家,text.ini,13,12,5311208
+641,Fred's House,弗雷德的家,text.ini,13,12,5311224
+470,Fire Magic,火焰魔法,text.ini,11,12,5300892
+471,Time Magic,时间魔法,text.ini,11,12,5300960
+472,Shrine Key,神殿钥匙,text.ini,11,12,5301200
+473,Lila Shell,里拉的贝壳,text.ini,11,12,5301272
+474,Sacred Cup,圣杯,text.ini,11,12,5301392
+475,Roda Fruit,萝妲之果,text.ini,11,12,5301548
+1,Wing,回归之翼,text.ini,5,12,5301500
+2,Herb,药草,text.ini,5,12,5301524
+514,Frame Type,帧类型,text.ini,11,12,5330044
+515,Chronicles,编年史,text.ini,11,12,5330176
+516,No Display,不显示,text.ini,11,12,5330196
+517,360 Degree,360度,text.ini,11,12,5330416
+518,Reposition,重新定位,text.ini,11,12,5330656
+528,Volume Mesa,梅萨之章,text.ini,12,12,5301132
+529,Volume Fact,法克特之章,text.ini,12,12,5301160
+622,Volume Hadal,哈达尔之章,text.ini,13,12,5301052
+624,Volume Tovah,托瓦之章,text.ini,13,12,5301100
+625,Volume Gemma,洁码之章,text.ini,13,12,5301116
+714,Volume Dabbie,达比之章,text.ini,14,12,5301084
+523,Light Magic,光明魔法,text.ini,12,12,5300936
+524,Alter Magic,幻化魔法,text.ini,12,12,5300948
+619,Return Magic,回归魔法,text.ini,13,12,5300920
+620,Shield Magic,盾之魔法,text.ini,13,12,5300984
+621,Ring of Ease,轻松之戒,text.ini,13,12,5301024
+623,Goddess Ring,女神戒指,text.ini,13,12,5301068
+626,Gold Pendant,金吊坠,text.ini,13,12,5301284
+784,Ancient Tablet,古碑,text.ini,15,12,5301144
+785,Silver Pendant,银吊坠,text.ini,15,12,5301300
+525,Spirit Cape,精灵羽衣,text.ini,12,12,5300972
+526,Falcon Idol,隼鹰雕像,text.ini,12,12,5301000
+527,Cleria Ring,克莱亚戒指,text.ini,12,12,5301040
+530,Black Pearl,黑珍珠,text.ini,12,12,5301404
+531,Stone Shoes,石鞋,text.ini,12,12,5301488
+532,Smoked Meat,烟熏肉,text.ini,12,12,5301600
+574,EXP Display,经验值显示,text.ini,12,12,5330032
+575,TIME ATTACK,竞速模式,text.ini,12,12,5332196
+713,Cleria Shield,克莱里亚盾,text.ini,14,12,5300824
+786,Banoa's Letter,芭诺娅的信,text.ini,15,12,5301460
+787,Celceta Flower,塞尔塞塔之花,text.ini,15,12,5301572
+828,Rod of Divinity,神界之杖,text.ini,16,12,5301184
+829,Bestiary Potion,动物寓言药水,text.ini,16,12,5301652
+832,Gila's Basement,吉拉的地下室,text.ini,16,12,5311012
+833,Moondoria Field,蒙多里亚原野,text.ini,16,12,5311064
+834,Shrine Entrance,神殿入口,text.ini,16,12,5311360
+880,Sanctuary of Toal,托尔圣域,text.ini,18,12,5310536
+881,"Shrine, Underpass",神殿，下水道,text.ini,18,12,5310628
+0,Pass,通行证,text.ini,5,12,5301264
+882,Campanile of Lane,纪念钟楼,text.ini,18,12,5310648
+883,"Shrine, West Wing",神殿西侧,text.ini,18,12,5310808
+884,"Shrine, East Wing",神殿东侧,text.ini,18,12,5310864
+885,Elder's Residence,卡尼尔长老的家,text.ini,18,12,5310928
+886,Runaways' Hideout,逃脱者们的藏身处,text.ini,18,12,5311416
+929,"Shrine, Mesa's Sector",神殿，梅萨区,text.ini,22,12,5310784
+930,"Shrine, Fact's Sector",神殿，法克特区,text.ini,22,12,5310828
+936,"Shrine, Hadal's Sector",神殿，哈达尔区,text.ini,23,12,5310668
+937,"Shrine, Tovah's Sector",神殿，托瓦区,text.ini,23,12,5310736
+938,"Shrine, Gemma's Sector",神殿，洁玛区,text.ini,23,12,5310760
+939,"Shrine, Palace Grounds",神社，宫殿空地,text.ini,23,12,5311392
+953,Please choose game mode.,请选择游戏模式。,text.ini,25,12,5331348
+954,Cancel System Data save?,是否取消保存？,text.ini,25,12,5333176
+965,Please choose difficulty level.,请选择难度,text.ini,32,12,5310296
+887,Goddesses' Palace,女神宫殿,text.ini,18,12,5311460
+898,Scroll of Guidance,引导卷轴,text.ini,19,12,5301372
+899,Subterranean Canal,地下水路,text.ini,19,12,5310596
+900,Core of Ancient Ys,古代伊苏核心,text.ini,19,12,5310692
+901,Ruins of Moondoria,蒙多里亚废墟,text.ini,19,12,5311044
+519,Mascot: Roo,吉祥物：璐,text.ini,12,12,5298448
+520,Mascot: Rex,吉祥物：雷克斯,text.ini,12,12,5298748
+576,Mascot: Nash,吉祥物：纳修,text.ini,13,12,5295496
+577,Mascot: Muto,吉祥物：穆特,text.ini,13,12,5295512
+578,Mascot: Faye,吉祥物：菲伊,text.ini,13,12,5295528
+579,Mascot: Gene,吉祥物：基尼,text.ini,13,12,5295932
+580,Mascot: Dogi,吉祥物：多奇,text.ini,13,12,5296624
+91,Feena,菲娜,text2.ini,6,12,5305712
+92,Goban,古邦,text2.ini,6,12,5305724
+93,Banoa,芭诺娅,text2.ini,6,12,5305868
+94,Lilia,莉莉娅,text2.ini,6,12,5305876
+95,Astal,阿斯塔尔,text2.ini,6,12,5305896
+96,Guido,基德,text2.ini,6,12,5305964
+97,Leggs,莱格斯,text2.ini,6,12,5305972
+98,Lazlo,鲁多尔,text2.ini,6,12,5305996
+99,Bohtz,柏兹,text2.ini,6,12,5306028
+100,Ceres,赛拉丝,text2.ini,6,12,5306036
+101,Brody,布罗迪,text2.ini,6,12,5306060
+102,Oseam,欧萨姆,text2.ini,6,12,5306088
+103,Favre,法布尔,text2.ini,6,12,5306256
+104,Meryl,梅丽尔,text2.ini,6,12,5306272
+105,Kasim,卡西姆,text2.ini,6,12,5306280
+106,Ischt,伊斯特,text2.ini,6,12,5306288
+107,Darie,妲莉叶,text2.ini,6,12,5306296
+108,Keith,基斯,text2.ini,6,12,5306384
+109,Lloyd,洛伊德,text2.ini,6,12,5306400
+110,Gorto,高特,text2.ini,6,12,5306408
+111,Hadat,哈达特,text2.ini,6,12,5306424
+112,Karen,卡莲,text2.ini,6,12,5306432
+113,Maria,玛莉娅,text2.ini,6,12,5306440
+114,Zalem,莎蕾姆,text2.ini,6,12,5306448
+115,Frith,弗利斯,text2.ini,6,12,5306464
+116,Blitz,布利兹,text2.ini,6,12,5306488
+117,Tanya,塔妮亚,text2.ini,6,12,5306504
+118,Reise,蕾洁,text2.ini,6,12,5306528
+119,Boris,波利斯,text2.ini,6,12,5306564
+182,Dalles,达雷斯,text2.ini,7,12,5302212
+183,Larsen,拉尔森,text2.ini,7,12,5306004
+184,Sheila,希拉,text2.ini,7,12,5306020
+185,Marina,玛莉娜,text2.ini,7,12,5306052
+186,Carson,卡森,text2.ini,7,12,5306264
+187,Flonne,芙洛妮,text2.ini,7,12,5306304
+188,Roodle,贝璐,text2.ini,7,12,5306312
+189,Brooce,布璐斯,text2.ini,7,12,5306340
+190,Prooto,普璐托,text2.ini,7,12,5306348
+191,Rooroo,璐璐,text2.ini,7,12,5306368
+192,Droozy,尼璐,text2.ini,7,12,5306392
+193,Paulie,波莉,text2.ini,7,12,5306480
+194,Rimera,莉姆尔,text2.ini,7,12,5306552
+269,Natasha,娜塔莎,text2.ini,8,12,5305932
+270,Lucille,露希尔,text2.ini,8,12,5306104
+271,Saffron,莎芙兰,text2.ini,8,12,5306172
+272,Natalie,娜塔莉,text2.ini,8,12,5306204
+273,Chelnie,切尔妮,text2.ini,8,12,5306236
+274,Roo-kie,璐克,text2.ini,8,12,5306376
+350,Caesaria,希莎莉亚,text2.ini,9,12,5306068
+351,Tallyroo,塔利璐,text2.ini,9,12,5306328
+352,Touroose,托璐,text2.ini,9,12,5306356
+480,Luta Gemma,卢达·洁玛,text2.ini,11,12,5305752
+481,Flair Rall,夫雷亚·拉尔,text2.ini,11,12,5305920
+482,Masontorch,梅森特露琪,text2.ini,11,12,5306128
+535,Leonor Rall,雷诺亚·拉尔,text2.ini,12,12,5305884
+633,Nurse Sarina,萨琳娜护士,text2.ini,13,12,5305904
+719,Elder Cornell,卡尼尔长老,text2.ini,14,12,5305940
+630,Priest Tovah,神官托瓦,text2.ini,13,12,5305796
+631,Priest Hadal,神官哈达尔,text2.ini,13,12,5305824
+632,Priest Gemma,神官杰玛,text2.ini,13,12,5305852
+718,Priest Dabbie,神官达比,text2.ini,14,12,5305780
+821,Priestess Lilia,女神莉莉娅,text2.ini,16,12,5297648
+822,Priestess Feena,女神菲娜,text2.ini,16,12,5297768
+533,Priest Mesa,神官梅萨,text2.ini,12,12,5305812
+534,Priest Fact,神官法克特,text2.ini,12,12,5305840
