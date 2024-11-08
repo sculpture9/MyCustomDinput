@@ -94,20 +94,20 @@ BOOL StringSplit(const string &str, const string &splitStr, vector<string> &resu
     }
 }
 
-BOOL GetYS1TextVO(const vector<vector<string>> &csvData, vector<YS1TextValueObject> &result)
+BOOL GetYS1TextVO(const vector<vector<string>> &csvData, vector<YS1TextVO> &result)
 {
     if (csvData.size() == 0) return FALSE;
 
-    YS1TextValueObject ysTVO;
+    YS1TextVO ysTVO;
     for (int i = 0; i < csvData.size(); i++)
     {
         vector<string> tempLine = csvData[i];
         //We stipulate that CSV has 7 columns
-        if (tempLine.size() != YS_CSV_COL_NUM)
+        if (tempLine.size() <  YS_CSV_COL_NUM)
         {
             return FALSE;
         }
-        //id, origintxt, translatedTxt, tsize, charsize, address
+        //id, origintxt, translatedTxt, tsize, charsize, address, addressUsedByCaller
         //id belong to type: int
         ysTVO.ID = atoi(tempLine[0].c_str());
         //origintext belong to type: string
@@ -121,7 +121,12 @@ BOOL GetYS1TextVO(const vector<vector<string>> &csvData, vector<YS1TextValueObje
         //charsize belong to int
         ysTVO.CharSize = atoi(tempLine[5].c_str());
         //we have already converted the address to decimal
-        ysTVO.AddressInYS1 = atoi(tempLine[6].c_str());
+        ysTVO.Address = atoi(tempLine[6].c_str());
+
+        if (tempLine.size() == YS_CSV_COL_NUM_WITH_EXPANDADDRESS)
+        {
+            ysTVO.AddressUsedByCaller = atoi(tempLine[7].c_str());
+        }
         result[i] = ysTVO;
     }
     return FALSE;
@@ -150,52 +155,35 @@ bool Unicode2Custom(const wstring &strUnicode, string &strTgt, unsigned int code
     return true;
 }
 
-vector<BYTE> GetCustomBytesFromText(const LPCSTR &test, string fontStyle, DWORD charCount, long &noConvertedChar)
+vector<BYTE> GetCustomBytesFromText(const LPCSTR &text, string fontStyle, long &noConvertedChar)
 {
     wstring strUni;
     vector<BYTE> result;
-    int usedBytes = 0;
-    Utf82Unicode(test, strUni);
+    Utf82Unicode(text, strUni);
     int uniSize = wcslen(strUni.c_str());  //in unicode, the number of chinese word equal size
     long ncc = 0;
     EFontStyle fstyle;
     if (fontStyle == YS_FONT_SYTLE_PSP) { fstyle = EFSPSP; }
     else if (fontStyle == YS_FONT_SYTLE_DIA) { fstyle = EFSDIA; }
     else { fstyle = EFSDIA; }
+
     //add text bytes to vector
     for (int i = 0; i < uniSize; i++)
     {
         wchar_t wChar = strUni[i];
         long nccFlag = 0;
-        usedBytes += PushWCharToByteVector(wChar, fstyle, result, nccFlag);
+        PushWCharToBytes(wChar, fstyle, result, nccFlag);
         ncc += nccFlag;
     }
     noConvertedChar = ncc;
-    int overSizeOffset = charCount - usedBytes;
-    //if the translated text size out of original game text size
-    if (overSizeOffset < 0)
-    {
-        cout << "Oversize " << -overSizeOffset << " char.";
-        result.clear();
-        return result;
-    }
-    //fill in zeros to ensure that the bytes is the same as the original game text
-    if (overSizeOffset > 0)
-    {
-        BYTE zero = Int2Bytes(Char2Code("\0", 1), 1)[0];
-        for (int i = 0; i < overSizeOffset; i++)
-        {
-            result.push_back(zero);
-        }
-    }
     return result;
 }
 
-int PushWCharToByteVector(wchar_t wchar, int fontStyle, vector<BYTE> &store, long &noConvertedChar)
+int PushWCharToBytes(wchar_t wchar, int fontStyle, vector<BYTE> &store, long &noConvertedChar)
 {
     const wstring wcstr = {wchar};
     string charStr;
-    int charStrSize;
+    int charSize;
     int charCode = (int)wchar;
     long pushByteCounter;
     long ncc = 0;
@@ -204,9 +192,9 @@ int PushWCharToByteVector(wchar_t wchar, int fontStyle, vector<BYTE> &store, lon
     {
         //unicode == utf32
         //if utf32 code is the key of INI file
-        charCode = GetChar32WithStyle(charCode, fontStyle, charStrSize);
+        charCode = GetChar32WithStyle(charCode, fontStyle, charSize);
         //or not
-        if (charStrSize == -1)
+        if (charSize == -1)
         {
             //Show error log
             string fontStyleTxt = (EFontStyle)fontStyle == EFSPSP ? YS_FONT_SYTLE_PSP : YS_FONT_SYTLE_DIA;
@@ -217,20 +205,20 @@ int PushWCharToByteVector(wchar_t wchar, int fontStyle, vector<BYTE> &store, lon
             //use utf8 code
             charStr = "";
             Unicode2Custom(wcstr, charStr, YS_UTF8);
-            charStrSize = charStr.length();
-            charCode = Char2Code(charStr, charStrSize);
+            charSize = charStr.length();
+            charCode = Char2Code(charStr);
             ncc++;
         }
     }
-    else { charStrSize = 1; }
+    else { charSize = 1; }
 
-    vector<BYTE> c32Bytes = Int2Bytes(charCode, charStrSize);
+    vector<BYTE> c32Bytes = Int2Bytes(charCode, charSize);
     for (auto b : c32Bytes)
     {
         store.push_back(b);
     }
     noConvertedChar = ncc;
-    return charStrSize;
+    return charSize;
 }
 
 int GetChar32WithStyle(int charCode, int fontStyle, int &changedSize)
@@ -267,7 +255,7 @@ int GetChar32WithStyle(int charCode, int fontStyle, int &changedSize)
     return result;
 }
 
-long Char2Code(const string &charStr, int charSize)
+long Char2Code(const string &charStr)
 {
     string hexStr;
     const unsigned char *pstr32 = (unsigned char *)charStr.c_str();  //utf8/utf32 code is unsigned type

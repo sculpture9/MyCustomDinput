@@ -9,7 +9,7 @@
 #include <map>
 #include <cwchar>
 
-typedef struct YS1TextValueObject
+typedef struct YS1TextVO
 {
     long ID;
     std::string OriginTxt;
@@ -17,7 +17,8 @@ typedef struct YS1TextValueObject
     std::string FontStyle;
     long TSize;
     long CharSize;
-    long AddressInYS1;
+    long Address;
+    long AddressUsedByCaller;
 };
 
 enum EFontStyle
@@ -30,9 +31,9 @@ void InitINIFileData();
 
 BOOL NewMapFromINI(std::map<DWORD, DWORD> &fs_map, const LPCSTR &iniPath, long &duplicateKeys, int mapId = 0);
 
-BOOL GetYS1TextVO(const std::vector<std::vector<std::string>> &csvData, std::vector<YS1TextValueObject> &result);
+BOOL GetYS1TextVO(const std::vector<std::vector<std::string>> &csvData, std::vector<YS1TextVO> &result);
 
-std::vector<BYTE> GetCustomBytesFromText(const LPCSTR &test, std::string fontStyle, DWORD charCount, long &noConvertedChar);
+std::vector<BYTE> GetCustomBytesFromText(const LPCSTR &text, std::string fontStyle, long &noConvertedChar);
 
 BOOL MapInsert(std::map<DWORD, DWORD> &m_map, DWORD key, DWORD kvalue);
 
@@ -49,8 +50,8 @@ bool Unicode2Custom(const std::wstring &strUnicode, std::string &strTgt, unsigne
 
 std::vector<BYTE> Int2Bytes(int code, int byteSize);
 
-long Char2Code(const std::string &charStr, int charSize);
+long Char2Code(const std::string &charStr);
 
-int PushWCharToByteVector(wchar_t wchar, int fontStyle, std::vector<BYTE> &store, long &noConvertedChar);
+int PushWCharToBytes(wchar_t wchar, int fontStyle, std::vector<BYTE> &store, long &noConvertedChar);
 
 int GetChar32WithStyle(int charCode, int fontStyle, int &changedSize);

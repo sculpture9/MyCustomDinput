@@ -2,7 +2,6 @@
 
 #include "framework.h"
 #include "Unknwn.h"
-#include "trainer.h"
 
 #ifdef  DINPUT8_EXPORTS
 #define DINPUT8_EXPORT __declspec(dllexport)
@@ -28,3 +27,7 @@ EXTERN_C DINPUT8_EXPORT HRESULT WINAPI DirectInput8Create(HINSTANCE exe_handle, 
 
 /// <summary> Initialize original dinput8 to ensure normal operation</summary>/// <returns></returns>
 VOID InitOriginalDinput8();
+
+void InstallTranslation();
+
+void UninstallTranslation();

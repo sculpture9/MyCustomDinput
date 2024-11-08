@@ -54,6 +54,8 @@ constexpr auto YS_FONT_SYTLE_DIA = "text2.ini";
 
 constexpr auto YS_CSV_COL_NUM = 7;
 
+constexpr auto YS_CSV_COL_NUM_WITH_EXPANDADDRESS = 8;
+
 constexpr auto ASCIIKeyBegin = 0;
 
 constexpr auto ASCIIKeyEnd = 127;

@@ -5,6 +5,8 @@ using namespace std;
 
 HANDLE m_exeProc;
 PVOID m_baseAddress;
+extern BYTE *m_expandedBytes;
+extern size_t expandedBytesSize;
 
 void InitTrainer()
 {
@@ -71,10 +73,10 @@ BOOL Translate()
     vector<vector<string>> csvData;
     bool csvResult;
     long lineFlag;
-    csvResult = ReadDataFromCSV(YS1_EXE_CSV_PATH, csvData, lineFlag);
+    csvResult = ReadDataFromCSV(csvData, YS1_EXE_CSV_PATH, lineFlag);
     if (csvData.size() == 0)
     {
-        csvResult = ReadDataFromCSV(YS2_EXE_CSV_PATH, csvData, lineFlag);
+        csvResult = ReadDataFromCSV(csvData, YS2_EXE_CSV_PATH, lineFlag);
     }
     if (!csvResult)
     {
@@ -88,7 +90,7 @@ BOOL Translate()
         }
         return FALSE;
     }
-    vector<YS1TextValueObject> ys1list(csvData.size());
+    vector<YS1TextVO> ys1list(csvData.size());
     GetYS1TextVO(csvData, ys1list);
     long failedChar;
     DWORD failedLine = TranslateAllText(ys1list, failedChar);
@@ -102,43 +104,91 @@ BOOL Translate()
     return TRUE;
 }
 
-DWORD TranslateAllText(const vector<YS1TextValueObject> &list, long &noConvertedChar)
+DWORD TranslateAllText(const vector<YS1TextVO> &list, long &noConvertedChar)
 {
     int ys1tSize = list.size();
     if (ys1tSize == 0) return FALSE;
     DWORD noConvertdLine = 0;
     BOOL result = FALSE; 
     long ncc = 0;
-    YS1TextValueObject temp;
+    YS1TextVO temp;
+    vector<vector<BYTE>> bytes2Heap;
+    vector<YS1TextVO> vo2Heap;
     for (int i = 0; i < ys1tSize; i++)
     {
         temp = list[i];
-        if (temp.TranslatedTxt.size() != 0 &&temp.TranslatedTxt != " ")
+        if (temp.TranslatedTxt.size() == 0 || temp.TranslatedTxt == " ") { noConvertdLine++; continue; }
+
+        long nccFlag = 0;
+        vector<BYTE> tBytes = GetCustomBytesFromText(temp.TranslatedTxt.c_str(), temp.FontStyle, nccFlag);
+        ncc += nccFlag;
+        bool succeedFlag = WriteBytes2OriginalAddress(tBytes, temp);
+        if (!succeedFlag)
         {
-            long nccFlag = 0;
-            vector<BYTE> tByte = GetCustomBytesFromText(temp.TranslatedTxt.c_str(), temp.FontStyle, temp.TSize, nccFlag);
-            ncc += nccFlag;
-            if (tByte.size() != 0)
-            {
-                BYTE *bytes(tByte.data());
-                result = WriteBytes2Address(bytes, temp.TSize, (LPVOID)temp.AddressInYS1);
-                if (!result)
-                {
-                    cout << "line: " << i << ", in .CSV file who write to exe failed!!!" << endl;
-                    noConvertdLine++;
-                }
-            }
-            else
-            {
-                cout << "In line: " << i << ", in .CSV file who oversize  !!!" << endl;
-                noConvertdLine++;
-            }
-            
+            bytes2Heap.push_back(tBytes);
+            vo2Heap.push_back(temp);
         }
-        else { noConvertdLine++; }
+        else{ noConvertdLine++; }
     }
+    WriteBytesList2ExpandedAddress(bytes2Heap, vo2Heap);
     noConvertedChar = ncc;
     return noConvertdLine;
+}
+
+BOOL WriteBytes2OriginalAddress(std::vector<BYTE> bytes, const YS1TextVO &vo)
+{
+    int overSizeOffset = vo.TSize - bytes.size();
+    //fill in zeros to ensure that the bytes is the same as the original game text
+    if (overSizeOffset >= 0)
+    {
+        BYTE zero = Int2Bytes(Char2Code("\0"), 1)[0];
+        for (int i = 0; i < overSizeOffset; i++)
+        {
+            bytes.push_back(zero);
+        }
+        bool result = WriteBytes2Address(bytes.data(), vo.TSize, (LPVOID)vo.Address);
+        return result;
+    }
+    //Oversize
+    return false;
+}
+
+BOOL WriteBytesList2ExpandedAddress(std::vector<std::vector<BYTE>> bytesList, const vector<YS1TextVO> &vos)
+{
+    //if the translated text size out of original game text size
+    //we need use expanded space to save data
+    size_t bytesListSize = bytesList.size();
+    size_t vosSize = vos.size();
+    size_t needSize = 0;
+    if (bytesListSize != vosSize || bytesListSize == 0) { return false; }
+    for (int i = 0; i < bytesListSize; i++)
+    {
+        needSize += bytesList[i].size();
+        //Leave a spot for '\0', we need add '\0' at the end of line.
+        needSize += 1;  
+    }
+    bool mallocFlag = Malloc4BytesHeap(needSize);
+    if (!mallocFlag) { return false; }
+
+    size_t bytesSize, lineBegin = 0, zeroCounter = 0;
+    for (int i = 0; i < bytesListSize; i++)
+    {
+        auto bytes = bytesList[i];
+        bytesSize = bytes.size();
+        size_t cur = lineBegin;
+        for (int j = 0; j < bytesSize; j++)
+        {
+            Write2BytesHeap(bytes[j], cur);
+            cur++;
+        }
+        //add '\0' at the end of line.
+        Write2BytesHeap(Int2Bytes(Char2Code("\0"), 1)[0], cur);
+        zeroCounter++;
+        //write address of line in heap to game
+        WriteBytes2Address(BytesHeapPointer(lineBegin), bytesSize + 1, (LPVOID)vos[i].AddressUsedByCaller);
+        lineBegin += bytesSize + 1;
+    }
+    return 0;
 }
 
 BOOL WriteBytes2Address(BYTE *textBytes, DWORD tSize, LPVOID tgtAddress)
@@ -167,4 +217,43 @@ BOOL AllocCustomConsole()
 BOOL FreeCustomConsole()
 {
     return FreeConsole();
+}
+
+bool Malloc4BytesHeap(size_t size)
+{
+    if (m_expandedBytes != NULL)
+    {
+        free(m_expandedBytes);
+        expandedBytesSize = 0;
+    }
+    m_expandedBytes = (BYTE *)malloc(size * sizeof(BYTE));
+    if (m_expandedBytes != NULL)
+    {
+        expandedBytesSize = size;
+        return true;
+    }
+    return false;
+}
+
+bool Write2BytesHeap(BYTE date, size_t pos)
+{
+    if (pos < expandedBytesSize) 
+    { 
+        *(m_expandedBytes + pos) = date; 
+        cout << "use pos : " << pos << endl;
+        return true;
+    }
+
+    cout << "Out of BytesHeap" << endl;
+    return false;
+}
+
+BYTE *BytesHeapPointer(size_t pos)
+{
+    return m_expandedBytes + pos;
+}
+
+void FreeBytesHeap()
+{
+    free(m_expandedBytes);
 }

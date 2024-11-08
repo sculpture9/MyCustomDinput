@@ -5,6 +5,6 @@
 #include <fstream>
 #include <vector>
 
-bool ReadDataFromCSV(const LPCSTR &csvPath, std::vector<std::vector<std::string>> &result, long &lineFlag);
+bool ReadDataFromCSV(std::vector<std::vector<std::string>> &result, const LPCSTR &csvPath, long &lineFlag, bool needEscape = true);
 
 bool CharVector2String(const std::vector<char> &chars, std::string &str);

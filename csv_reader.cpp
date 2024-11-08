@@ -1,7 +1,7 @@
 #include "csv_reader.h"
 using namespace std;
 
-bool ReadDataFromCSV(const LPCSTR &csvPath, vector<vector<string>> &result, long &lineFlag)
+bool ReadDataFromCSV(vector<vector<string>> &result, const LPCSTR &csvPath, long &lineFlag, bool needEscape)
 {
     ifstream reader;
     reader.open(csvPath);
@@ -89,7 +89,7 @@ bool ReadDataFromCSV(const LPCSTR &csvPath, vector<vector<string>> &result, long
                 switch (c)
                 {
                     case '"':
-                        wret.push_back(c);
+                        wret.push_back('\"');
                         break;
                     case 'n':
                         wret.push_back('\n');
@@ -109,7 +109,7 @@ bool ReadDataFromCSV(const LPCSTR &csvPath, vector<vector<string>> &result, long
                 inSentenceWithComma = false;
                 continue;
             }
-            if (c == '\\')
+            if (c == '\\' && needEscape)
             {
                 escapeFlag = true;
                 continue;

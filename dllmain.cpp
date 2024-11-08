@@ -1,10 +1,23 @@
 ﻿// dllmain.cpp : Defines the entry point for the DLL application.
 
 #include "dinput8.h"
+#include "trainer.h"
 #include "tool_gamedata.h"
 #include "conio.h"
 
 extern HANDLE m_exeProc;
+extern PVOID m_baseAddress;
+BYTE *m_expandedBytes;
+size_t expandedBytesSize;
+
+HRESULT WINAPI DirectInput8Create(HINSTANCE exe_handle, DWORD version, const IID &r_iid, LPVOID *ppvOut, LPUNKNOWN punkOuter)
+{
+	if (curDirectInput8Create)
+	{
+		return curDirectInput8Create(exe_handle, version, r_iid, ppvOut, punkOuter);
+	}
+	return S_OK;
+}
 
 VOID InitOriginalDinput8()
 {
@@ -24,16 +37,21 @@ VOID InitOriginalDinput8()
 	}
 }
 
-HRESULT WINAPI DirectInput8Create(HINSTANCE exe_handle, DWORD version, const IID &r_iid, LPVOID *ppvOut, LPUNKNOWN punkOuter)
+void InstallTranslation()
 {
-	if (curDirectInput8Create)
-	{
-		return curDirectInput8Create(exe_handle, version, r_iid, ppvOut, punkOuter);
-	}
-
-	return S_OK;
+	AllocCustomConsole();
+	std::cout << "Successfully Run Translation dinput8.dll. " << std::endl;
+	InitINIFileData();
+	Translate();
+	std::cout << "\nInput any key to start game." << std::endl;
+	_getch();
+	FreeCustomConsole();
 }
 
+void UninstallTranslation()
+{
+	FreeBytesHeap();
+}
 
 BOOL APIENTRY DllMain( HMODULE hModule,
                        DWORD  ul_reason_for_call,
@@ -43,18 +61,13 @@ BOOL APIENTRY DllMain( HMODULE hModule,
     switch (ul_reason_for_call)
     {
     case DLL_PROCESS_ATTACH:
-		AllocCustomConsole();
-        InitOriginalDinput8();
-		std::cout << "Successfully Run Translation dinput8.dll. " << std::endl;
-		InitINIFileData();
-		Translate();
-		std::cout << "\nInput any key to start game." << std::endl;
-		_getch();
-		FreeCustomConsole();
+		InitOriginalDinput8();
+		InstallTranslation();
 		break;
     case DLL_THREAD_ATTACH:
     case DLL_THREAD_DETACH:
     case DLL_PROCESS_DETACH:
+		UninstallTranslation();
         break;
     }
     return TRUE;
