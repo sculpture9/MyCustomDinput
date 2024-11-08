@@ -45,7 +45,7 @@ void InstallTranslation()
 	Translate();
 	std::cout << "\nInput any key to start game." << std::endl;
 	_getch();
-	FreeCustomConsole();
+	//FreeCustomConsole();
 }
 
 void UninstallTranslation()
@@ -58,6 +58,7 @@ BOOL APIENTRY DllMain( HMODULE hModule,
                        LPVOID lpReserved
                      )
 {
+	int s = 0;
     switch (ul_reason_for_call)
     {
     case DLL_PROCESS_ATTACH:
@@ -65,7 +66,9 @@ BOOL APIENTRY DllMain( HMODULE hModule,
 		InstallTranslation();
 		break;
     case DLL_THREAD_ATTACH:
+		break;
     case DLL_THREAD_DETACH:
+		break;
     case DLL_PROCESS_DETACH:
 		UninstallTranslation();
         break;

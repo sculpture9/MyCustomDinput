@@ -60,3 +60,5 @@ constexpr auto ASCIIKeyBegin = 0;
 
 constexpr auto ASCIIKeyEnd = 127;
 
+constexpr auto YS_EXPANDED_SPACE = 27508;
+

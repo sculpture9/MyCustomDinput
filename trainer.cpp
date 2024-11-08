@@ -141,7 +141,7 @@ BOOL WriteBytes2OriginalAddress(std::vector<BYTE> bytes, const YS1TextVO &vo)
     //fill in zeros to ensure that the bytes is the same as the original game text
     if (overSizeOffset >= 0)
     {
-        BYTE zero = Int2Bytes(Char2Code("\0"), 1)[0];
+        BYTE zero = Int2BytesBigEndian(Char2Code("\0"), 1)[0];
         for (int i = 0; i < overSizeOffset; i++)
         {
             bytes.push_back(zero);
@@ -182,13 +182,16 @@ BOOL WriteBytesList2ExpandedAddress(std::vector<std::vector<BYTE>> bytesList, co
             cur++;
         }
         //add '\0' at the end of line.
-        Write2BytesHeap(Int2Bytes(Char2Code("\0"), 1)[0], cur);
+        Write2BytesHeap(Int2BytesBigEndian(Char2Code("\0"), 1)[0], cur);
         zeroCounter++;
         //write address of line in heap to game
+        if (vos[i].AddressUsedByCaller == -1) return false;
+        BYTE *lbPointer = BytesHeapPointer(lineBegin);
+        vector<BYTE> lbPointerAddress = Int2BytesBigEndian((int)&lbPointer, 4);  //one pointer use 4 bytes.
         WriteBytes2Address(BytesHeapPointer(lineBegin), bytesSize + 1, (LPVOID)vos[i].AddressUsedByCaller);
         lineBegin += bytesSize + 1;
     }
-    return 0;
+    return true;
 }
 
 BOOL WriteBytes2Address(BYTE *textBytes, DWORD tSize, LPVOID tgtAddress)
@@ -229,6 +232,7 @@ bool Malloc4BytesHeap(size_t size)
     m_expandedBytes = (BYTE *)malloc(size * sizeof(BYTE));
     if (m_expandedBytes != NULL)
     {
+        memset(m_expandedBytes, 0, size);
         expandedBytesSize = size;
         return true;
     }
