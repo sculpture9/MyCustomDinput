@@ -48,7 +48,7 @@ bool Utf82Unicode(const std::string &str8, std::wstring &strUnicode);
 
 bool Unicode2Custom(const std::wstring &strUnicode, std::string &strTgt, unsigned int codePage);
 
-std::vector<BYTE> Int2BytesBigEndian(int code, int byteSize);
+std::vector<BYTE> Int2BytesSmallEndian(int code, int byteSize);
 
 long Char2Code(const std::string &charStr);
 

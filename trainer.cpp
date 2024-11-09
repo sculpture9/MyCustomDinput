@@ -114,6 +114,7 @@ DWORD TranslateAllText(const vector<YS1TextVO> &list, long &noConvertedChar)
     YS1TextVO temp;
     vector<vector<BYTE>> bytes2Heap;
     vector<YS1TextVO> vo2Heap;
+    bool succeedFlag;
     for (int i = 0; i < ys1tSize; i++)
     {
         temp = list[i];
@@ -122,74 +123,89 @@ DWORD TranslateAllText(const vector<YS1TextVO> &list, long &noConvertedChar)
         long nccFlag = 0;
         vector<BYTE> tBytes = GetCustomBytesFromText(temp.TranslatedTxt.c_str(), temp.FontStyle, nccFlag);
         ncc += nccFlag;
-        bool succeedFlag = WriteBytes2OriginalAddress(tBytes, temp);
-        if (!succeedFlag)
+        int sizeFlag = temp.TSize - tBytes.size();
+        if (sizeFlag >= 0){ succeedFlag = WriteBytes2GameByOriginal(tBytes, temp); }
+        //oversize, need expanded space
+        else 
         {
             bytes2Heap.push_back(tBytes);
             vo2Heap.push_back(temp);
         }
-        else{ noConvertdLine++; }
     }
-    WriteBytesList2ExpandedAddress(bytes2Heap, vo2Heap);
+    if (bytes2Heap.size() != 0)
+    {
+        WriteBytesCollection2GameByExpanded(bytes2Heap, vo2Heap, noConvertdLine);
+    }
     noConvertedChar = ncc;
     return noConvertdLine;
 }
 
-BOOL WriteBytes2OriginalAddress(std::vector<BYTE> bytes, const YS1TextVO &vo)
+BOOL WriteBytes2GameByOriginal(std::vector<BYTE> bytes, const YS1TextVO &vo)
 {
     int overSizeOffset = vo.TSize - bytes.size();
     //fill in zeros to ensure that the bytes is the same as the original game text
     if (overSizeOffset >= 0)
     {
-        BYTE zero = Int2BytesBigEndian(Char2Code("\0"), 1)[0];
         for (int i = 0; i < overSizeOffset; i++)
         {
-            bytes.push_back(zero);
+            bytes.push_back(0);
         }
         bool result = WriteBytes2Address(bytes.data(), vo.TSize, (LPVOID)vo.Address);
         return result;
     }
-    //Oversize
     return false;
 }
 
-BOOL WriteBytesList2ExpandedAddress(std::vector<std::vector<BYTE>> bytesList, const vector<YS1TextVO> &vos)
+BOOL WriteBytesCollection2GameByExpanded(std::vector<std::vector<BYTE>> bytesCollection, const vector<YS1TextVO> &vos, DWORD &noConvertedLine)
 {
     //if the translated text size out of original game text size
     //we need use expanded space to save data
-    size_t bytesListSize = bytesList.size();
-    size_t vosSize = vos.size();
-    size_t needSize = 0;
-    if (bytesListSize != vosSize || bytesListSize == 0) { return false; }
-    for (int i = 0; i < bytesListSize; i++)
-    {
-        needSize += bytesList[i].size();
-        //Leave a spot for '\0', we need add '\0' at the end of line.
-        needSize += 1;  
-    }
-    bool mallocFlag = Malloc4BytesHeap(needSize);
-    if (!mallocFlag) { return false; }
+    size_t bytesCollectionSize = bytesCollection.size();
+    if (bytesCollectionSize != vos.size() || bytesCollectionSize == 0) { return FALSE; }
 
-    size_t bytesSize, lineBegin = 0, zeroCounter = 0;
-    for (int i = 0; i < bytesListSize; i++)
+    //malloc a heap
+    size_t memoryBytes = SizeOfBytesCollection(bytesCollection);
+    bool mallocFlag = Malloc4BytesHeap(memoryBytes);
+    if (!mallocFlag) { return FALSE; }
+
+    //save dato to expanded space
+    //and write the address of expanded space to game 
+    size_t bytesSize, cur;
+    size_t lineBegin = 0, zeroCounter = 0;
+    vector<BYTE> lineAddress = {};
+    int expandedAddress;
+    for (int i = 0; i < bytesCollectionSize; i++)
     {
-        auto bytes = bytesList[i];
+        if (vos[i].AddressUsedByCaller == -1) 
+        {
+            cout << "Missing Address Of Caller£¡ Line: " << vos[i].ID << " is oversize, but there is no address of caller to override." << endl;
+            noConvertedLine++;
+            continue;
+        }
+
+        auto bytes = bytesCollection[i];
         bytesSize = bytes.size();
-        size_t cur = lineBegin;
+        cur = lineBegin;
+        //add data of line to expanded space
         for (int j = 0; j < bytesSize; j++)
         {
-            Write2BytesHeap(bytes[j], cur);
+            Add2BytesHeap(bytes[j], cur);
             cur++;
         }
         //add '\0' at the end of line.
-        Write2BytesHeap(Int2BytesBigEndian(Char2Code("\0"), 1)[0], cur);
+        Add2BytesHeap(0, cur);
         zeroCounter++;
+
         //write address of line in heap to game
-        if (vos[i].AddressUsedByCaller == -1) return false;
-        BYTE *lbPointer = BytesHeapPointer(lineBegin);
-        vector<BYTE> lbPointerAddress = Int2BytesBigEndian((int)&lbPointer, 4);  //one pointer use 4 bytes.
-        WriteBytes2Address(BytesHeapPointer(lineBegin), bytesSize + 1, (LPVOID)vos[i].AddressUsedByCaller);
+        expandedAddress = AddressOfBytesHeap(lineBegin);
+        lineAddress = Int2BytesSmallEndian(expandedAddress, 4);  //one pointer use 4 bytes.
+        reverse(lineAddress.begin(), lineAddress.end());  //YS use small Endian
+        WriteBytes2Address(lineAddress.data(), 4, (LPVOID)vos[i].AddressUsedByCaller);
+        
+        //record line begin pos in BytesHeap
         lineBegin += bytesSize + 1;
+
+        lineAddress.clear();
     }
     return true;
 }
@@ -222,7 +238,21 @@ BOOL FreeCustomConsole()
     return FreeConsole();
 }
 
-bool Malloc4BytesHeap(size_t size)
+size_t SizeOfBytesCollection(std::vector<std::vector<BYTE>> bytesCollection)
+{
+    size_t bytesListSize = bytesCollection.size();
+    size_t needSize = 0;
+    //malloc a heap
+    for (int i = 0; i < bytesListSize; i++)
+    {
+        needSize += bytesCollection[i].size();
+        //Leave a spot for '\0', we need add '\0' at the end of line.
+        needSize += 1;
+    }
+    return needSize;
+}
+
+BOOL Malloc4BytesHeap(size_t size)
 {
     if (m_expandedBytes != NULL)
     {
@@ -239,25 +269,23 @@ bool Malloc4BytesHeap(size_t size)
     return false;
 }
 
-bool Write2BytesHeap(BYTE date, size_t pos)
+BOOL Add2BytesHeap(BYTE data, size_t pos)
 {
     if (pos < expandedBytesSize) 
     { 
-        *(m_expandedBytes + pos) = date; 
-        cout << "use pos : " << pos << endl;
+        *(m_expandedBytes + pos) = data; 
         return true;
     }
-
-    cout << "Out of BytesHeap" << endl;
     return false;
 }
 
-BYTE *BytesHeapPointer(size_t pos)
+int AddressOfBytesHeap(size_t pos)
 {
-    return m_expandedBytes + pos;
+    return (int)(m_expandedBytes + pos);
 }
 
 void FreeBytesHeap()
 {
     free(m_expandedBytes);
+    m_expandedBytes = NULL;
 }

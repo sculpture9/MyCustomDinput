@@ -212,7 +212,7 @@ int PushWCharToBytes(wchar_t wchar, int fontStyle, vector<BYTE> &store, long &no
     }
     else { charSize = 1; }
 
-    vector<BYTE> c32Bytes = Int2BytesBigEndian(charCode, charSize);
+    vector<BYTE> c32Bytes = Int2BytesSmallEndian(charCode, charSize);
     for (auto b : c32Bytes)
     {
         store.push_back(b);
@@ -273,12 +273,12 @@ long Char2Code(const string &charStr)
 }
 
 /// <summary>
-/// YS1 use Big Endian
+/// YS1 use Small Endian
 /// </summary>
 /// <param name="code"></param>
 /// <param name="byteSize"></param>
 /// <returns></returns>
-vector<BYTE> Int2BytesBigEndian(int code, int byteSize)
+vector<BYTE> Int2BytesSmallEndian(int code, int byteSize)
 {
     vector<BYTE> result;
     for (int i = 0; i < byteSize; i++)

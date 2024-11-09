@@ -45,7 +45,7 @@ void InstallTranslation()
 	Translate();
 	std::cout << "\nInput any key to start game." << std::endl;
 	_getch();
-	//FreeCustomConsole();
+	FreeCustomConsole();
 }
 
 void UninstallTranslation()
