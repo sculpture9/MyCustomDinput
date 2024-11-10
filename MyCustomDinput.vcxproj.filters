@@ -13,6 +13,9 @@
     <ClInclude Include="tool_gamedata.h">
       <Filter>Head Files</Filter>
     </ClInclude>
+    <ClInclude Include="tool_log.h">
+      <Filter>Head Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Head Files">
@@ -42,6 +45,9 @@
       <Filter>Head Files</Filter>
     </ClCompile>
     <ClCompile Include="csv_reader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tool_log.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

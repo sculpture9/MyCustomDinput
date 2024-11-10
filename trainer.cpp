@@ -1,5 +1,7 @@
 #include "trainer.h"
 #include "csv_reader.h"
+#include "tool_log.h"
+#include <fstream>
 
 using namespace std;
 
@@ -8,18 +10,27 @@ PVOID m_baseAddress;
 extern BYTE *m_expandedBytes;
 extern size_t expandedBytesSize;
 
-void InitTrainer()
+BOOL InitTrainer()
 {
     //HANDLE openProc = OpenProcess(PROCESS_VM_READ | PROCESS_VM_WRITE |
     //                             PROCESS_VM_OPERATION | PROCESS_CREATE_THREAD |
     //                             PROCESS_QUERY_INFORMATION, 
     //                             FALSE, GetCurrentProcessId());
     HANDLE openProc = GetCurrentProcess(); //increase performance, have PROCESS_ALL_ACCESS
-    if (openProc != NULL)
-    {
-        m_exeProc = openProc;
-        m_baseAddress = GetBaseAddressByHandle(openProc);
-    }
+    if (openProc == NULL) { MessageBoxA(NULL, "Current Process Is Null", NULL, 0); return FALSE; }
+    HMODULE hModules[100] = {0};
+    DWORD dwRet = 0;
+    BOOL bRet = EnumProcessModules(openProc, (HMODULE *)hModules, sizeof(hModules), &dwRet);
+    if (bRet == FALSE)  {  MessageBoxA(NULL, "Current Moudle Is Null", NULL, 0);  return FALSE;  }
+
+    wchar_t *procName = new wchar_t[100];
+    GetModuleBaseName(openProc, hModules[0], procName, sizeof(procName));
+    wstring procNameWSTR(procName);
+    if (!procNameWSTR._Equal(YS1_PROCESS_NAME) && !procNameWSTR._Equal(YS2_PROCESS_NAME)) { return FALSE; }
+    //only run when process is ys1 or ys2
+    m_exeProc = openProc;
+    m_baseAddress = GetBaseAddressByHandle(openProc);
+    return TRUE;
 }
 
 PVOID GetBaseAddressByHandle(HANDLE hprocess)
@@ -68,7 +79,6 @@ PVOID GetBaseAddressByPID(DWORD pid)
 
 BOOL Translate()
 {
-    InitTrainer();
     PVOID address = GetBaseAddressByHandle(m_exeProc);
     vector<vector<string>> csvData;
     bool csvResult;
@@ -82,11 +92,11 @@ BOOL Translate()
     {
         if (lineFlag == -1)
         {
-            cout << "\n!!! Need .CSV file!!!" << endl;
+            Log("\n!!! Need .CSV file!!!");
         }
         else
         {
-            cout << "line: " << lineFlag << ", in .CSV file who has wrong format !!!" << endl;
+            Log("line: " + to_string(lineFlag) + ", in .CSV file who has wrong format !!!");
         }
         return FALSE;
     }
@@ -97,8 +107,8 @@ BOOL Translate()
 
     if (failedChar > 0)
     {
-        cout << "\nTranslated Failed Line Number : " << failedLine << " pieces !" << endl;
-        cout << "Translated Failed Char Number : " << failedChar << " pieces !!!" << endl;
+        Log("\nTranslated Failed Line Number : " + to_string(failedLine) + " pieces !");
+        Log("Translated Failed Char Number : " + to_string(failedChar) + " pieces !!!");
         return FALSE;
     }
     return TRUE;
@@ -178,7 +188,7 @@ BOOL WriteBytesCollection2GameByExpanded(std::vector<std::vector<BYTE>> bytesCol
     {
         if (vos[i].AddressUsedByCaller == -1) 
         {
-            cout << "Missing Address Of Caller£¡ Line: " << vos[i].ID << " is oversize, but there is no address of caller to override." << endl;
+            Log("Missing Address Of Caller£¡ Line: " + to_string(vos[i].ID) + " is oversize, but there is no address of caller to override.");
             noConvertedLine++;
             continue;
         }
@@ -286,6 +296,9 @@ int AddressOfBytesHeap(size_t pos)
 
 void FreeBytesHeap()
 {
-    free(m_expandedBytes);
-    m_expandedBytes = NULL;
+    if (m_expandedBytes != NULL)
+    {
+        free(m_expandedBytes);
+        m_expandedBytes = NULL;
+    }
 }

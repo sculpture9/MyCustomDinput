@@ -2,6 +2,7 @@
 
 #include "dinput8.h"
 #include "trainer.h"
+#include "tool_log.h"
 #include "tool_gamedata.h"
 #include "conio.h"
 
@@ -39,13 +40,14 @@ VOID InitOriginalDinput8()
 
 void InstallTranslation()
 {
-	AllocCustomConsole();
-	std::cout << "Successfully Run Translation dinput8.dll. " << std::endl;
+	bool initFlag = InitTrainer();
+	if (!initFlag) { return; }
+	//AllocCustomConsole();
+	Log("Successfully Run Translation dinput8.dll.", true);
 	InitINIFileData();
 	Translate();
-	std::cout << "\nInput any key to start game." << std::endl;
 	_getch();
-	FreeCustomConsole();
+	//FreeCustomConsole();
 }
 
 void UninstallTranslation()

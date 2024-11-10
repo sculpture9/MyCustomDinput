@@ -46,6 +46,8 @@ constexpr auto YS1_FONT_INI = "EXETranslation\\text.ini";  //ah, twnkey you are 
 /// <summary> remember this text.ini must generate by FONT_DIA.SKI </summary>
 constexpr auto YS1_FONT_DIA_INI = "EXETranslation\\text2.ini";  //ah, twnkey you are my god, again!
 
+constexpr auto YS_TRANSLATION_LOG_TXT_PATH = "EXETranslation\\TranslatioinLog.txt";
+
 constexpr auto YS1_INI_SPLIT = " ";
 
 constexpr auto YS_FONT_SYTLE_PSP = "text.ini";
@@ -60,5 +62,7 @@ constexpr auto ASCIIKeyBegin = 0;
 
 constexpr auto ASCIIKeyEnd = 127;
 
-constexpr auto YS_EXPANDED_SPACE = 27508;
+constexpr auto YS1_PROCESS_NAME = L"ys1";
+
+constexpr auto YS2_PROCESS_NAME = L"ys2";
 

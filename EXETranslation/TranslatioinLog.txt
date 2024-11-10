@@ -1,0 +1,3 @@
+Successfully Run Translation dinput8.dll.
+
+Successfully Initialize Data of text.ini and text2.ini.

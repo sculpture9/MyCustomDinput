@@ -1,4 +1,5 @@
 #include "tool_gamedata.h"
+#include "tool_log.h"
 #include <algorithm>
 using namespace std;
 
@@ -12,10 +13,10 @@ void InitINIFileData()
     NewMapFromINI(font_dia_map, YS1_FONT_DIA_INI, duplicateKeys2, 2);
     if (duplicateKeys1 != 0 || duplicateKeys2 != 0)
     {
-        cout << "\ntext.ini have duplicate keys: " << to_string(duplicateKeys1) << " pieces !!!" << endl;
-        cout << "text2.ini have duplicate keys: " << to_string(duplicateKeys2) << " pieces !!!" << endl;
+        Log("\ntext.ini have duplicate keys: " + to_string(duplicateKeys1) + " pieces !!!");
+        Log("text2.ini have duplicate keys: " + to_string(duplicateKeys2) + " pieces !!!");
     }
-    std::cout << "\nSuccessfully Initialize Data of text.ini and text2.ini." << std::endl;
+    Log("\nSuccessfully Initialize Data of text.ini and text2.ini.");
 }
 
 BOOL NewMapFromINI(map<DWORD, DWORD> &fs_map, const LPCSTR &iniPath, long &duplicateKeys, int mapId)
@@ -23,7 +24,7 @@ BOOL NewMapFromINI(map<DWORD, DWORD> &fs_map, const LPCSTR &iniPath, long &dupli
     if (fs_map.size() != 0)
     {
         string iniF = mapId == 0 ? YS_FONT_SYTLE_PSP : YS_FONT_SYTLE_DIA;
-        cout << iniF << " Data Have Been Already Init !" << endl;
+        Log(iniF + " Data Have Been Already Init !");
         return FALSE;
     }
 
@@ -45,7 +46,7 @@ BOOL NewMapFromINI(map<DWORD, DWORD> &fs_map, const LPCSTR &iniPath, long &dupli
     while (std::getline(readFile, line))
     {
         result.clear();
-        //std::cout << line << std::endl;
+        //std::Log << line << std::endl;
         //there only two string in one line.
         if (StringSplit(line, YS1_INI_SPLIT, result))
         {
@@ -200,8 +201,8 @@ int PushWCharToBytes(wchar_t wchar, int fontStyle, vector<BYTE> &store, long &no
             string fontStyleTxt = (EFontStyle)fontStyle == EFSPSP ? YS_FONT_SYTLE_PSP : YS_FONT_SYTLE_DIA;
             string errorChar;
             Unicode2Custom(wcstr, errorChar, CP_ACP);
-            cout << "\nThe char: \"" << errorChar << "\", Unicode: \"" << charCode << "\" is not in " << fontStyleTxt;
-            cout << ". Program will use utf-8 code!!!" << endl;
+            Log("\nThe char: \"" + errorChar + "\", Unicode: \"" + to_string(charCode) + "\" is not in " + fontStyleTxt);
+            Log(". Program will use utf-8 code!!!");
             //use utf8 code
             charStr = "";
             Unicode2Custom(wcstr, charStr, YS_UTF8);

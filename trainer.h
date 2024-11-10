@@ -4,7 +4,7 @@
 #include <vector>
 #include <string>
 
-void InitTrainer();
+BOOL InitTrainer();
 
 BOOL Translate();
 
