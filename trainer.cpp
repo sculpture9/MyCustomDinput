@@ -183,6 +183,7 @@ BOOL WriteBytesCollection2GameByExpanded(std::vector<std::vector<BYTE>> bytesCol
     size_t bytesSize, cur;
     size_t lineBegin = 0, zeroCounter = 0;
     vector<BYTE> lineAddress = {};
+    bool writeFlag;
     int expandedAddress;
     for (int i = 0; i < bytesCollectionSize; i++)
     {
@@ -208,9 +209,12 @@ BOOL WriteBytesCollection2GameByExpanded(std::vector<std::vector<BYTE>> bytesCol
 
         //write address of line in heap to game
         expandedAddress = AddressOfBytesHeap(lineBegin);
-        lineAddress = Int2BytesSmallEndian(expandedAddress, 4);  //one pointer use 4 bytes.
-        reverse(lineAddress.begin(), lineAddress.end());  //YS use small Endian
-        WriteBytes2Address(lineAddress.data(), 4, (LPVOID)vos[i].AddressUsedByCaller);
+        lineAddress = Int2BytesBigEndian(expandedAddress, 4);  //one pointer use 4 bytes.
+        reverse(lineAddress.begin(), lineAddress.end());  //Windows use small Endian
+        writeFlag = WriteBytes2Address(lineAddress.data(), 4, (LPVOID)vos[i].AddressUsedByCaller);
+        
+        if (writeFlag) { Log("Wirte Expanded Succeed! Line: " + to_string(vos[i].ID) + ", AUB:" + to_string(vos[i].AddressUsedByCaller)) ; }
+        else { Log("Wirte Expanded Wrong! Line: " + to_string(vos[i].ID) + ", AUB:" + to_string(vos[i].AddressUsedByCaller)) ; }
         
         //record line begin pos in BytesHeap
         lineBegin += bytesSize + 1;
