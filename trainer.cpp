@@ -228,7 +228,12 @@ BOOL WriteBytes2Address(BYTE *textBytes, DWORD tSize, LPVOID tgtAddress)
 {
     DWORD oop, nop, hasWrite;
     BOOL isSucceed = VirtualProtect(tgtAddress, tSize, PAGE_EXECUTE_READWRITE, &oop);
-    if (!isSucceed) return FALSE;
+    if (!isSucceed) 
+    {
+        DWORD error = GetLastError();
+        Log("VirtualProtect ERROR: " + to_string(error));
+        return FALSE;
+    }
     
     isSucceed = WriteProcessMemory(m_exeProc, tgtAddress, textBytes, tSize, &hasWrite);
     if (!isSucceed) return FALSE;
