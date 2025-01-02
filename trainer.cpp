@@ -133,10 +133,9 @@ DWORD TranslateAllText(const vector<YS1TextVO> &list, long &noConvertedChar)
         long nccFlag = 0;
         vector<BYTE> tBytes = GetCustomBytesFromText(temp.TranslatedTxt.c_str(), temp.FontStyle, nccFlag);
         ncc += nccFlag;
-        int sizeFlag = temp.TSize - tBytes.size();
-        if (sizeFlag >= 0){ succeedFlag = WriteBytes2GameByOriginal(tBytes, temp); }
+        succeedFlag = WriteBytes2GameByOriginal(tBytes, temp);
         //oversize, need expanded space
-        else 
+        if (!succeedFlag)
         {
             bytes2Heap.push_back(tBytes);
             vo2Heap.push_back(temp);
@@ -154,7 +153,7 @@ BOOL WriteBytes2GameByOriginal(std::vector<BYTE> bytes, const YS1TextVO &vo)
 {
     int overSizeOffset = vo.TSize - bytes.size();
     //fill in zeros to ensure that the bytes is the same as the original game text
-    if (overSizeOffset >= 0)
+    if (overSizeOffset > 0) //leave one position for \0
     {
         for (int i = 0; i < overSizeOffset; i++)
         {
@@ -231,15 +230,26 @@ BOOL WriteBytes2Address(BYTE *textBytes, DWORD tSize, LPVOID tgtAddress)
     if (!isSucceed) 
     {
         DWORD error = GetLastError();
-        Log("VirtualProtect ERROR: " + to_string(error));
+        Log("\nVirtualProtect ERROR(unlock): " + to_string(error));
         return FALSE;
     }
     
     isSucceed = WriteProcessMemory(m_exeProc, tgtAddress, textBytes, tSize, &hasWrite);
-    if (!isSucceed) return FALSE;
+    if (!isSucceed)
+    {
+        DWORD error = GetLastError();
+        Log("\nWriteProcessMemory ERROR: " + to_string(error));
+        return FALSE;
+    }
 
     isSucceed = VirtualProtect(tgtAddress, tSize, oop, &nop);
-    return isSucceed;
+    if (!isSucceed)
+    {
+        DWORD error = GetLastError();
+        Log("\nVirtualProtect ERROR(lock): " + to_string(error));
+        return FALSE;
+    }
+    return TRUE;
 }
 
 BOOL AllocCustomConsole()
