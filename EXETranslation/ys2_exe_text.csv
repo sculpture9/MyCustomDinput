@@ -94,7 +94,7 @@
 275,Display,显示,text.ini,8,12,5309292,-1
 463,Filtering,过滤,text.ini,10,12,5329972,-1
 465,Trilinear,三线性,text.ini,10,12,5330164,-1
-153,Point,点取样,text.ini,6,12,5330188,-1
+153,Point,点取样,text.ini,6,12,5330188,5330760
 154,Total,总计,text.ini,6,12,5330232,-1
 196,Mascot,吉祥物,text.ini,7,12,5309348,-1
 671,Artwork Type,立绘风格,text.ini,13,12,5330080,-1
@@ -196,34 +196,34 @@
 24,Fred,弗雷德,text.ini,5,12,5306212,5221140
 22,Polo,布罗,text2.ini,5,12,5306180,-1
 92,Goban,古邦,text2.ini,6,12,5305724,-1
-93,Banoa,芭诺娅,text2.ini,6,12,5305868,-1
-94,Lilia,莉莉娅,text2.ini,6,12,5305876,-1
+93,Banoa,芭诺娅,text2.ini,6,12,5305868,5220992
+94,Lilia,莉莉娅,text2.ini,6,12,5305876,5220988
 95,Astal,阿斯塔尔,text2.ini,6,12,5305896,5220996
 96,Guido,基德,text2.ini,6,12,5305964,-1
-97,Leggs,莱格斯,text2.ini,6,12,5305972,-1
-98,Lazlo,鲁多尔,text2.ini,6,12,5305996,-1
+97,Leggs,莱格斯,text2.ini,6,12,5305972,5221032
+98,Lazlo,鲁多尔,text2.ini,6,12,5305996,5221036
 99,Bohtz,柏兹,text2.ini,6,12,5306028,-1
-100,Ceres,赛拉丝,text2.ini,6,12,5306036,-1
-101,Brody,布罗迪,text2.ini,6,12,5306060,-1
-102,Oseam,欧萨姆,text2.ini,6,12,5306088,-1
-103,Favre,法布尔,text2.ini,6,12,5306256,-1
-104,Meryl,梅丽尔,text2.ini,6,12,5306272,-1
-105,Kasim,卡西姆,text2.ini,6,12,5306280,-1
-106,Ischt,伊斯特,text2.ini,6,12,5306288,-1
-107,Darie,妲莉叶,text2.ini,6,12,5306296,-1
+100,Ceres,赛拉丝,text2.ini,6,12,5306036,5221064
+101,Brody,布罗迪,text2.ini,6,12,5306060,5221068
+102,Oseam,欧萨姆,text2.ini,6,12,5306088,5221088
+103,Favre,法布尔,text2.ini,6,12,5306256,5221164
+104,Meryl,梅丽尔,text2.ini,6,12,5306272,5221172
+105,Kasim,卡西姆,text2.ini,6,12,5306280,5221184
+106,Ischt,伊斯特,text2.ini,6,12,5306288,5221180
+107,Darie,妲莉叶,text2.ini,6,12,5306296,5221192
 108,Keith,基斯,text2.ini,6,12,5306384,-1
 16,Kate,凯特,text2.ini,5,12,5306112,-1
-109,Lloyd,洛伊德,text2.ini,6,12,5306400,-1
+109,Lloyd,洛伊德,text2.ini,6,12,5306400,5221240
 110,Gorto,高特,text2.ini,6,12,5306408,-1
-111,Hadat,哈达特,text2.ini,6,12,5306424,-1
+111,Hadat,哈达特,text2.ini,6,12,5306424,5221244
 112,Karen,卡莲,text2.ini,6,12,5306432,-1
-113,Maria,玛莉娅,text2.ini,6,12,5306440,-1
-114,Zalem,莎蕾姆,text2.ini,6,12,5306448,-1
-115,Frith,弗利斯,text2.ini,6,12,5306464,-1
-116,Blitz,布利兹,text2.ini,6,12,5306488,-1
-117,Tanya,塔妮亚,text2.ini,6,12,5306504,-1
+113,Maria,玛莉娅,text2.ini,6,12,5306440,5221252
+114,Zalem,莎蕾姆,text2.ini,6,12,5306448,5221264
+115,Frith,弗利斯,text2.ini,6,12,5306464,5221272
+116,Blitz,布利兹,text2.ini,6,12,5306488,5221276
+117,Tanya,塔妮亚,text2.ini,6,12,5306504,5221284
 118,Reise,蕾洁,text2.ini,6,12,5306528,-1
-119,Boris,波利斯,text2.ini,6,12,5306564,-1
+119,Boris,波利斯,text2.ini,6,12,5306564,5221316
 182,Dalles,达雷斯,text2.ini,7,12,5302212,5221600
 183,Larsen,拉尔森,text2.ini,7,12,5306004,-1
 184,Sheila,希拉,text2.ini,7,12,5306020,-1
@@ -249,7 +249,7 @@
 480,Luta Gemma,卢达·洁玛,text2.ini,11,12,5305752,-1
 481,Flair Rall,夫雷亚·拉尔,text2.ini,11,12,5305920,5221004
 482,Masontorch,梅森特露琪,text2.ini,11,12,5306128,-1
-535,Leonor Rall,雷诺亚·拉尔,text2.ini,12,12,5305884,-1
+535,Leonor Rall,雷诺亚·拉尔,text2.ini,12,12,5305884,5221000
 633,Nurse Sarina,萨琳娜护士,text2.ini,13,12,5305904,-1
 719,Elder Cornell,卡尼尔长老,text2.ini,14,12,5305940,-1
 630,Priest Tovah,神官托瓦,text2.ini,13,12,5305796,-1
@@ -341,3 +341,32 @@
 267,Druegar,多尔加,text2.ini,8,12,5302188,5221592
 4,Zava,萨芭,text2.ini,5,12,5302144,5221596
 5,Darm,达姆,text2.ini,5,12,5302204,5221604
+975,"Dark Fact","达尔克·法克特","text2.ini",12,12,5297564,5220960
+976,"Roo","","text.ini",4,12,5297376,-1
+977,"In Situ Tarf","","text.ini",16,12,5297380,-1
+978,"Safety Charm","","text.ini",16,12,5297396,-1
+979,"Luck Charm","","text.ini",12,12,5297424,-1
+980,"Health Charm","","text.ini",16,12,5297440,-1
+981,"Study Charm","","text.ini",12,12,5297456,-1
+982,"Prosperity Charm","","text.ini",20,12,5297468,-1
+983,"Fortuneteller Sara","","text.ini",20,12,5297488,-1
+984,"Hello Minea's Nurse","","text.ini",20,12,5297508,-1
+985,"Troubadour Reah","","text.ini",16,12,5297528,-1
+986,"Plainclothes Feena","","text.ini",20,12,5297544,-1
+987,"Imprisoned Maria","","text.ini",20,12,5297576,-1
+988,"Photogenic Lilia","","text.ini",20,12,5297596,-1
+989,"Gussied-Up Lilia","","text.ini",20,12,5297616,-1
+990,"Maid Lilia","","text.ini",12,12,5297636,-1
+991,"Priestess Lilia","","text.ini",16,12,5297648,-1
+992,"Chun-Lilia","","text.ini",12,12,5297664,-1
+993,"Tailed Tarf","","text.ini",12,12,5297676,-1
+994,"I Heart Zalem","","text.ini",16,12,5297688,-1
+995,"Duckling","","text.ini",12,12,0050D628,-1
+996,"Exploding Pumpkin","","text.ini",20,12,5297716,-1
+997,"Tasty Rodentia","","text.ini",16,12,5297736,-1
+998,"Swooned Feena","","text.ini",16,12,5297752,-1
+999,"Priestess Feena","","text.ini",16,12,5297768,-1
+1000,"Priestess Reah","","text.ini",16,12,5297784,-1
+1001,"China-Dress Feena","","text.ini",20,12,5297800,-1
+1002,"China-Dress Reah","","text.ini",20,12,5297820,-1
+1003,"Rado's Annex Reah","","text.ini",20,12,5297840,-1
