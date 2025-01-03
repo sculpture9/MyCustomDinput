@@ -2,7 +2,6 @@
 #include "csv_reader.h"
 #include "tool_log.h"
 #include <fstream>
-
 using namespace std;
 
 HANDLE m_exeProc;
